@@ -34,7 +34,8 @@
   @import "~@design"
 
   .other-pages
-    fill-box()
+    fill-box(absolute)
     z-index :50
+    top:50px
     background: azure
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <router-view :key="$route.fullPath"></router-view>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -13,7 +13,7 @@
         title = typeof title === 'function' ? title(this.$store) : title
         return title || appConfig.title
       }
-    }
+    },
   }
 </script>
 
@@ -22,8 +22,8 @@
   @import "~nprogress/nprogress.css"
 
   #nprogress .bar
-    background: red !important
+    background: transparent !important
 
   #nprogress .peg
-    box-shadow: 0 0 10px red, 0 0 5px red !important
+    box-shadow: 0 0 10px transparent, 0 0 5px transparent !important
 </style>

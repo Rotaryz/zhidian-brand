@@ -40,12 +40,12 @@
       }
     },
     created() {
-      console.log(process.env)
-      this.$loading.show()
-      setTimeout(() => {
-        this.$loading.hide()
-      }, 1500)
-      this._getWxSdk()
+      // console.log(process.env)
+      // this.$loading.show()
+      // setTimeout(() => {
+      //   this.$loading.hide()
+      // }, 1500)
+      // this._getWxSdk()
     },
     methods: {
       createQrCode() {
@@ -143,6 +143,7 @@
   @import "~@design"
 
   .sample
-    fill-box()
-      bottom: $tab-height
+    z-index :20px
+    fill-box(fixed)
+    background :#fff
 </style>

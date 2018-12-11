@@ -19,5 +19,9 @@
   @import "~@design"
 
   .test-page
+    fill-box(absolute)
+    top:50px
     width: 100%
+    height :200px
+    background hotpink
 </style>

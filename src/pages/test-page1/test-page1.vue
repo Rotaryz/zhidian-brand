@@ -19,5 +19,9 @@
   @import "~@design"
 
   .test-page1
+    fill-box(absolute)
+    top:50px
     width: 100%
+    height :200px
+    background yellowgreen
 </style>
