@@ -3,6 +3,8 @@
 import axios from 'axios'
 import storage from 'storage-controller'
 import * as Utils from './request-utils'
+// import {defaultMethod} from './api-utils'
+// const methodList = {defaultMethod}
 
 const TIME_OUT = 10000
 const ERR_OK = 0
@@ -78,7 +80,7 @@ function requestException(res) {
 }
 
 export default {
-  post(url, data, loading = true) {
+  post(url, data, loading = true, toast) {
     Utils.showLoading(loading)
     return http({
       method: 'post',
@@ -92,7 +94,7 @@ export default {
         return checkCode(res)
       })
   },
-  get(url, params, loading = true) {
+  get(url, params, loading = true, toast, ...more) {
     Utils.showLoading(loading)
     return http({
       method: 'get',

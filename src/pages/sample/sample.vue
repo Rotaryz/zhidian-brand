@@ -1,8 +1,9 @@
 <template>
   <div class="sample">
-    <h1>截图上传</h1>
+    <label>截图上传
     <cropper ref="cropper" @confirm="cropperConfirm($event)"></cropper>
-    <input type="file" accept="image/*" @change="_fileChange($event, 'images')">
+      <base-wx-input :debugModel="true" accept="image/*" @change="_fileChange($event, 'images')"></base-wx-input>
+    </label>
     <hr>
     <h1>直接上传</h1>
     <input type="file" accept="image/*" @change="_fileChange($event, 'images-only')">
