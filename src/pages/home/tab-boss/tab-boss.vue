@@ -1,6 +1,6 @@
 <template>
-  <div class="tab border-bottom-1px" v-if="showTab">
-    <router-link tag="div" class="tab-item" v-for="(item,index) in tabList" :to="item.path" :key="index">
+  <div v-if="showTab" class="tab border-bottom-1px">
+    <router-link v-for="(item,index) in tabList" :key="index" tag="div" class="tab-item" :to="item.path">
       <div class="item-container">
         <section class="line-wrapper">
           <div class="line"></div>

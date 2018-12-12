@@ -25,7 +25,7 @@
 </script>
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
-  @import "@design"
+  @import "~@design"
 
   .no-more
     .container

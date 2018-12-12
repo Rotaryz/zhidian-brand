@@ -49,7 +49,7 @@
 
 <script type="text/ecmascript-6">
   import BScroll from 'better-scroll'
-  import Loading from '@components/_loading/_loading'
+  import Loading from '@components/_global-loading/_global-loading'
   import Bubble from '@components/bubble/bubble.vue'
   import NoMore from '@components/no-more/no-more'
   import {getRect} from '@utils/dom'

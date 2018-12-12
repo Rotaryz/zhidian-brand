@@ -1,5 +1,6 @@
 <template>
   <div class="home" @touchmove.prevent>
+    <scroll-movement v-if="false"></scroll-movement>
     <header class="header">
       <router-link tag="h1" to="/sample">h1</router-link>
     </header>
@@ -13,6 +14,7 @@
 
 <script type="text/ecmascript-6">
   import Tab from './tab-boss/tab-boss'
+  import ScrollMovement from '@components/scroll-movement/scroll-movement'
 
   const PAGE_NAME = 'HOME'
 
@@ -23,6 +25,7 @@
       meta: [{name: 'description', content: 'description'}]
     },
     components: {
+      ScrollMovement,
       Tab
     },
     created() {

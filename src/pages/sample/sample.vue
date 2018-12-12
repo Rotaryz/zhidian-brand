@@ -40,12 +40,12 @@
       }
     },
     created() {
-      // console.log(process.env)
-      // this.$loading.show()
-      // setTimeout(() => {
-      //   this.$loading.hide()
-      // }, 1500)
-      // this._getWxSdk()
+    // console.log(process.env)
+    // this.$loading.show()
+    // setTimeout(() => {
+    //   this.$loading.hide()
+    // }, 1500)
+    // this._getWxSdk()
     },
     methods: {
       createQrCode() {

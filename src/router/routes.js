@@ -1,6 +1,6 @@
 export default [
   {
-    path:'/',
+    path: '/',
     redirect: '/home'
   },
   {
@@ -9,9 +9,7 @@ export default [
     children: [
       {
         path: '/sample',
-        meta: {
-
-        },
+        meta: {},
         component: () => lazyLoadView(import('@pages/sample/sample'))
       },
       {
@@ -36,8 +34,14 @@ export default [
           defaultRouter: true
         },
         component: () => lazyLoadView(import('@pages/test-page/test-page'))
-      },
+      }
     ]
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => lazyLoadView(import('@pages/login/login')),
+    props: true
   },
   {
     path: '/404',
