@@ -8,3 +8,11 @@ export const someComputed = {
 }
 
 export const someMethods = mapActions('some', ['action1', 'action2'])
+
+export const infoComputed = {
+  ...mapGetters('userInfo', ['merchantInfo'])
+}
+
+export const infoMethods = {
+  ...mapActions('userInfo', ['setMerchantInfo', 'updateMerchant'])
+}

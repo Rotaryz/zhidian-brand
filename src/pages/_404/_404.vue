@@ -1,6 +1,6 @@
 <template>
   <div class="404">
-    <h1 :class="$style.title">
+    <h1 class="title">
       404
       <template v-if="resource">
         {{resource}}
@@ -11,7 +11,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-  const PAGE_NAME = '404'
+  const PAGE_NAME = 'PAGE_404'
 
   export default {
     name: PAGE_NAME,
@@ -24,6 +24,8 @@
         type: String,
         default: ''
       }
+    },
+    created() {
     }
   }
 </script>

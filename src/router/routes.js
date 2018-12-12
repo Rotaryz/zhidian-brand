@@ -7,13 +7,38 @@ export default [
     path: '/home',
     component: () => lazyLoadView(import('@pages/home/home')),
     children: [
+      // 账号信息
       {
-        path: '/sample',
+        path: 'user-info',
+        name: 'user-info',
+        component: () => lazyLoadView(import('@pages/user-info/user-info'))
+      },
+      // 店铺管理列表
+      {
+        path: 'shop-list',
+        name: 'shop-list',
+        component: () => lazyLoadView(import('@pages/shop-list/shop-list')),
+        children: [
+          {
+            path: 'shop-detail',
+            name: 'shop-detail',
+            component: () => lazyLoadView(import('@pages/shop-detail/shop-detail')),
+          }
+        ]
+      },
+      // 店铺详情
+      {
+        path: 'shop-detail',
+        name: 'shop-detail',
+        component: () => lazyLoadView(import('@pages/shop-detail/shop-detail')),
+      },
+      {
+        path: 'sample',
         meta: {},
         component: () => lazyLoadView(import('@pages/sample/sample'))
       },
       {
-        path: '/other-pages',
+        path: 'other-pages',
         meta: {
           defaultRouter: true
         },
@@ -21,7 +46,7 @@ export default [
       },
       // 测试页面配置
       {
-        path: '/test-page1',
+        path: 'test-page1',
         meta: {
           defaultRouter: true
         },
@@ -29,7 +54,7 @@ export default [
       },
       // 测试页面注释
       {
-        path: '/test-page',
+        path: 'test-page',
         meta: {
           defaultRouter: true
         },

@@ -1,4 +1,4 @@
-import {defaultProcess} from './api-utils'
+import {defaultProcess} from '@utils/api-utils'
 
 export default {
   // 授权

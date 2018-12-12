@@ -1,5 +1,5 @@
 import request from '@utils/request'
-const _this = window.__app__
+import {app as _this} from '@src/main'
 
 // 通用的api请求方式
 export function defaultProcess(...args) {

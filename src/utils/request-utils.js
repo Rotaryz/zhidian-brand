@@ -25,6 +25,7 @@ function _handleLoseEfficacy() {
     storage.set('beforeLoginRoute', currentRoute)
   }
   storage.remove('token')
+  _this.$router.replace('/login')
 }
 
 export function showLoading(loading) {

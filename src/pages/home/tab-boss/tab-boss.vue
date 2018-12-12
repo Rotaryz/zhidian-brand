@@ -14,9 +14,9 @@
 <script>
   const COMPONENT_NAME = 'TAB_BOSS'
   const TABS = [
-    {text: '总览', path: '/test-page1', id: 1},
-    {text: '排行榜', path: '/test-page', id: 2},
-    {text: 'AI分析', path: '/other-pages', id: 3}
+    {text: '总览', path: '/home/test-page1', id: 1},
+    {text: '排行榜', path: '/home/test-page', id: 2},
+    {text: 'AI分析', path: '/home/other-pages', id: 3}
   ]
   export default {
     name: COMPONENT_NAME,

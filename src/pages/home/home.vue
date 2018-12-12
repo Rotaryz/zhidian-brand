@@ -2,7 +2,10 @@
   <div class="home" @touchmove.prevent>
     <scroll-movement v-if="false"></scroll-movement>
     <header class="header">
-      <router-link tag="h1" to="/sample">h1</router-link>
+      <router-link tag="h1" to="/home/sample">h1</router-link>
+      <router-link tag="h1" to="/home/user-info">账号信息</router-link>
+      <router-link tag="h1" to="/home/shop-list">列表</router-link>
+      <router-link tag="h1" to="/home/shop-detail">详情</router-link>
     </header>
     <tab></tab>
     <footer class="footer">
@@ -15,6 +18,7 @@
 <script type="text/ecmascript-6">
   import Tab from './tab-boss/tab-boss'
   import ScrollMovement from '@components/scroll-movement/scroll-movement'
+  import {infoMethods} from '@state/helpers'
 
   const PAGE_NAME = 'HOME'
 
@@ -30,6 +34,10 @@
     },
     created() {
       console.log(123)
+      this.updateMerchant()
+    },
+    methods: {
+      ...infoMethods
     }
   }
 </script>
@@ -38,7 +46,7 @@
   @import "~@design"
   .header
     height :200px
-    background rebeccapurple
+    background darkgray
   .footer
     position :relative
 </style>

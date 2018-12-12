@@ -1,7 +1,7 @@
 <template>
   <transition>
     <div class="login">
-      <div class="logo"></div>
+      <img class="logo" src="./icon-login_logo@3x.png" alt="">
       <section v-if="phoneNumber.length >= 11 && codeStyle" class="warn">
         <div class="icon-warn"></div>
         <div>手机号码格式错误</div>
@@ -37,6 +37,10 @@
 
   export default {
     name: 'LOGIN',
+    page: {
+      title: '登陆',
+      meta: [{name: 'description', content: 'description'}]
+    },
     data() {
       return {
         phoneNumber: '',
@@ -78,6 +82,9 @@
       this._hide()
     },
     methods: {
+      test() {
+        this.$toast.show('123')
+      },
       _hide() {
         let token = storage.get('token')
         if (token) {
@@ -96,13 +103,8 @@
         }
         API.Jwt.getToken(data)
           .then((res) => {
-            this.$loading.hide()
-            if (res.error !== this.$ERR_OK) {
-              this.$toast.show(res.message)
-              return
-            }
             const token = res.data.access_token
-            const merchantInfo = res.data.employee_info
+            const merchantInfo = res.data.merchant_info
             this.$storage.set('token', token)
             this.$storage.set('info', merchantInfo)
             this.$router.replace('/')
@@ -122,11 +124,7 @@
           --this.codeSeconds
         }, 1000)
         API.Jwt.getSms({mobile: this.phoneNumber}).then((res) => {
-          this.$loading.hide()
-          if (res.error !== this.$ERR_OK) {
-            this.$toast.show(res.message)
-          }
-          this.$toast.show('验证码已发送，请注意查收')
+          this.$toast.show(`验证码已发送至${this.phoneNumber}，请注意查收!`)
         })
       },
       _check() {
@@ -157,7 +155,7 @@
       margin: 9.6vw 0 10.2vw
       width: 12.8vw
       height: @width
-      icon-image(icon-login_logo)
+      object-fit :cover
     .warn
       row-center()
       top: 27.28vw

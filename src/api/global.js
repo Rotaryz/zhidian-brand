@@ -1,4 +1,4 @@
-import request from '@utils/request'
+import {defaultProcess} from '@utils/api-utils'
 
 export default {
   /**
@@ -7,6 +7,14 @@ export default {
    */
   jssdkConfig(data, loading = false) {
     let url = '/api/wechat/jssdk'
-    return request.get(url, data, loading)
+    return defaultProcess('get', url, data, loading)
+  },
+  getUserInfo(data, loading = false, toast = true) {
+    let url = '/api/brand/profile'
+    return defaultProcess('get', url, data, loading, toast)
+  },
+  updateUserInfo(data, loading, toast ) {
+    let url = '/api/brand/profile'
+    return defaultProcess('post', url, data, loading, toast)
   }
 }

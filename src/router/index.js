@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import VueMeta from 'vue-meta'
 import NProgress from 'nprogress/nprogress'
 import routes from './routes'
+import storage from 'storage-controller'
 
 NProgress.configure({showSpinner: false})
 
@@ -23,9 +24,16 @@ const router = new VueRouter({
   }
 })
 
+const OAUTH_ROUTE = '/login' // 授权页面
+
 router.beforeEach((routeTo, routeFrom, next) => {
   if (routeFrom.name !== null) {
     NProgress.start()
+  }
+  // 登陆
+  if (routeTo.path !== '/login') {
+    const hasToken = storage.has('token')
+    !hasToken && next({path: OAUTH_ROUTE, replace: true})
   }
   return next()
 })
