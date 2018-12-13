@@ -12,9 +12,7 @@
   export default {
     name: PAGE_NAME,
     data() {
-      return {
-
-      }
+      return {}
     }
   }
 </script>

@@ -22,7 +22,7 @@ export default [
           {
             path: 'shop-detail',
             name: 'shop-detail',
-            component: () => lazyLoadView(import('@pages/shop-detail/shop-detail')),
+            component: () => lazyLoadView(import('@pages/shop-detail/shop-detail'))
           }
         ]
       },
@@ -30,7 +30,7 @@ export default [
       {
         path: 'shop-detail',
         name: 'shop-detail',
-        component: () => lazyLoadView(import('@pages/shop-detail/shop-detail')),
+        component: () => lazyLoadView(import('@pages/shop-detail/shop-detail'))
       },
       {
         path: 'sample',

@@ -9,7 +9,7 @@
       <div class="content">
         <section class="input-wrapper mobile border-bottom-1px">
           <div class="left">
-            <input ref="phone" v-model="phoneNumber" class="input" type="number" placeholder="请输入手机号码"
+            <input ref="phone" v-model="phoneNumber" class="input" type="tel" placeholder="请输入手机号码"
                    maxlength="11"
             >
           </div>

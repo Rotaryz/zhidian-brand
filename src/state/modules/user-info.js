@@ -5,7 +5,7 @@ export const state = {
 }
 
 export const getters = {
-  merchantInfo: state => state.merchantInfo
+  merchantInfo: (state) => state.merchantInfo
 }
 
 export const mutations = {
@@ -23,9 +23,8 @@ export const actions = {
   },
   updateMerchant({commit, state}) {
     if (!storage.has('token')) return
-    API.Global.getUserInfo().then(res => {
+    API.Global.getUserInfo().then((res) => {
       commit('UPDATE_INFO', res.data)
     })
   }
 }
-

@@ -3,6 +3,7 @@
 import axios from 'axios'
 import storage from 'storage-controller'
 import * as Utils from './request-utils'
+import {BASE_URL} from './config'
 // import {defaultMethod} from './api-utils'
 // const methodList = {defaultMethod}
 
@@ -12,6 +13,7 @@ const ERR_NO = -404
 const COMMON_HEADER = {}
 
 const http = axios.create({
+  baseURL: BASE_URL.api,
   timeout: TIME_OUT,
   headers: COMMON_HEADER
 })

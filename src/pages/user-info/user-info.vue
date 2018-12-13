@@ -17,9 +17,7 @@
   export default {
     name: PAGE_NAME,
     data() {
-      return {
-
-      }
+      return {}
     },
     methods: {
       logout() {

@@ -11,14 +11,12 @@
   export default {
     name: PAGE_NAME,
     data() {
-      return {
-
-      }
-    },
-    // beforeRouteLeave(to, from, next) {
-    //   next({path: '/home/shop-list', replace: true})
-    //   return next()
-    // }
+      return {}
+    }
+  // beforeRouteLeave(to, from, next) {
+  //   next({path: '/home/shop-list', replace: true})
+  //   return next()
+  // }
   }
 </script>
 

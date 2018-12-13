@@ -12,5 +12,5 @@ export default {
   create(data, loading, toast) {
     let url = '/api/brand/stores'
     return defaultProcess('post', url, data, loading, toast)
-  },
+  }
 }

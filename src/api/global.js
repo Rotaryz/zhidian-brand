@@ -13,7 +13,7 @@ export default {
     let url = '/api/brand/profile'
     return defaultProcess('get', url, data, loading, toast)
   },
-  updateUserInfo(data, loading, toast ) {
+  updateUserInfo(data, loading, toast) {
     let url = '/api/brand/profile'
     return defaultProcess('post', url, data, loading, toast)
   }

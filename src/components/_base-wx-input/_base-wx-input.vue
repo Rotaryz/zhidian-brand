@@ -13,15 +13,18 @@
   export default {
     name: COMPONENT_NAME,
     props: {
-      multiple: { // 照片张数
+      multiple: {
+        // 照片张数
         type: Number,
         default: 1
       },
-      outFileType: { // 输出类型
+      outFileType: {
+        // 输出类型
         type: String,
         default: 'file'
       },
-      debugModel: { // debug模式
+      debugModel: {
+        // debug模式
         type: Boolean,
         default: false
       },
@@ -48,9 +51,11 @@
         try {
           let data = await this._chooseImage()
           this._showLoading()
-          Promise.all(data.map(imageId => {
-            return this._getLocalImgData(imageId)
-          })).then((base64Arr) => {
+          Promise.all(
+            data.map((imageId) => {
+              return this._getLocalImgData(imageId)
+            })
+          ).then((base64Arr) => {
             // file类型
             if (this.outFileType === 'file') {
               base64Arr.forEach((b64) => {
@@ -77,7 +82,7 @@
             count: this.multiple, // 默认9
             sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
             sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-            success: function (res) {
+            success: function(res) {
               let localIds = res.localIds // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
               resolve(localIds)
             }
@@ -89,7 +94,7 @@
         return new Promise((resolve, reject) => {
           wx.getLocalImgData({
             localId: id, // 图片的localID
-            success: function (res) {
+            success: function(res) {
               let localData = res.localData // localData是图片的base64数据，可以用img标签显示
               resolve(localData)
             }
@@ -120,7 +125,7 @@
         let url = window.location.href
         console.log(123)
         // 防止重复注册
-        if (this.register.some(val => val.url === url)) return
+        if (this.register.some((val) => val.url === url)) return
         Global.jssdkConfig({url}).then((res) => {
           if (res.error !== this.$ERR_OK) return
           this.updateRegister({url})

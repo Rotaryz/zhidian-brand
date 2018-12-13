@@ -25,8 +25,7 @@
         default: ''
       }
     },
-    created() {
-    }
+    created() {}
   }
 </script>
 
