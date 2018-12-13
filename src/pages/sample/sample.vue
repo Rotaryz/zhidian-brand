@@ -1,7 +1,6 @@
 <template>
   <div class="sample">
-    <label>截图上传
-    <base-wx-input accept="image/*" @change="_fileChange($event, 'images')"></base-wx-input>
+    <label>截图上传<base-wx-input type="" accept="image/*" @change="_fileChange($event, 'images')"></base-wx-input>
     </label>
     <hr>
     <h1>直接上传</h1>
@@ -122,9 +121,10 @@
       },
       async cropperConfirm(e) {
         this.$loading.show()
+        alert(JSON.stringify(e.file))
         let resArr = await this.$cos.uploadFiles(this.$cosFileType.IMAGE_TYPE, [e.file])
         let res = resArr[0]
-        alert(JSON.stringify(res))
+        // alert(JSON.stringify(res))
         if (res.error !== this.$ERR_OK) {
           return this.$toast.show(res.message)
         }
