@@ -10,11 +10,13 @@ const DEV_URL = {
 }
 
 const TEST_URL = {
-  api: 'https://zhidian-api.jkweixin.net'
+  api: 'https://zhidian-api.jkweixin.net' + version,
+  upload: 'https://zhidian-api.jkweixin.net' + version
 }
 
 const PROD_URL = {
-  api: 'https://zhidian-api.jkweixin.com' + version
+  api: 'https://zhidian-api.jkweixin.com' + version,
+  upload: 'https://zhidian-api.jkweixin.com' + version
 }
 console.log(env.NODE_ENV)
 export const BASE_URL =

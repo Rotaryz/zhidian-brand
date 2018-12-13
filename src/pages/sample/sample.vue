@@ -121,7 +121,6 @@
       },
       async cropperConfirm(e) {
         this.$loading.show()
-        alert(JSON.stringify(e.file))
         let resArr = await this.$cos.uploadFiles(this.$cosFileType.IMAGE_TYPE, [e.file])
         let res = resArr[0]
         // alert(JSON.stringify(res))
