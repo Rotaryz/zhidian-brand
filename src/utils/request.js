@@ -139,3 +139,61 @@ export default {
       })
   }
 }
+// export default {
+//   post(url, data, loading = true, toast) {
+//     Utils.showLoading(loading)
+//     return http({
+//       method: 'post',
+//       url,
+//       data // post 请求时带的参数
+//     })
+//     .then((response) => {
+//       return checkStatus(response)
+//     })
+//     .then((res) => {
+//       return checkCode(res)
+//     })
+//   },
+//   get(url, params, loading = true, toast, ...more) {
+//     Utils.showLoading(loading)
+//     return http({
+//       method: 'get',
+//       url,
+//       params // get 请求时带的参数
+//     })
+//     .then((response) => {
+//       return checkStatus(response)
+//     })
+//     .then((res) => {
+//       return checkCode(res)
+//     })
+//   },
+//   put(url, data, loading = true) {
+//     Utils.showLoading(loading)
+//     return http({
+//       method: 'put',
+//       url,
+//       data // put 请求时带的参数
+//     })
+//     .then((response) => {
+//       return checkStatus(response)
+//     })
+//     .then((res) => {
+//       return checkCode(res)
+//     })
+//   },
+//   delete(url, data, loading = true) {
+//     Utils.showLoading(loading)
+//     return http({
+//       method: 'delete',
+//       url,
+//       data // put 请求时带的参数
+//     })
+//     .then((response) => {
+//       return checkStatus(response)
+//     })
+//     .then((res) => {
+//       return checkCode(res)
+//     })
+//   }
+// }
