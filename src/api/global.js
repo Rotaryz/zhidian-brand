@@ -11,10 +11,22 @@ export default {
   },
   getUserInfo(data, loading = false, toast = true) {
     let url = '/api/brand/profile'
-    return defaultProcess('get', url, data, loading, toast)
+    return defaultProcess('get', url, data, loading, toast, resolveUserInfoData)
   },
   updateUserInfo(data, loading, toast) {
     let url = '/api/brand/profile'
     return defaultProcess('post', url, data, loading, toast)
   }
+}
+
+function resolveUserInfoData(res) {
+  let reaData = res.data || {}
+  let resAccount = res.account || {}
+  let data = {
+    merchantName: reaData.name || '未知',
+    accountUsed: +resAccount.used,
+    accountTotal: +resAccount.total
+  }
+  res.data = data
+  return res
 }

@@ -34,6 +34,8 @@
 
 <script type="text/ecmascript-6">
   import {DEFAULT_LOGO} from '@utils/constant'
+  import {infoComputed} from '@state/helpers'
+
   const COMPONENT_NAME = 'H_HEADER'
 
   export default {
@@ -42,6 +44,9 @@
       return {
         logo: DEFAULT_LOGO
       }
+    },
+    computed: {
+      ...infoComputed
     }
   }
 </script>

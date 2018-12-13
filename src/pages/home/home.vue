@@ -20,7 +20,7 @@
 <script type="text/ecmascript-6">
   import Tab from './tab-boss/tab-boss'
   import ScrollMovement from '@components/scroll-movement/scroll-movement'
-  import {infoMethods} from '@state/helpers'
+  import {infoMethods, infoComputed} from '@state/helpers'
   import HHeader from './h-header/h-header'
 
   const PAGE_NAME = 'HOME'
@@ -35,6 +35,9 @@
       ScrollMovement,
       Tab,
       HHeader
+    },
+    computed:{
+      ...infoComputed
     },
     created() {
       this.updateMerchant()
