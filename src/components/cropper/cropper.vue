@@ -53,7 +53,11 @@
       }
     },
     methods: {
+      _hideLoading() {
+        this.$loading.hide()
+      },
       show(file) {
+        this._hideLoading()
         this.visible = true
         let img = this.$handle.getObjectURL(file)
         this.file = file
