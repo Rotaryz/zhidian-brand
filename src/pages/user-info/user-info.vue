@@ -12,53 +12,59 @@
       <dd class="t-item border-bottom-1px">
         <div class="left">名称</div>
         <label class="right">
-          <input v-model="shopName" class="input" type="text" placeholder="请输入名称" maxlength="50">
+          <input v-model="merchantName" class="input" type="text" placeholder="请输入名称" maxlength="50">
         </label>
       </dd>
       <dd class="t-item border-bottom-1px">
         <div class="left">类型</div>
-        <div class="right">品牌店</div>
+        <div class="right">{{merchantInfo.merchantTypeName}}</div>
       </dd>
       <dd class="t-item border-bottom-1px">
         <div class="left">行业</div>
-        <div class="right">品牌店</div>
+        <div class="right">{{merchantInfo.industryName}}</div>
       </dd>
       <dd class="t-item border-bottom-1px">
         <div class="left">姓名</div>
-        <div class="right">品牌店</div>
+        <div class="right">{{merchantInfo.nickName}}</div>
       </dd>
       <dd class="t-item border-bottom-1px">
         <div class="left">手机号</div>
-        <div class="right">品牌店</div>
+        <div class="right">{{merchantInfo.mobile}}</div>
       </dd>
       <dd class="t-item border-bottom-1px">
         <div class="left">账号数量</div>
-        <div class="right">品牌店</div>
+        <div class="right" @click="showCoverHandle">
+          <p class="number">{{merchantInfo.accountUsed}}/{{merchantInfo.accountTotal}}</p>
+          <base-right-arrow cname="user-info"></base-right-arrow>
+        </div>
       </dd>
     </dl>
     <section class="button-wrapper">
       <div class="btn">退出登录</div>
     </section>
     <cropper ref="cropper" :aspect="1" @confirm="cropperConfirm"></cropper>
-    <div class="cover">
-      <div class="cover-content">
-        <div class="content-top">
-          <p class="top-txt">
-            <span>账号数量剩余</span>
-            <span class="red-num">98</span>
-            <span>个，需要增加账号数量请联系平台客服(13877889900)</span>
-          </p>
+    <transition name="fade">
+      <div v-show="isShowCover" class="cover" @click="hideCoverHandle">
+        <div class="cover-content" @click.stop>
+          <div class="content-top">
+            <p class="top-txt">
+              <span>账号数量剩余</span>
+              <span class="red-num">{{residualAccount}}</span>
+              <span>个，需要增加账号数量请联系平台客服({{serverPhone}})</span>
+            </p>
+          </div>
+          <div class="content-down border-top-1px" @click="callHandle">立即拨打</div>
         </div>
-        <div class="content-down border-top-1px">立即拨打</div>
       </div>
-    </div>
+    </transition>
   </form>
 </template>
 
 <script type="text/ecmascript-6">
   import Cropper from '@components/cropper/cropper'
-  import {DEFAULT_LOGO} from '@utils/constant'
-
+  import {DEFAULT_LOGO, SEVER_HPONE} from '@utils/constant'
+  import {infoComputed} from '@state/helpers'
+  import API from '@api'
   const PAGE_NAME = 'USER_INFO'
   export default {
     name: PAGE_NAME,
@@ -67,15 +73,62 @@
     },
     data() {
       return {
+        isShowCover: false,
+        serverPhone: SEVER_HPONE,
         logoUrl: DEFAULT_LOGO,
-        shopName: ''
+        logoId: 0,
+        merchantName: ''
       }
     },
+    computed: {
+      ...infoComputed,
+      residualAccount() {
+        return this.merchantInfo.accountTotal - this.merchantInfo.accountUsed
+      }
+    },
+    watch: {
+      merchantInfo() {
+        this._initUserInfo()
+      }
+    },
+    created() {
+      this._initUserInfo()
+    },
+    // beforeRouteLeave(to, from , next) {
+    //   this._updateUserInfo()
+    //   next()
+    // },
+    beforeRouteLeave(to, from, next) {
+    },
+    beforeUpdate() {
+      console.log(123213)
+    },
     methods: {
+      // 初始化数据
+      _initUserInfo() {
+        Object.assign(this.$data, this.merchantInfo)
+      },
+      // 退出登录
       logout() {
         this.$storage.remove('token')
         this.$router.replace('/login')
       },
+      // 弹窗
+      showCoverHandle() {
+        this.isShowCover = true
+      },
+      hideCoverHandle() {
+        this.isShowCover = false
+      },
+      callHandle() {
+        this.hideCoverHandle()
+        window.location.href = `tel: ${this.serverPhone}`
+      },
+      // 更新用户信息
+      _updateUserInfo() {
+        API.Global.updateUserInfo(this.$data)
+      },
+      // 选择图片
       _fileChange(e, type) {
         let arr = Array.from(e.target.files)
         if (arr.length <= 0) {
@@ -96,6 +149,7 @@
           id: 0
         }
         this.logoUrl = obj.image_url
+        this.logoId = obj.image_id
         this.$loading.hide()
         this.$refs.cropper.cancel()
       }
@@ -122,6 +176,9 @@
     .cover
       fill-box(fixed)
       background: rgba(39,39,62,0.8)
+      layout()
+      justify-content :center
+      align-items :center
       z-index: 25
       .cover-content
         width: 300px
@@ -129,7 +186,6 @@
         background: $color-white
         border: 1px solid rgba(32,32,46,0.10)
         border-radius: 6px
-        all-center()
         .content-top
           height: 115px
           display: flex
@@ -179,6 +235,8 @@
           justify-content :flex-end
           align-items :center
           color: #9B9B9B
+          .number
+            margin-right :5px
           .logo
             width :49px
             height :@width

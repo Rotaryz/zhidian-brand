@@ -4,7 +4,7 @@
       <article class="top">
         <div class="title">欢迎加入{{shopName}}</div>
         <div class="qr-code">
-          <img  v-if="qrCode" class="qr-img" :src="qrCode" alt="">
+          <img v-if="qrCode" class="qr-img" :src="qrCode" alt="">
         </div>
         <div class="explain">请长按二维码保存或者发送给店员</div>
       </article>

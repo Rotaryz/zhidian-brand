@@ -6,10 +6,10 @@
       <div class="card-wrapper">
         <div class="card-container">
           <section class="c-top">
-            <img class="logo" :src="logo" alt="">
+            <img class="logo" :src="merchantInfo.logoUrl" alt="">
             <article class="middle">
-              <div class="m-top">国颐堂</div>
-              <div class="m-bottom">账号数量：2/100</div>
+              <div class="m-top">{{merchantInfo.merchantName}}</div>
+              <div class="m-bottom">账号数量：{{merchantInfo.accountUsed}}/{{merchantInfo.accountTotal}}</div>
             </article>
             <router-link tag="div" to="user-info" append class="right">
               <base-right-arrow cname="home" path="user-info"></base-right-arrow>
