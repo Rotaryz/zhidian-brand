@@ -6,6 +6,14 @@ import '@components/_globals'
 import '@utils/compatible'
 import {Plugins} from '@utils/plugins'
 import '@utils/env-clear'
+import VueClipboard from 'vue-clipboard2'
+// import AwesomePicker from 'vue-awesome-picker'
+// 使用插件
+
+VueClipboard.config.autoSetContainer = true
+// Vue.use(AwesomePicker) todo
+
+Vue.use(VueClipboard)
 
 Vue.use(Plugins)
 

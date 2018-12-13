@@ -7,6 +7,12 @@ export default [
     path: '/home',
     component: () => lazyLoadView(import('@pages/home/home')),
     children: [
+      // 选择店铺
+      {
+        path: 'shop-select',
+        name: 'shop-select',
+        component: () => lazyLoadView(import('@pages/shop-select/shop-select'))
+      },
       // 账号信息
       {
         path: 'user-info',
@@ -23,6 +29,11 @@ export default [
             path: 'shop-detail',
             name: 'shop-detail',
             component: () => lazyLoadView(import('@pages/shop-detail/shop-detail'))
+          },
+          {
+            path: 'invitation',
+            name: 'invitation',
+            component: () => lazyLoadView(import('@pages/invitation/invitation'))
           }
         ]
       },

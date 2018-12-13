@@ -123,7 +123,6 @@
       // 注册api
       _getWxSdk() {
         let url = window.location.href
-        console.log(123)
         // 防止重复注册
         if (this.register.some((val) => val.url === url)) return
         Global.jssdkConfig({url}).then((res) => {

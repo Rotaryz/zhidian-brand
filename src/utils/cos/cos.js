@@ -1,5 +1,5 @@
 import request from '@utils/request'
-import { BASE_URL } from '@utils/config'
+import {BASE_URL} from '@utils/config'
 import storage from 'storage-controller'
 
 /**
@@ -28,7 +28,7 @@ function _getAuthorization(options, callback) {
   const xhr = new XMLHttpRequest()
   xhr.open('GET', url, true)
   xhr.setRequestHeader('Authorization', Authorization)
-  xhr.onload = function (e) {
+  xhr.onload = function(e) {
     let AuthData
     try {
       AuthData = JSON.parse(xhr.responseText)
@@ -41,7 +41,7 @@ function _getAuthorization(options, callback) {
       console.error('获取签名出错')
     }
   }
-  xhr.onerror = function (e) {
+  xhr.onerror = function(e) {
     console.error('获取签名出错', e)
   }
   xhr.send()
@@ -61,7 +61,7 @@ export function uploadFiles(fileType, files, showProcess, processCallBack) {
   }
   showProcess && showProcess()
   return new Promise((resolve, reject) => {
-    let requests = files.map(file => {
+    let requests = files.map((file) => {
       let Key = Date.now() + '-' + (file.name || Math.random())
       return new Promise((resolve, reject) => {
         _getAuthorization({Method: 'PUT', Key: Key}, (err, info) => {
@@ -81,26 +81,28 @@ export function uploadFiles(fileType, files, showProcess, processCallBack) {
           xhr.open('PUT', url, true)
           xhr.setRequestHeader('Authorization', auth)
           XCosSecurityToken && xhr.setRequestHeader('x-cos-security-token', XCosSecurityToken)
-          xhr.upload.onprogress = function (e) {
-            let progress = (Math.floor(e.loaded / e.total * 10000) / 100)
+          xhr.upload.onprogress = function(e) {
+            let progress = Math.floor((e.loaded / e.total) * 10000) / 100
             processCallBack && processCallBack(progress)
           }
-          xhr.onload = function () {
+          xhr.onload = function() {
             if (xhr.status === 200 || xhr.status === 206) {
-              _saveFile({path: '/' + pathName}).then(resp => {
+              _saveFile({path: '/' + pathName}).then((resp) => {
                 resolve(resp)
               })
             } else {
               reject(new Error('文件 ' + Key + ' 上传失败，状态码：' + xhr.status))
             }
           }
-          xhr.onerror = function () {
+          xhr.onerror = function() {
             reject(new Error('文件 ' + Key + ' 上传失败，请检查是否没配置 CORS 跨域规则'))
           }
           xhr.send(file)
         })
       })
     })
-    Promise.all(requests).then(resolve).catch(reject)
+    Promise.all(requests)
+      .then(resolve)
+      .catch(reject)
   })
 }

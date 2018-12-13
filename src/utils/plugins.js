@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import storage from 'storage-controller'
-// import AwesomePicker from 'vue-awesome-picker'
-// import echarts from 'echarts'
+import echarts from 'echarts'
 import base from '@mixins/base'
 import * as handle from './cos/handle'
 import {fileType} from './cos/file-config'
@@ -15,7 +14,7 @@ const ERR_OK = 0
 export const Plugins = {
   install: function() {
     Vue.mixin(base)
-    // Vue.prototype.$echarts = echarts todo
+    Vue.prototype.$echarts = echarts
     Vue.prototype.$ERR_OK = ERR_OK
     Vue.prototype.$handle = handle
     Vue.prototype.$cosFileType = fileType
@@ -25,5 +24,4 @@ export const Plugins = {
     Vue.prototype.$storage = storage
   }
 }
-// 使用插件
-// Vue.use(AwesomePicker) todo
+

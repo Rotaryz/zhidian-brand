@@ -1,12 +1,14 @@
 <template>
   <div class="home" @touchmove.prevent>
     <scroll-movement v-if="false"></scroll-movement>
-    <header class="header">
-      <router-link tag="h1" to="/home/sample">h1</router-link>
-      <router-link tag="h1" to="/home/user-info">账号信息</router-link>
-      <router-link tag="h1" to="/home/shop-list">列表</router-link>
-      <router-link tag="h1" to="/home/shop-detail">详情</router-link>
-    </header>
+    <h-header></h-header>
+    <!--<header class="header">-->
+    <!--<router-link tag="h1" to="/home/sample">h1</router-link>-->
+    <!--<router-link tag="h1" to="/home/user-info">账号信息</router-link>-->
+    <!--<router-link tag="h1" to="/home/shop-list">列表</router-link>-->
+    <!--<router-link tag="h1" to="/home/shop-detail">详情</router-link>-->
+    <!--</header>-->
+    <router-link tag="div" to="shop-select" append>选择店铺</router-link>
     <tab></tab>
     <footer class="footer">
       <router-view v-if="$route.meta.defaultRouter"></router-view>
@@ -19,6 +21,7 @@
   import Tab from './tab-boss/tab-boss'
   import ScrollMovement from '@components/scroll-movement/scroll-movement'
   import {infoMethods} from '@state/helpers'
+  import HHeader from './h-header/h-header'
 
   const PAGE_NAME = 'HOME'
 
@@ -30,10 +33,10 @@
     },
     components: {
       ScrollMovement,
-      Tab
+      Tab,
+      HHeader
     },
     created() {
-      console.log(123)
       this.updateMerchant()
     },
     methods: {
@@ -45,7 +48,6 @@
 <style scoped lang="stylus" rel="stylesheet/stylus">
   @import "~@design"
   .header
-    height :200px
     background darkgray
   .footer
     position :relative

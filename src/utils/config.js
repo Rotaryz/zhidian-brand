@@ -18,7 +18,6 @@ const PROD_URL = {
   api: 'https://zhidian-api.jkweixin.com' + version,
   upload: 'https://zhidian-api.jkweixin.com' + version
 }
-console.log(env.NODE_ENV)
 export const BASE_URL =
   env.NODE_ENV === 'production'
     ? PROD_URL
