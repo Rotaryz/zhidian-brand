@@ -144,7 +144,7 @@
   @import "~@design"
 
   .sample
-    z-index :20px
+    z-index: 20
     fill-box(fixed)
     background :#fff
 </style>

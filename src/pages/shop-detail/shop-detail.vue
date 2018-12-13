@@ -59,7 +59,7 @@
       color: #DAD9E2
 
   .shop-detail
-    z-index :50px
+    z-index: 50
     fill-box(fixed)
     background :$color-background
     .top

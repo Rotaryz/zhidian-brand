@@ -40,6 +40,18 @@
       <div class="btn">退出登录</div>
     </section>
     <cropper ref="cropper" :aspect="1" @confirm="cropperConfirm"></cropper>
+    <div class="cover">
+      <div class="cover-content">
+        <div class="content-top">
+          <p class="top-txt">
+            <span>账号数量剩余</span>
+            <span class="red-num">98</span>
+            <span>个，需要增加账号数量请联系平台客服(13877889900)</span>
+          </p>
+        </div>
+        <div class="content-down border-top-1px">立即拨打</div>
+      </div>
+    </div>
   </form>
 </template>
 
@@ -104,9 +116,44 @@
       color: #DAD9E2
 
   .user-info
-    z-index :20px
+    z-index: 20
     fill-box(fixed)
     background :$color-background
+    .cover
+      fill-box(fixed)
+      background: rgba(39,39,62,0.8)
+      z-index: 25
+      .cover-content
+        width: 300px
+        height: 160px
+        background: $color-white
+        border: 1px solid rgba(32,32,46,0.10)
+        border-radius: 6px
+        all-center()
+        .content-top
+          height: 115px
+          display: flex
+          align-items: center
+          justify-content: center
+          .top-txt
+            padding: 0 20px
+            line-height: 24px
+            font-family: $font-family-regular
+            text-align: center
+            color: $color-text-main
+            word-break: break-all
+            .red-num
+              font-size: 19px
+              font-family: PingFang-SC-Heavy
+              color: $color-main
+
+        .content-down
+          line-height: 45px
+          color: $color-main
+          font-family: $font-family-regular
+          font-size: $font-size-14
+          letter-spacing: 0.6px
+          text-align: center
     .top
       position :relative
       background :#fff

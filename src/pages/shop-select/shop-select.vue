@@ -133,7 +133,7 @@
   @import "~@design"
 
   .shop-select
-    z-index :20px
+    z-index: 20
     fill-box(fixed)
     background :$color-background
 
