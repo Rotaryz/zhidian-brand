@@ -62,23 +62,27 @@
         page: 1,
         limit: 10,
         hasMore: true,
-        isEmpty: false,
+        isEmpty: false
       }
     },
     computed: {
       // scroll事件监听
-      pullUpLoadObj: function () {
-        return this.pullUpLoad ? {
-          threshold: parseInt(this.pullUpLoadThreshold),
-          txt: {more: this.pullUpLoadMoreTxt, noMore: this.pullUpLoadNoMoreTxt}
-        } : false
+      pullUpLoadObj: function() {
+        return this.pullUpLoad
+          ? {
+            threshold: parseInt(this.pullUpLoadThreshold),
+            txt: {more: this.pullUpLoadMoreTxt, noMore: this.pullUpLoadNoMoreTxt}
+          }
+          : false
       },
-      pullDownRefreshObj: function () {
-        return this.pullDownRefresh ? {
-          threshold: parseInt(this.pullDownRefreshThreshold),
-          stop: parseInt(this.pullDownRefreshStop),
-          txt: '没有更多了'
-        } : false
+      pullDownRefreshObj: function() {
+        return this.pullDownRefresh
+          ? {
+            threshold: parseInt(this.pullDownRefreshThreshold),
+            stop: parseInt(this.pullDownRefreshStop),
+            txt: '没有更多了'
+          }
+          : false
       }
     },
     watch: {
@@ -102,19 +106,18 @@
       refresh() {
         this._getOrderList()
       },
-      _getOrderList(data) {
-      },
+      _getOrderList(data) {},
       // scroll事件
       onPullingUp() {
         if (!this.pullUpLoad) return this.$refs.scroll.forceUpdate()
         this.page++
         this._getOrderList()
-        // console.log('触底上拉加载')
+      // console.log('触底上拉加载')
       },
       onPullingDown() {
         // if (!this.pullDownRefresh) return this.$refs.scroll.forceUpdate()
         this._getOrderList()
-        // console.log('下拉刷新')
+      // console.log('下拉刷新')
       },
       rebuildScroll() {
         this.$nextTick(() => {
@@ -122,7 +125,7 @@
           this.$refs.scroll && this.$refs.scroll.initScroll()
         })
       }
-    },
+    }
   }
 </script>
 

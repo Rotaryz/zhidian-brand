@@ -33,25 +33,27 @@
       </dd>
       <dd class="t-item border-bottom-1px">
         <div class="left">账号数量</div>
-        <div class="right">品牌店</div>
+        <div class="right" @click="showModal">品牌店</div>
       </dd>
     </dl>
     <section class="button-wrapper">
       <div class="btn">退出登录</div>
     </section>
     <cropper ref="cropper" :aspect="1" @confirm="cropperConfirm"></cropper>
-    <div class="cover">
-      <div class="cover-content">
-        <div class="content-top">
-          <p class="top-txt">
-            <span>账号数量剩余</span>
-            <span class="red-num">98</span>
-            <span>个，需要增加账号数量请联系平台客服(13877889900)</span>
-          </p>
+    <transition name="fade">
+      <div v-if="coverShow" class="cover" @click="hideModal">
+        <div class="cover-content" @click.stop>
+          <div class="content-top">
+            <p class="top-txt">
+              <span>账号数量剩余</span>
+              <span class="red-num">98</span>
+              <span>个，需要增加账号数量请联系平台客服(13877889900)</span>
+            </p>
+          </div>
+          <div class="content-down border-top-1px">立即拨打</div>
         </div>
-        <div class="content-down border-top-1px">立即拨打</div>
       </div>
-    </div>
+    </transition>
   </form>
 </template>
 
@@ -68,7 +70,8 @@
     data() {
       return {
         logoUrl: DEFAULT_LOGO,
-        shopName: ''
+        shopName: '',
+        coverShow: false
       }
     },
     methods: {
@@ -98,6 +101,12 @@
         this.logoUrl = obj.image_url
         this.$loading.hide()
         this.$refs.cropper.cancel()
+      },
+      showModal() {
+        this.coverShow = true
+      },
+      hideModal() {
+        this.coverShow = false
       }
     }
   }

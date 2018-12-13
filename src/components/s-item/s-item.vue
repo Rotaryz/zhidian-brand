@@ -29,7 +29,7 @@
 
   export default {
     name: COMPONENT_NAME,
-    props:{
+    props: {
       itemInfo: {
         type: Object,
         default: () => {}

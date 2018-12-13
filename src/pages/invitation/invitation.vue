@@ -4,7 +4,7 @@
       <article class="top">
         <div class="title">欢迎加入{{shopName}}</div>
         <div class="qr-code">
-          <img  v-if="qrCode" class="qr-img" :src="qrCode" alt="">
+          <img v-if="qrCode" class="qr-img" :src="qrCode" alt="">
         </div>
         <div class="explain">请长按二维码保存或者发送给店员</div>
       </article>
@@ -32,25 +32,25 @@
       }
     },
     created() {
-      // this._getInviteQrcode()
-      // this._getShopInfo()
+    // this._getInviteQrcode()
+    // this._getShopInfo()
     },
     methods: {
       _getInviteQrcode() {
-        API.Mine.getInviteQrcode().then(res => {
+        API.Mine.getInviteQrcode().then((res) => {
           this.$loading.hide()
           if (this.$ERR_OK !== res.error) {
             this.$toast.show(res.message)
             return
           }
-          QrCodeUtil.createQrCodePng(res.data.link_url, url => {
+          QrCodeUtil.createQrCodePng(res.data.link_url, (url) => {
             this.qrCode = url
           })
           this.linkUrl = res.data.link_url
         })
       },
       _getShopInfo() {
-        API.Mine.getShopInfo().then(res => {
+        API.Mine.getShopInfo().then((res) => {
           this.$loading.hide()
           if (this.$ERR_OK !== res.error) {
             this.$toast.show(res.message)
@@ -60,7 +60,7 @@
         })
       },
       copyHandle() {
-        this.$copyText(this.linkUrl).then(res => {
+        this.$copyText(this.linkUrl).then((res) => {
           let msg = `${res.text}\n已经复制至剪切板`
           this.$toast.show(msg)
         })
