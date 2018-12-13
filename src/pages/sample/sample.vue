@@ -1,6 +1,6 @@
 <template>
   <div class="sample">
-    <label>截图上传<base-wx-input type="" accept="image/*" @change="_fileChange($event, 'images')"></base-wx-input>
+    <label>截图上传<base-wx-input accept="image/*" @change="_fileChange($event, 'images')"></base-wx-input>
     </label>
     <hr>
     <h1>直接上传</h1>
