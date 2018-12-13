@@ -1,8 +1,7 @@
 <template>
   <div class="sample">
     <label>截图上传
-           <cropper ref="cropper" @confirm="cropperConfirm($event)"></cropper>
-           <base-wx-input accept="image/*" @change="_fileChange($event, 'images')"></base-wx-input>
+    <base-wx-input accept="image/*" @change="_fileChange($event, 'images')"></base-wx-input>
     </label>
     <hr>
     <h1>直接上传</h1>
@@ -18,6 +17,7 @@
     <router-link tag="h1" to="/hello-world/other-pages">
       跳其他页面
     </router-link>
+    <cropper ref="cropper" @confirm="cropperConfirm($event)"></cropper>
     <base-router-view></base-router-view>
   </div>
 </template>
