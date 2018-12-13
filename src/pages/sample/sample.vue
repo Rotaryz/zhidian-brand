@@ -17,7 +17,7 @@
     <router-link tag="h1" to="/hello-world/other-pages">
       跳其他页面
     </router-link>
-    <cropper ref="cropper" @confirm="cropperConfirm($event)"></cropper>
+    <cropper ref="cropper" @confirm="cropperConfirm"></cropper>
     <base-router-view></base-router-view>
   </div>
 </template>
@@ -124,6 +124,7 @@
         this.$loading.show()
         let resArr = await this.$cos.uploadFiles(this.$cosFileType.IMAGE_TYPE, [e.file])
         let res = resArr[0]
+        alert(JSON.stringify(res))
         if (res.error !== this.$ERR_OK) {
           return this.$toast.show(res.message)
         }
