@@ -70,7 +70,7 @@
   const PAGE_NAME = 'USER_INFO'
   export default {
     name: PAGE_NAME,
-    page:{
+    page: {
       title: '账号信息',
       meta: [{name: '账号信息', content: 'description'}]
     },

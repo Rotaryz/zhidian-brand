@@ -24,4 +24,3 @@ export const Plugins = {
     Vue.prototype.$storage = storage
   }
 }
-

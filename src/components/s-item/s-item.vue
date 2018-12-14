@@ -30,7 +30,7 @@
 
   export default {
     name: COMPONENT_NAME,
-    props:{
+    props: {
       itemInfo: {
         type: Object,
         default: () => {}
@@ -49,7 +49,7 @@
     methods: {
       chooseHandle() {
         this.isChecked = !this.isChecked
-        if(this.useType === 'invitation') {
+        if (this.useType === 'invitation') {
           const name = this.itemInfo.eName
           const mobile = this.itemInfo.eMobile
           const storeId = this.itemInfo.storeId

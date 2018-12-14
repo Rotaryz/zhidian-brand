@@ -15,7 +15,7 @@
 
   export default {
     name: PAGE_NAME,
-    components:{
+    components: {
       Scroll
     },
     data() {

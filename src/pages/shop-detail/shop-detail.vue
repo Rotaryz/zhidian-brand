@@ -39,7 +39,7 @@
 
   export default {
     name: PAGE_NAME,
-    page:{
+    page: {
       title: '新建店铺'
     },
     data() {
@@ -61,17 +61,17 @@
       },
       _initDetailInfo() {
         Object.assign(this.$data, this.$route.query)
-        if (this.storeId){
+        if (this.storeId) {
         }
       },
       _create() {
-        API.ShopManager.create(this.$data).then(res => {
+        API.ShopManager.create(this.$data).then((res) => {
           this.$toast.show('新建成功')
           this._routerBack()
         })
       },
       _editor() {
-        API.ShopManager.create(this.$data).then(res => {
+        API.ShopManager.create(this.$data).then((res) => {
           this.$toast.show('编辑成功')
           this._routerBack()
         })

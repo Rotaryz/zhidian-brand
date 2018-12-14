@@ -53,11 +53,11 @@ export default [
       },
       // 测试页面配置
       {
-        path: 'test-page1',
+        path: 'overview',
         meta: {
           defaultRouter: true
         },
-        component: () => lazyLoadView(import('@pages/test-page1/test-page1'))
+        component: () => lazyLoadView(import('@pages/overview/overview'))
       },
       // 测试页面注释
       {

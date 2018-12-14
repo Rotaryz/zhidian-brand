@@ -27,7 +27,7 @@ export default {
 }
 
 function _resolveListData(res) {
-  let data = res.data.map(item => {
+  let data = res.data.map((item) => {
     const logo = item.logo || {}
     const merchant = item.merchant || {}
     const employee = item.employee || {}

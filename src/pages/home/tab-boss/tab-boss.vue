@@ -1,7 +1,7 @@
 <template>
-  <div v-if="showTab" class="tab border-bottom-1px">
+  <div v-if="showTab" class="tab">
     <div class="tab-wrapper">
-      <router-link v-for="(item,index) in tabList" :key="index" tag="div" class="tab-item" :to="item.path">
+      <router-link v-for="(item,index) in tabList" :key="index" tag="section" class="tab-item" :to="item.path">
         <div class="item-container">
           <section class="line-wrapper">
             <div class="line"></div>
@@ -16,7 +16,7 @@
 <script>
   const COMPONENT_NAME = 'TAB_BOSS'
   const TABS = [
-    {text: '总览', path: '/home/test-page', id: 1},
+    {text: '总览', path: '/home/overview', id: 1},
     {text: '排行榜', path: '/home/test-page', id: 2},
     {text: 'AI分析', path: '/home/other-pages', id: 3}
   ]
@@ -35,7 +35,7 @@
   $tab-top = 42.13333333333333vw
   $tab-boss-height = (32+40)px
   $tab-background = #fff
-  $tab-line-color = #EF705D
+  $tab-line-color = #D32F2F
   @import "~@design"
   .tab
     position: fixed
@@ -51,15 +51,17 @@
     padding :0 50px
     .tab-wrapper
       height :32px
-      background :#ccc
+      background :rgba(218,217,226,0.3)
       border-radius :32px
       width :100%
       display: flex
+      justify-content :space-between
+      align-items :center
       .tab-item
         position: relative
-        flex: 1
         overflow: hidden
         height: 100%
+        flex:1
         .item-container
           position: relative
           overflow: hidden
@@ -70,11 +72,6 @@
           justify-content: center
           align-items: center
           font-size: 0
-          .icon
-            position: relative
-            width: 20px
-            height: 20px
-            margin-bottom: 3px
           .icon-text
             position: relative
             font-family: $font-family-regular
@@ -90,12 +87,13 @@
             justify-content: center
             align-items: center
             opacity :0
-            transition: all .6s
+            transition: all .3s
+            border-radius: 32px
+            overflow :hidden
             .line
-              width: 85px
-              height: 32px
+              width: 100%
+              height: 100%
               background-color: $tab-line-color
-              border-radius: 100px
         &.router-link-active
           .line-wrapper
             opacity :1

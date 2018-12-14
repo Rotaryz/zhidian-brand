@@ -6,7 +6,7 @@
       <router-view style="z-index: 10"></router-view>
     </footer>
     <footer v-if="!$route.meta.defaultRouter">
-      <base-router-view @refresh="refresh" style="z-index: 20"></base-router-view>
+      <base-router-view style="z-index: 20" @refresh="refresh"></base-router-view>
     </footer>
   </div>
 </template>
@@ -26,16 +26,13 @@
     },
     components: {
       Tab,
-      HHeader,
+      HHeader
     },
     data() {
-      return {
-      }
+      return {}
     },
-    computed:{
-    },
-    watch: {
-    },
+    computed: {},
+    watch: {},
     created() {
       this.updateMerchant('')
     },
@@ -56,9 +53,8 @@
   @import "~@design"
   .home
     height :100vh
-    background hotpink
-  .header
-    background darkgray
+    background :$color-background
+    box-sizing :border-box
   .footer-default
     fill-box(absolute)
     top: $tab-top
