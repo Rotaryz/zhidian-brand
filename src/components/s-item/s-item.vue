@@ -1,12 +1,12 @@
 <template>
   <div class="s-item" @click="chooseHandle">
     <div class="wrapper">
-      <img class="logo" :src="logoUrl" alt="">
+      <img class="logo" :src="itemInfo.logoUrl" alt="">
       <ul class="middle">
-        <li class="m-top title">国颐堂总店</li>
+        <li class="m-top title">{{itemInfo.merchantName}}</li>
         <li class="m-bottom">
-          <p>江百俪</p>
-          <p>19420441735</p>
+          <p>{{itemInfo.eName}}</p>
+          <p>{{itemInfo.eMobile}}</p>
         </li>
       </ul>
       <router-link v-if="useType === 'invitation'" class="right" tag="section" to="invitation" append>
@@ -25,6 +25,7 @@
 
 <script type="text/ecmascript-6">
   import {DEFAULT_LOGO} from '@utils/constant'
+
   const COMPONENT_NAME = 'S_ITEM'
 
   export default {
@@ -48,6 +49,13 @@
     methods: {
       chooseHandle() {
         this.isChecked = !this.isChecked
+        if(this.useType === 'invitation') {
+          const name = this.itemInfo.eName
+          const mobile = this.itemInfo.eMobile
+          const storeId = this.itemInfo.storeId
+          const url = `${this.$route.path}/shop-detail?name=${name}&mobile=${mobile}&storeId=${storeId}`
+          this.$router.push(url)
+        }
       }
     }
   }

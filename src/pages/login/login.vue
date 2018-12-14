@@ -82,9 +82,6 @@
       this._hide()
     },
     methods: {
-      test() {
-        this.$toast.show('123')
-      },
       _hide() {
         let token = storage.get('token')
         if (token) {
@@ -107,7 +104,7 @@
             const merchantInfo = res.data.merchant_info
             this.$storage.set('token', token)
             this.$storage.set('info', merchantInfo)
-            this.$router.replace('/')
+            this.$router.replace('/home')
           })
           .catch((e) => {
             console.error(e)

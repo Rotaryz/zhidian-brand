@@ -25,23 +25,19 @@ export default [
         name: 'shop-list',
         component: () => lazyLoadView(import('@pages/shop-list/shop-list')),
         children: [
+          // 店铺详情
           {
             path: 'shop-detail',
             name: 'shop-detail',
             component: () => lazyLoadView(import('@pages/shop-detail/shop-detail'))
           },
+          // 发送邀请
           {
             path: 'invitation',
             name: 'invitation',
             component: () => lazyLoadView(import('@pages/invitation/invitation'))
           }
         ]
-      },
-      // 店铺详情
-      {
-        path: 'shop-detail',
-        name: 'shop-detail',
-        component: () => lazyLoadView(import('@pages/shop-detail/shop-detail'))
       },
       {
         path: 'sample',

@@ -15,7 +15,7 @@
         <dl class="scroll-wrapper">
           <dt class="placeholder-box-15"></dt>
           <dd v-for="(item,index) in dataArray" :key="index" class="scroll-item">
-            <s-item useType="invitation"></s-item>
+            <s-item useType="invitation" :itemInfo="item"></s-item>
           </dd>
           <dt class="placeholder-box-15"></dt>
         </dl>
@@ -26,7 +26,7 @@
       </section>
     </div>
     <section class="button-group">
-      <div class="btn">新建店铺</div>
+      <router-link tag="div" to="shop-detail" append class="btn">新建店铺</router-link>
     </section>
     <base-router-view></base-router-view>
   </div>
@@ -35,6 +35,7 @@
 <script type="text/ecmascript-6">
   import Scroll from '@components/scroll/scroll'
   import SItem from '@components/s-item/s-item'
+  import API from '@api'
 
   const PAGE_NAME = 'SHOP_LIST'
 
@@ -50,7 +51,7 @@
     },
     data() {
       return {
-        dataArray: new Array(5).fill(1),
+        dataArray: [],
         pullUpLoad: true,
         pullUpLoadThreshold: 0,
         pullUpLoadMoreTxt: '加载更多',
@@ -98,22 +99,43 @@
         deep: true
       }
     },
+    created() {
+      this._getList()
+    },
     methods: {
       refresh() {
-        this._getOrderList()
+        this._getList()
       },
-      _getOrderList(data) {
+      _getList(data, loading) {
+        if (!this.hasMore) return
+        const {page, limit} = this
+        API.ShopManager.getList({page, limit, ...data}, loading).then((res) => {
+          let arr = []
+          if (res.meta.current_page === 1) {
+            this.dataArray = res.data
+            this.isEmpty = !res.meta.total
+          } else {
+            arr = this.dataArray.concat(res.data)
+            this.dataArray = arr
+          }
+          if (res.meta.current_page === res.meta.last_page) {
+            this.hasMore = false
+          }
+        })
       },
       // scroll事件
       onPullingUp() {
         if (!this.pullUpLoad) return this.$refs.scroll.forceUpdate()
         this.page++
-        this._getOrderList()
+        this._getList({}, false)
         // console.log('触底上拉加载')
       },
       onPullingDown() {
         // if (!this.pullDownRefresh) return this.$refs.scroll.forceUpdate()
-        this._getOrderList()
+        this.page = 1
+        this.hasMore = true
+        this.pullUpLoad = true
+        this._getList({}, false)
         // console.log('下拉刷新')
       },
       rebuildScroll() {
@@ -155,7 +177,7 @@
     position :relative
 
   .shop-list
-    z-index :20px
+    z-index: 20
     fill-box(fixed)
     background :$color-background
 
