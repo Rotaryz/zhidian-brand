@@ -1,8 +1,6 @@
 export default {
-  beforeRouteLeave(to, from, next) {
-    next(true)
-  },
   beforeDestroy() {
+    if (!this.$loading.isShow) return
     this.$loading.hide()
   }
 }

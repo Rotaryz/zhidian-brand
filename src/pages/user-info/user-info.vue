@@ -100,6 +100,13 @@
     created() {
       this._initUserInfo()
     },
+    beforeDestroy() {
+      console.log(33333)
+    },
+    beforeRouteLeave(to, from, next) {
+      console.log(to)
+      next()
+    },
     methods: {
       // 初始化数据
       _initUserInfo() {
