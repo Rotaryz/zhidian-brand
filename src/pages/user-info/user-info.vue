@@ -71,8 +71,20 @@
       return {
         logoUrl: DEFAULT_LOGO,
         shopName: '',
-        coverShow: false
+        coverShow: false,
+        title: 'abc'
       }
+    },
+    page() {
+      return {
+        title: this.title
+      }
+    },
+    created() {
+      this.title = 'abc'
+      setTimeout(() => {
+        this.title = 'abcd'
+      }, 2000)
     },
     methods: {
       logout() {
