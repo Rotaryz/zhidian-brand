@@ -1,7 +1,7 @@
 <template>
   <article class="overview">
     <section class="select-wrapper">
-      <div class="s-container">
+      <div class="s-container" @click="navToSelectHandle">
         <p class="s-text">国颐堂海珠店总览</p>
         <base-right-arrow iconStyle="dark"></base-right-arrow>
       </div>
@@ -179,6 +179,10 @@
     // this.getBarData() // 暂时去掉最后一个图表
     },
     methods: {
+      navToSelectHandle() {
+        let url = `/home/shop-select?id=`
+        this.$router.push(url)
+      },
       drawPie() {
         let myChart = this.$echarts.init(document.getElementById('myPie'))
         myChart.setOption({

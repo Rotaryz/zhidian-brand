@@ -6,7 +6,14 @@ export default [
   {
     path: '/home',
     component: () => lazyLoadView(import('@pages/home/home')),
+    redirect: '/home/overview',
     children: [
+      // 店铺详情
+      {
+        path: 'shop-detail',
+        name: 'shop-detail',
+        component: () => lazyLoadView(import('@pages/shop-detail/shop-detail'))
+      },
       // 选择店铺
       {
         path: 'shop-select',
@@ -39,17 +46,25 @@ export default [
           }
         ]
       },
+      // 能力模型图
       {
-        path: 'sample',
-        meta: {},
-        component: () => lazyLoadView(import('@pages/sample/sample'))
+        path: 'capacity-model',
+        component: () => lazyLoadView(import('@pages/capacity-model/capacity-model')),
+        children: [
+          {
+            // 店铺小程序二维码
+            path: 'business-card',
+            component: () => lazyLoadView(import('@pages/business-card/business-card'))
+          }
+        ]
       },
+      // ai分析
       {
-        path: 'other-pages',
+        path: 'ai-analyse',
         meta: {
           defaultRouter: true
         },
-        component: () => lazyLoadView(import('@pages/other-pages/other-pages'))
+        component: () => lazyLoadView(import('@pages/ai-analyse/ai-analyse')),
       },
       // 总览页面
       {
@@ -69,6 +84,7 @@ export default [
       }
     ]
   },
+  // 登陆
   {
     path: '/login',
     name: 'login',

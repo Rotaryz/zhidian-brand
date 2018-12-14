@@ -309,7 +309,7 @@
   @import "~@design"
 
   .exception-box
-    padding-top: 70px
+    padding-top: (45)px
 
   .ranking
     position: absolute
@@ -323,7 +323,7 @@
       .tab-one
         width: 270px
         height: 30px
-        margin: 25px auto 28px
+        margin: 1px auto 28px
         layout(row)
         justify-content: center
         align-items: center
@@ -380,7 +380,7 @@
               background-color: #EF705D
     .content
       position: absolute
-      top: 113px
+      top: 90px
       left: 0
       right: 0
       bottom: 0

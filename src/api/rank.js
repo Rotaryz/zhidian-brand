@@ -5,5 +5,10 @@ export default {
   getStaffList(data, loading) {
     const url = `/api/brand/brand-analysis/boss-shop-ranking` // todo
     return request.post(url, data, loading)
+  },
+  // 员工销售力排行榜（boss端）
+  getStaffSellList(data, loading) {
+    const url = `/api/brand/brand-analysis/boss-shop-ranking` // todo
+    return request.post(url, data, loading)
   }
 }

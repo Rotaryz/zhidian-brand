@@ -81,11 +81,11 @@ export default {
     return request.post(url, data)
   },
   /**
-   * 数据总览
+   * 数据总览 各种能力排行(9) 能力模型
    * @returns {*}
    */
   getEmployeeRank(shop_id = 0) {
-    let url = 'api/merchant/boss-analysis/boss-all-type-rank' // todo 未找到
+    let url = '/api/brand/brand-analysis/boss-all-type-rank' // todo 未找到
     let data = {
       shop_id
     }
