@@ -1,25 +1,18 @@
 <template>
   <div class="home" @touchmove.prevent>
-    <scroll-movement v-if="false"></scroll-movement>
     <h-header></h-header>
-    <!--<header class="header">-->
-    <!--<router-link tag="h1" to="/home/sample">h1</router-link>-->
-    <!--<router-link tag="h1" to="/home/user-info">账号信息</router-link>-->
-    <!--<router-link tag="h1" to="/home/shop-list">列表</router-link>-->
-    <!--<router-link tag="h1" to="/home/shop-detail">详情</router-link>-->
-    <!--</header>-->
-    <router-link tag="div" to="shop-select" append>选择店铺</router-link>
     <tab></tab>
-    <footer class="footer">
-      <router-view v-if="$route.meta.defaultRouter"></router-view>
-      <base-router-view v-else @refresh="refresh"></base-router-view>
+    <footer v-if="$route.meta.defaultRouter" class="footer-default">
+      <router-view style="z-index: 10"></router-view>
+    </footer>
+    <footer v-if="!$route.meta.defaultRouter">
+      <base-router-view @refresh="refresh" style="z-index: 20"></base-router-view>
     </footer>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import Tab from './tab-boss/tab-boss'
-  import ScrollMovement from '@components/scroll-movement/scroll-movement'
   import {infoMethods} from '@state/helpers'
   import HHeader from './h-header/h-header'
 
@@ -32,11 +25,16 @@
       meta: [{name: 'description', content: 'description'}]
     },
     components: {
-      ScrollMovement,
       Tab,
-      HHeader
+      HHeader,
+    },
+    data() {
+      return {
+      }
     },
     computed:{
+    },
+    watch: {
     },
     created() {
       this.updateMerchant('')
@@ -45,15 +43,24 @@
       ...infoMethods,
       refresh() {
         this.updateMerchant('', false)
+      },
+      scroll(pos) {
+        console.log(pos)
       }
     }
   }
 </script>
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
+  $tab-top = 42.13333333333333vw
   @import "~@design"
+  .home
+    height :100vh
+    background hotpink
   .header
     background darkgray
-  .footer
-    position :relative
+  .footer-default
+    fill-box(absolute)
+    top: $tab-top
+    bottom :0
 </style>

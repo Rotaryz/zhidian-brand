@@ -25,7 +25,6 @@
 
 <script type="text/ecmascript-6">
   import {DEFAULT_LOGO} from '@utils/constant'
-  import {shopDetailMethods} from '@state/helpers'
 
   const COMPONENT_NAME = 'S_ITEM'
 
@@ -48,7 +47,6 @@
       }
     },
     methods: {
-      ...shopDetailMethods,
       chooseHandle() {
         this.isChecked = !this.isChecked
         if(this.useType === 'invitation') {

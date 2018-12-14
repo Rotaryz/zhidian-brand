@@ -11,17 +11,17 @@
               <div class="m-top">{{merchantInfo.merchantName}}</div>
               <div class="m-bottom">账号数量：{{merchantInfo.accountUsed}}/{{merchantInfo.accountTotal}}</div>
             </article>
-            <router-link tag="div" to="user-info" append class="right">
-              <base-right-arrow cname="home" path="user-info"></base-right-arrow>
+            <router-link tag="div" to="/home/user-info" class="right">
+              <base-right-arrow cname="home"></base-right-arrow>
             </router-link>
           </section>
           <ul class="c-bottom">
-            <router-link tag="li" to="shop-list/shop-detail" append class="b-item">
+            <router-link tag="li" to="/home/shop-list/shop-detail" class="b-item">
               <div class="icon detail"></div>
               <p>新建店铺</p>
             </router-link>
             <li class="line"></li>
-            <router-link tag="li" to="shop-list" append class="b-item">
+            <router-link tag="li" to="/home/shop-list" class="b-item">
               <div class="icon list"></div>
               <p>全部店铺</p>
             </router-link>
