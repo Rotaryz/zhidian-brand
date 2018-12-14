@@ -9,6 +9,7 @@
 
   export default {
     page: {
+      title: 'a',
       titleTemplate(title) {
         title = typeof title === 'function' ? title(this.$store) : title
         return title || appConfig.title
