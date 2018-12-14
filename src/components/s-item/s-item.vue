@@ -1,15 +1,17 @@
 <template>
-  <div class="s-item" @click="chooseHandle">
+  <div class="s-item">
     <div class="wrapper">
       <img class="logo" :src="itemInfo.logoUrl" alt="">
-      <ul class="middle">
+      <ul class="middle" @click="chooseHandle">
         <li class="m-top title">{{itemInfo.merchantName}}</li>
         <li class="m-bottom">
           <p>{{itemInfo.eName}}</p>
           <p>{{itemInfo.eMobile}}</p>
         </li>
       </ul>
-      <router-link v-if="useType === 'invitation'" class="right" tag="section" to="invitation" append>
+      <router-link v-if="useType === 'invitation'" class="right" :style="isActiveStyle" tag="section" to="invitation"
+                   append
+      >
         <p>邀请开店</p>
         <base-right-arrow></base-right-arrow>
       </router-link>
@@ -46,15 +48,22 @@
         isChecked: false
       }
     },
+    computed: {
+      isActiveStyle() {
+        let flag = this.itemInfo.isActive
+        return flag ? 'display:none': ''
+      }
+    },
     methods: {
       chooseHandle() {
-        this.isChecked = !this.isChecked
-        if (this.useType === 'invitation') {
+        if (this.useType === 'invitation' && !this.itemInfo.isActive) {
           const name = this.itemInfo.eName
           const mobile = this.itemInfo.eMobile
           const storeId = this.itemInfo.storeId
           const url = `${this.$route.path}/shop-detail?name=${name}&mobile=${mobile}&storeId=${storeId}`
           this.$router.push(url)
+        } else {
+          this.isChecked = !this.isChecked
         }
       }
     }

@@ -50,9 +50,13 @@
       }
     },
     computed: {
-      ...infoComputed
+      ...infoComputed,
+      useReplace () {
+        return this.$route.path === '/home/shop-detail'
+      }
     },
     created() {
+      console.log(this.$route.path)
       this._initDetailInfo()
     },
     methods: {
@@ -76,9 +80,10 @@
           this._routerBack()
         })
       },
+      // 路由回退
       _routerBack() {
         let url = `/home/shop-list`
-        this.$router.replace(url)
+        this.useReplace ? this.$router.replace(url) : this.$router.back()
       }
     }
   }
