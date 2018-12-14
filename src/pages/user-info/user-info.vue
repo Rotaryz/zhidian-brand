@@ -6,13 +6,15 @@
         <label class="right">
           <img class="logo" :src="logoUrl" alt="">
           <base-right-arrow cname="user-info"></base-right-arrow>
-          <base-wx-input accept="image/*" @change="_fileChange($event, 'images')"></base-wx-input>
+          <base-wx-input accept="image/*" style="display: none" @change="_fileChange"></base-wx-input>
         </label>
       </dt>
       <dd class="t-item border-bottom-1px">
         <div class="left">名称</div>
         <label class="right">
-          <input v-model="merchantName" class="input" type="text" placeholder="请输入名称" maxlength="50">
+          <input v-model="merchantName" class="input" type="text" placeholder="请输入名称" maxlength="50"
+                 @keyup.enter="_updateUserInfo" @blur="_updateUserInfo"
+          >
         </label>
       </dd>
       <dd class="t-item border-bottom-1px">
@@ -40,7 +42,7 @@
       </dd>
     </dl>
     <section class="button-wrapper">
-      <div class="btn">退出登录</div>
+      <div class="btn" @click="logoutHandle">退出登录</div>
     </section>
     <cropper ref="cropper" :aspect="1" @confirm="cropperConfirm"></cropper>
     <transition name="fade">
@@ -68,6 +70,10 @@
   const PAGE_NAME = 'USER_INFO'
   export default {
     name: PAGE_NAME,
+    page:{
+      title: '账号信息',
+      meta: [{name: '账号信息', content: 'description'}]
+    },
     components: {
       Cropper
     },
@@ -94,22 +100,13 @@
     created() {
       this._initUserInfo()
     },
-    // beforeRouteLeave(to, from , next) {
-    //   this._updateUserInfo()
-    //   next()
-    // },
-    beforeRouteLeave(to, from, next) {
-    },
-    beforeUpdate() {
-      console.log(123213)
-    },
     methods: {
       // 初始化数据
       _initUserInfo() {
         Object.assign(this.$data, this.merchantInfo)
       },
       // 退出登录
-      logout() {
+      logoutHandle() {
         this.$storage.remove('token')
         this.$router.replace('/login')
       },
@@ -126,7 +123,9 @@
       },
       // 更新用户信息
       _updateUserInfo() {
-        API.Global.updateUserInfo(this.$data)
+        API.Global.updateUserInfo(this.$data, false).then(() => {
+          this.$emit('refresh')
+        })
       },
       // 选择图片
       _fileChange(e, type) {
@@ -152,6 +151,7 @@
         this.logoId = obj.image_id
         this.$loading.hide()
         this.$refs.cropper.cancel()
+        this._updateUserInfo()
       }
     }
   }

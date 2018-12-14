@@ -21,9 +21,9 @@ export const actions = {
   setMerchant({commit, state}, obj) {
     commit('SET_INFO')
   },
-  updateMerchant({commit, state}) {
+  updateMerchant({commit, state}, ...args) {
     if (!storage.has('token')) return
-    API.Global.getUserInfo().then((res) => {
+    API.Global.getUserInfo(...args).then((res) => {
       commit('UPDATE_INFO', res.data)
     })
   }

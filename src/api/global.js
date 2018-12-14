@@ -1,5 +1,5 @@
 import {defaultProcess} from '@utils/api-utils'
-import {DEFAULT_LOGO, DEFAULT_STR} from '@utils/constant'
+import {DEFAULT_LOGO, DEFAULT_STR, MER_NAME_ARR} from '@utils/constant'
 
 export default {
   /**
@@ -31,7 +31,7 @@ function _resolveUserInfoData(res) {
     accountTotal: +resAccount.total,
     logoUrl: resLogo.url || DEFAULT_LOGO,
     logoId: resLogo.id,
-    merchantTypeName: resData.type || DEFAULT_STR,
+    merchantTypeName: MER_NAME_ARR[resData.type],
     industryName: resData.industry_name || DEFAULT_STR,
     nickName: resData.nickname || DEFAULT_STR,
     mobile: resData.mobile || DEFAULT_STR

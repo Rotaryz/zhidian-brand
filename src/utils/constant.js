@@ -1,3 +1,5 @@
 export const DEFAULT_LOGO = `https://zhidian-img.jkweixin.com/100002%2F2018%2F12%2F13%2F1544689190588-0.8299367197845957`
 export const SEVER_HPONE = `13877889900`
 export const DEFAULT_STR = '未知'
+export const MER_NAME_ARR = ['单店', '多店']
+export const BRANCH_ARR = ['分店', '总店']

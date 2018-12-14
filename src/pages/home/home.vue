@@ -12,7 +12,7 @@
     <tab></tab>
     <footer class="footer">
       <router-view v-if="$route.meta.defaultRouter"></router-view>
-      <base-router-view v-else></base-router-view>
+      <base-router-view v-else @refresh="refresh"></base-router-view>
     </footer>
   </div>
 </template>
@@ -20,7 +20,7 @@
 <script type="text/ecmascript-6">
   import Tab from './tab-boss/tab-boss'
   import ScrollMovement from '@components/scroll-movement/scroll-movement'
-  import {infoMethods, infoComputed} from '@state/helpers'
+  import {infoMethods} from '@state/helpers'
   import HHeader from './h-header/h-header'
 
   const PAGE_NAME = 'HOME'
@@ -28,7 +28,7 @@
   export default {
     name: PAGE_NAME,
     page: {
-      title: 'Home',
+      title: '品牌管理',
       meta: [{name: 'description', content: 'description'}]
     },
     components: {
@@ -37,13 +37,15 @@
       HHeader
     },
     computed:{
-      ...infoComputed
     },
     created() {
-      this.updateMerchant()
+      this.updateMerchant('')
     },
     methods: {
-      ...infoMethods
+      ...infoMethods,
+      refresh() {
+        this.updateMerchant('', false)
+      }
     }
   }
 </script>

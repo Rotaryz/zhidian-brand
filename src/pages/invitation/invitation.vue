@@ -2,7 +2,7 @@
   <div class="invitation">
     <div class="scroll-main">
       <article class="top">
-        <div class="title">欢迎加入{{shopName}}</div>
+        <div class="title">欢迎加入{{merchantInfo.merchantName}}</div>
         <div class="qr-code">
           <img v-if="qrCode" class="qr-img" :src="qrCode" alt="">
         </div>
@@ -18,6 +18,7 @@
 <script type="text/ecmascript-6">
   import API from '@api'
   import QrCodeUtil from '@utils/create-qr-code'
+  import {infoComputed} from '@state/helpers'
 
   export default {
     page: {
@@ -26,37 +27,22 @@
     data() {
       return {
         qrCode: '',
-        linkUrl: '',
-        id: '',
-        shopName: ''
+        linkUrl: ''
       }
     },
+    computed: {
+      ...infoComputed
+    },
     created() {
-      // this._getInviteQrcode()
-      // this._getShopInfo()
+      this._getQrCode()
     },
     methods: {
-      _getInviteQrcode() {
-        API.Mine.getInviteQrcode().then(res => {
-          this.$loading.hide()
-          if (this.$ERR_OK !== res.error) {
-            this.$toast.show(res.message)
-            return
-          }
+      _getQrCode() {
+        API.ShopManager.getQrCode().then((res) => {
           QrCodeUtil.createQrCodePng(res.data.link_url, url => {
             this.qrCode = url
           })
           this.linkUrl = res.data.link_url
-        })
-      },
-      _getShopInfo() {
-        API.Mine.getShopInfo().then(res => {
-          this.$loading.hide()
-          if (this.$ERR_OK !== res.error) {
-            this.$toast.show(res.message)
-            return
-          }
-          this.shopName = res.data.name
         })
       },
       copyHandle() {

@@ -3,44 +3,82 @@
     <dl class="top">
       <dd class="t-item border-bottom-1px">
         <div class="left">品牌</div>
-        <div class="right">品牌店</div>
+        <div class="right">{{merchantInfo.merchantName}}</div>
       </dd>
       <dd class="t-item border-bottom-1px">
         <div class="left">类型</div>
-        <div class="right">品牌店</div>
+        <div class="right">{{merchantInfo.merchantTypeName}}</div>
       </dd>
       <dd class="t-item border-bottom-1px">
         <div class="left">行业</div>
-        <div class="right">品牌店</div>
+        <div class="right">{{merchantInfo.industryName}}</div>
       </dd>
       <dd class="t-item border-bottom-1px">
-        <div class="left">姓名</div>
+        <div class="left"><span class="red-start">*</span>姓名</div>
         <label class="right">
           <input v-model="name" class="input" type="text" placeholder="请输入名称" maxlength="20">
         </label>
       </dd>
       <dd class="t-item border-bottom-1px">
-        <div class="left">手机号</div>
+        <div class="left"><span class="red-start">*</span>手机号</div>
         <label class="right">
           <input v-model="mobile" class="input" type="tel" placeholder="请输入手机号" maxlength="11">
         </label>
       </dd>
     </dl>
     <section class="button-wrapper">
-      <div class="btn">保存</div>
+      <div class="btn" @click="submitHandle">保存</div>
     </section>
   </form>
 </template>
 
 <script type="text/ecmascript-6">
+  import {infoComputed} from '@state/helpers'
+  import API from '@api'
   const PAGE_NAME = 'SHOP_DETAIL'
 
   export default {
     name: PAGE_NAME,
+    page:{
+      title: '新建店铺'
+    },
     data() {
       return {
         name: '',
-        mobile: ''
+        mobile: '',
+        storeId: 0
+      }
+    },
+    computed: {
+      ...infoComputed
+    },
+    created() {
+      this._initDetailInfo()
+    },
+    methods: {
+      submitHandle() {
+        this.storeId ? this._editor() : this._create()
+      },
+      _initDetailInfo() {
+        Object.assign(this.$data, this.$route.query)
+        if (this.storeId){
+        }
+      },
+      _create() {
+        API.ShopManager.create(this.$data).then(res => {
+          this.$toast.show('新建成功')
+          this._routerBack()
+        })
+      },
+      _editor() {
+        API.ShopManager.create(this.$data).then(res => {
+          this.$toast.show('编辑成功')
+          this._routerBack()
+        })
+      },
+      _routerBack() {
+        let url = `/home/shop-list`
+        this.$router.replace(url)
       }
     }
   }
@@ -48,6 +86,13 @@
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
   @import "~@design"
+
+  .red-start
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: $color-main
+    line-height: 2
+    margin-right :1px
 
   input
     height :14px
@@ -77,8 +122,9 @@
           height :70px
         .left
           color: #777799
-          layout()
+          layout(row,block,nowrap)
           justify-content :center
+          align-items :center
         .right
           position :relative
           flex: 1
