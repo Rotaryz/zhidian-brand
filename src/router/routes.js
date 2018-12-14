@@ -51,7 +51,7 @@ export default [
         },
         component: () => lazyLoadView(import('@pages/other-pages/other-pages'))
       },
-      // 测试页面配置
+      // 总览页面
       {
         path: 'overview',
         meta: {
@@ -59,13 +59,13 @@ export default [
         },
         component: () => lazyLoadView(import('@pages/overview/overview'))
       },
-      // 测试页面注释
+      // 排行榜页面
       {
-        path: 'test-page',
+        path: 'ranking',
         meta: {
           defaultRouter: true
         },
-        component: () => lazyLoadView(import('@pages/test-page/test-page'))
+        component: () => lazyLoadView(import('@pages/ranking/ranking'))
       }
     ]
   },

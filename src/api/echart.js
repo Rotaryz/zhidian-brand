@@ -6,7 +6,7 @@ export default {
    * @returns {*}
    */
   getPie(shop_id = 0) {
-    let url = 'api/merchant/boss-analysis/interest-rate-chart'
+    let url = '/api/brand/brand-analysis/interest-rate-chart' // todo
     let data = {
       shop_id
     }
@@ -17,7 +17,7 @@ export default {
    * @returns {*}
    */
   getActionLine(shop_id = 0) {
-    let url = 'api/merchant/brand/brand-analysis/data-overview' // todo
+    let url = '/api/brand/brand-analysis/active-chart' // todo
     let data = {
       shop_id
     }
@@ -28,7 +28,7 @@ export default {
    * @returns {*}
    */
   getAddLine(shop_id = 0) {
-    let url = 'api/merchant/boss-analysis/new-customer-sum-chart'
+    let url = '/api/brand/brand-analysis/new-customer-sum-chart' // todo
     let data = {
       shop_id
     }
@@ -39,7 +39,7 @@ export default {
    * @returns {*}
    */
   getSuccess(shop_id = 0) {
-    let url = 'api/merchant/boss-analysis/close-deal-rate-chart'
+    let url = '/api/brand/brand-analysis/close-deal-rate-chart' // todo
     let data = {
       shop_id
     }
@@ -50,7 +50,7 @@ export default {
    * @returns {*}
    */
   getBar(shop_id = 0) {
-    let url = 'api/merchant/boss-analysis/interactive-chart'
+    let url = '/api/brand/brand-analysis/interactive-chart' // todo 废弃
     let data = {
       shop_id
     }
@@ -61,22 +61,23 @@ export default {
    * @returns {*}
    */
   getEmployee(shop_id = 0) {
-    let url = 'api/merchant/boss-analysis/boss-capacity-model-chart'
+    let url = '/api/brand/brand-analysis/boss-capacity-model-chart' // todo
     let data = {
       shop_id
     }
     return request.post(url, data)
   },
   /**
-   * 数据总览
+   * 数据总览(1)
    * @returns {*}
    */
   getAllData(time = 'all', shop_id = 0) {
-    let url = 'api/merchant/boss-analysis/data-overview'
+    let url = '/api/brand/brand-analysis/data-overview' // todo
     let data = {
       time,
       shop_id
     }
+    console.log(data)
     return request.post(url, data)
   },
   /**
@@ -84,7 +85,7 @@ export default {
    * @returns {*}
    */
   getEmployeeRank(shop_id = 0) {
-    let url = 'api/merchant/boss-analysis/boss-all-type-rank'
+    let url = 'api/merchant/boss-analysis/boss-all-type-rank' // todo 未找到
     let data = {
       shop_id
     }

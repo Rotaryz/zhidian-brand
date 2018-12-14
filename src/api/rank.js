@@ -1,0 +1,9 @@
+import request from '@utils/request'
+
+export default {
+  // 获取员工列表 店铺排行榜（6）
+  getStaffList(data, loading) {
+    const url = `/api/brand/brand-analysis/boss-shop-ranking` // todo
+    return request.post(url, data, loading)
+  }
+}

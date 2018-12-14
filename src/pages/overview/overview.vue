@@ -171,11 +171,11 @@
       }
     },
     created() {
-    // this.getActionLineData()
-    // this.getPieData()
-    // this.getAddActionLineData()
-    // this.getSuccessData()
-    // this.getAllDataObj('all')
+      this.getActionLineData()
+      this.getPieData()
+      this.getAddActionLineData()
+      this.getSuccessData()
+      this.getAllDataObj('all')
     // this.getBarData() // 暂时去掉最后一个图表
     },
     methods: {
@@ -647,7 +647,7 @@
         })
       },
       getAllTab(item, index) {
-        // this.getAllDataObj(item.value) todo
+        this.getAllDataObj(item.value)
         this.tabNumber = index
       }
     }
@@ -670,7 +670,7 @@
     right: 0
 
   .empty
-    height :35px
+    height :36px
 
   .data-tab-container
     height :45px
