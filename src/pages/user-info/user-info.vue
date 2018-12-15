@@ -123,7 +123,7 @@
       },
       // 更新用户信息
       _updateUserInfo() {
-        if (!this.merchantName.trim()){
+        if (!this.merchantName.trim()) {
           this.$toast.show('请输入您的名称')
           return
         }

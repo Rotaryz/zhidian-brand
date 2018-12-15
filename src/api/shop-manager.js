@@ -24,7 +24,7 @@ export default {
   getQrCode(data, loading, toast) {
     let url = '/api/brand/create-invite-qrcode'
     return defaultProcess('post', url, data, loading, toast)
-  },
+  }
   // getMainStore(data, loading,toast) {
   //   let url = '/api/brand/get-boss-store'
   //   return defaultProcess('get', url, data, loading, toast)

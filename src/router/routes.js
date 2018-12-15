@@ -57,7 +57,7 @@ export default [
             component: () => lazyLoadView(import('@pages/business-card/business-card'))
           }
         ]
-      },
+      }
     ]
   },
   // 登陆

@@ -26,7 +26,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-  // import Tab from './tab-boss/tab-boss'
+// import Tab from './tab-boss/tab-boss'
   import {infoMethods} from '@state/helpers'
   import HHeader from './h-header/h-header'
   import Scroll from '@components/scroll/scroll'
@@ -107,7 +107,7 @@
     },
     created() {
       this.updateMerchant('')
-      // this._initGetMainStore()
+    // this._initGetMainStore()
     },
     methods: {
       ...infoMethods,
@@ -131,14 +131,14 @@
       onPullingUp() {
         if (!this.pullUpLoad) return this.$refs.scroll.forceUpdate()
         this.page++
-        // console.log('触底上拉加载')
+      // console.log('触底上拉加载')
       },
       onPullingDown() {
         // if (!this.pullDownRefresh) return this.$refs.scroll.forceUpdate()
         this.page = 1
         this.hasMore = true
         this.pullUpLoad = true
-        // console.log('下拉刷新')
+      // console.log('下拉刷新')
       },
       rebuildScroll() {
         this.$nextTick(() => {

@@ -15,18 +15,24 @@
       </dd>
       <dd class="t-item border-bottom-1px">
         <div class="left"><span class="red-start">*</span>姓名</div>
-        <label class="right">
+        <label v-if="disable" class="right">
           <input v-model="name" class="input" type="text" placeholder="请输入名称" maxlength="20">
         </label>
+        <div v-else class="right">
+          <div class="input color-9b">{{name}}</div>
+        </div>
       </dd>
       <dd class="t-item border-bottom-1px">
         <div class="left"><span class="red-start">*</span>手机号</div>
-        <label class="right">
+        <label v-if="disable" class="right">
           <input v-model="mobile" class="input" type="tel" placeholder="请输入手机号" maxlength="11">
         </label>
+        <div v-else class="right">
+          <div class="input color-9b">{{mobile}}</div>
+        </div>
       </dd>
     </dl>
-    <section class="button-wrapper">
+    <section class="button-wrapper" v-if="disable">
       <div class="btn" :class="{active: allowSubmit}" @click="submitHandle">保存</div>
     </section>
   </form>
@@ -47,12 +53,13 @@
       return {
         name: '',
         mobile: '',
-        storeId: 0
+        storeId: 0,
+        disable: true
       }
     },
     computed: {
       ...infoComputed,
-      useReplace () {
+      useReplace() {
         return this.$route.path === '/home/shop-detail'
       },
       nameReg() {
@@ -72,6 +79,7 @@
       // 初始化数据
       _initDetailInfo() {
         Object.assign(this.$data, this.$route.query)
+        console.log(this.$data)
       },
       // 提交
       submitHandle() {
@@ -101,6 +109,9 @@
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
   @import "~@design"
+
+  .color-9b
+    color: #9B9B9B !important
 
   .red-start
     font-family: PingFangSC-Regular;

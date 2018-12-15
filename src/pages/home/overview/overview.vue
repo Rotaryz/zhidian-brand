@@ -124,7 +124,7 @@
   export default {
     name: PAGE_NAME,
     components: {
-      Toast,
+      Toast
     },
     data() {
       return {
@@ -650,12 +650,12 @@
         })
       },
       eConsole(param) {
-        // if (param.data.text >= 0) {
-        //   const progress = param.value // id为80则分组0-50,60则分组51-80,40则分组81-99,20则分组100
-        //   const useType = 'overview'
-        //   const pageUrl = `/overview/customer-list`
-        //   this.$router.push({path: pageUrl, query: {pageUrl, useType, progress}})
-        // }
+      // if (param.data.text >= 0) {
+      //   const progress = param.value // id为80则分组0-50,60则分组51-80,40则分组81-99,20则分组100
+      //   const useType = 'overview'
+      //   const pageUrl = `/overview/customer-list`
+      //   this.$router.push({path: pageUrl, query: {pageUrl, useType, progress}})
+      // }
       },
       getAllDataObj(time) {
         Echart.getAllData(time).then((res) => {
@@ -668,6 +668,10 @@
         })
       },
       getAllTab(item, index) {
+        if (!this.$storage.get('selectStore', {}).storeId) {
+          this.$toast.show('请选择店铺')
+          return
+        }
         this.getAllDataObj(item.value)
         this.tabNumber = index
       }

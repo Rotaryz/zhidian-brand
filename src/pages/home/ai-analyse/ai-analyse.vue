@@ -83,7 +83,6 @@
           this.$loading.hide()
           if (res.error === this.$ERR_OK) {
             this.dataArray = res.data
-            console.log(this.dataArray)
             this.isEmpty = !this.dataArray.length
           } else {
             this.$toast.show(res.message)

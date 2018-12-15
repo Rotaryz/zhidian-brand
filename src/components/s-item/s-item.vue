@@ -50,21 +50,28 @@
     computed: {
       isActiveStyle() {
         let flag = this.itemInfo.isActive
-        return flag ? 'display:none': ''
+        return flag ? 'display:none' : ''
       }
     },
     methods: {
       chooseHandle() {
-        if (this.useType === 'invitation' && !this.itemInfo.isActive) {
+        if (this.useType === 'invitation' && !this.isActiveStyle) {
           const name = this.itemInfo.eName
           const mobile = this.itemInfo.eMobile
           const storeId = this.itemInfo.storeId
-          const url = `${this.$route.path}/shop-detail?name=${name}&mobile=${mobile}&storeId=${storeId}`
+          const url = `${this.$route.path}/shop-detail?name=${name}&mobile=${mobile}&storeId=${storeId}&disable=true`
           this.$router.push(url)
         }
       },
       selectHandle(item) {
         this.$emit('change', item)
+        if (this.useType === 'invitation' && this.isActiveStyle) {
+          const name = this.itemInfo.eName
+          const mobile = this.itemInfo.eMobile
+          const storeId = this.itemInfo.storeId
+          const url = `${this.$route.path}/shop-detail?name=${name}&mobile=${mobile}&storeId=${storeId}&disable=`
+          this.$router.push(url)
+        }
       }
     }
   }
