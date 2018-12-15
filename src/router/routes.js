@@ -11,7 +11,7 @@ export default [
       // 店铺详情
       {
         path: 'shop-detail',
-        name: 'shop-detail',
+        name: 'shop-detail-outer',
         component: () => lazyLoadView(import('@pages/shop-detail/shop-detail'))
       },
       // 选择店铺
