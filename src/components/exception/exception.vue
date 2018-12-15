@@ -70,6 +70,7 @@
         &.pic-empty_order
           icon-image("pic-empty_order")
       .err-msg
+        margin-top :10px
         font-size: $font-size-12
         color: #CCCCCC
         font-family: $font-family-regular

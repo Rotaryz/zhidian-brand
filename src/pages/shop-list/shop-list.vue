@@ -132,7 +132,7 @@
             this.hasMore = false
           }
           if (res.meta.total) {
-            this.pageTitle += `(${res.meta.total})`
+            this.pageTitle = `${this.pageTitle}(${res.meta.total})`
           }
           this.lastLimit = this.dataArray.length
           this.limit = 10

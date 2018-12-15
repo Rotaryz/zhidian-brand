@@ -6,7 +6,7 @@ export default [
   {
     path: '/home',
     component: () => lazyLoadView(import('@pages/home/home')),
-    redirect: '/home/overview',
+    // redirect: '/home/overview',
     children: [
       // 店铺详情
       {

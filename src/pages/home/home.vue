@@ -4,38 +4,36 @@
       <scroll
         ref="scroll"
         bcColor="#F8F7FA"
-        :data="dataArray"
         :pullUpLoad="pullUpLoadObj"
         :showNoMore="false"
         :pullDownRefresh="pullDownRefreshObj"
         @pullingUp="onPullingUp"
         @pullingDown="onPullingDown"
       >
-        <dl class="scroll-wrapper">
+        <nav class="scroll-wrapper">
           <h-header></h-header>
-          <tab></tab>
-          <footer v-if="$route.meta.defaultRouter" class="footer-default">
-            <router-view style="z-index: 10"></router-view>
-          </footer>
-        </dl>
+          <h-tab :tabIndex="tabIndex" @change="changeHandle"></h-tab>
+          <overview v-if="tabIndex === 0"></overview>
+          <ranking v-if="tabIndex === 1"></ranking>
+          <ai-analyse v-if="tabIndex === 2"></ai-analyse>
+        </nav>
       </scroll>
     </article>
-    <!--<h-header></h-header>-->
-    <!--<tab></tab>-->
-    <!--<footer v-if="$route.meta.defaultRouter" class="footer-default">-->
-      <!--<router-view style="z-index: 10"></router-view>-->
-    <!--</footer>-->
-    <footer v-if="!$route.meta.defaultRouter">
+    <footer>
       <base-router-view style="z-index: 20" @refresh="refresh"></base-router-view>
     </footer>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-  import Tab from './tab-boss/tab-boss'
+  // import Tab from './tab-boss/tab-boss'
   import {infoMethods} from '@state/helpers'
   import HHeader from './h-header/h-header'
   import Scroll from '@components/scroll/scroll'
+  import HTab from './h-tab/h-tab'
+  import Overview from './overview/overview'
+  import Ranking from './ranking/ranking'
+  import AiAnalyse from './ai-analyse/ai-analyse'
 
   const PAGE_NAME = 'HOME'
 
@@ -46,9 +44,12 @@
       meta: [{name: 'description', content: 'description'}]
     },
     components: {
-      Tab,
+      HTab,
       HHeader,
-      Scroll
+      Scroll,
+      Overview,
+      Ranking,
+      AiAnalyse
     },
     data() {
       return {
@@ -57,13 +58,14 @@
         pullUpLoadThreshold: 0,
         pullUpLoadMoreTxt: '加载更多',
         pullUpLoadNoMoreTxt: '没有更多了',
-        pullDownRefresh: true,
+        pullDownRefresh: false,
         pullDownRefreshThreshold: 90,
         pullDownRefreshStop: 40,
         page: 1,
         limit: 10,
         hasMore: true,
-        isEmpty: false
+        isEmpty: false,
+        tabIndex: 0
       }
     },
     computed: {
@@ -111,6 +113,9 @@
       refresh() {
         this.updateMerchant('', false)
       },
+      changeHandle(index) {
+        this.tabIndex = index
+      },
       scroll(pos) {
         console.log(pos)
       },
@@ -118,7 +123,6 @@
       onPullingUp() {
         if (!this.pullUpLoad) return this.$refs.scroll.forceUpdate()
         this.page++
-        // this._getList({}, false)
         // console.log('触底上拉加载')
       },
       onPullingDown() {
@@ -126,7 +130,6 @@
         this.page = 1
         this.hasMore = true
         this.pullUpLoad = true
-        // this._getList({}, false)
         // console.log('下拉刷新')
       },
       rebuildScroll() {
@@ -146,8 +149,6 @@
     height :100vh
     background :$color-background
     box-sizing :border-box
-  .footer-default
-    fill-box(absolute)
-    top: $tab-top
-    bottom :0
+    .scroll-container
+      fill-box(fixed)
 </style>
