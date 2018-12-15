@@ -4,6 +4,7 @@
       <div v-for="(item,index) in dataArray" :key="index" class="user-card-box" @click="toCapacityModel(item)">
         <user-card :cardInfo="item" :idx="index" useType="ai"></user-card>
       </div>
+      <div class="empty"></div>
     </div>
     <section v-if="isEmpty" class="exception-box">
       <exception errType="nodata"></exception>
@@ -16,7 +17,7 @@
   import API from '@api'
   import Exception from '@components/exception/exception'
 
-  const LIMIT = 10
+  const LIMIT = 3
   const Analyse = API.Rank
   export default {
     name: 'AI',
@@ -57,7 +58,6 @@
       }
     },
     created() {
-      this.$emit('tabChange', 3)
       this._rqGetStaffSellList()
     },
     methods: {
@@ -91,31 +91,24 @@
       },
       onPullingUp() {
         // 更新数据 todo
-        if (!this.pullUpLoad) return
-        if (this.isAll) return this.$refs.scroll.forceUpdate()
+        if (this.isAll) return
         console.info('pulling up and load data')
         let page = ++this.page
         let limit = this.limit
         const data = {page, limit}
-        Analyse.getStaffSellList(data).then((res) => {
+        Analyse.getStaffSellList(data, false).then((res) => {
           this.$loading.hide()
           if (res.error === this.$ERR_OK) {
             if (res.data && res.data.length) {
               let newArr = this.dataArray.concat(res.data)
               this.dataArray = newArr
             } else {
-              this.$refs.scroll.forceUpdate()
               this.isAll = true
             }
           } else {
             this.$toast.show(res.message)
           }
-        })
-      },
-      rebuildScroll() {
-        this.nextTick(() => {
-          this.$refs.scroll.destroy()
-          this.$refs.scroll.initScroll()
+          this.$emit('loadEnd',this.dataArray)
         })
       }
     }
@@ -125,6 +118,8 @@
 <style scoped lang="stylus" rel="stylesheet/stylus">
   $tab-top = (32 + 40)px
   @import "~@design"
+  .empty
+    height :0px
 
   .exception-box
     position :relative

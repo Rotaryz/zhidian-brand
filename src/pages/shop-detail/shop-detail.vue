@@ -32,7 +32,7 @@
         </div>
       </dd>
     </dl>
-    <section class="button-wrapper" v-if="disable">
+    <section v-if="disable" class="button-wrapper">
       <div class="btn" :class="{active: allowSubmit}" @click="submitHandle">保存</div>
     </section>
   </form>

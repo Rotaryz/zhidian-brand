@@ -172,6 +172,7 @@
         let flag = from.path.includes('/home/shop-select')
         if (!flag) return
         this._initStoreData()
+        if (!this.$storage.get('selectStore', {}).storeId) return
         this.getActionLineData()
         this.getPieData()
         this.getAddActionLineData()

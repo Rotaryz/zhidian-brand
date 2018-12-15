@@ -51,13 +51,14 @@
       </div>
     </section>
     <section class="content">
-      <template v-for="(item,index) in dataArray">
-        <div v-if="dataArray.length" :key="index"
+      <template v-if="dataArray.length">
+        <div v-for="(item,index) in dataArray" :key="index"
              class="user-card-box"
              @click="toCustomerList(item)"
         >
           <user-card :cardInfo="item" :idx="index" useType="ranking"></user-card>
         </div>
+        <div class="empty"></div>
       </template>
       <section v-if="isEmpty" class="exception-box">
         <exception errType="nodata"></exception>
@@ -75,7 +76,7 @@
   import Exception from '@components/exception/exception'
 
   const Rank = API.Rank
-  const LIMIT = 10
+  const LIMIT = 3
   const tabOne = ['按客户数', '按互动数', '按成交率']
   const tabCustomer = {data: ['客户总数', '新增客户'], idx: 0}
   const tabActive = {data: ['跟进客户数', '咨询客户数'], idx: 0}
@@ -132,17 +133,7 @@
         return arr[idx]
       }
     },
-    watch: {
-      pullUpLoadObj: {
-        handler() {
-          if (!this.pullUpLoad) return
-          this.rebuildScroll()
-        },
-        deep: true
-      }
-    },
     created() {
-      this.$emit('tabChange', 2)
       this._rqGetStaffList()
     },
     methods: {
@@ -151,8 +142,7 @@
         this._rqGetStaffList()
       },
       _rqGetMoreStaffList() {
-        if (!this.pullUpLoad) return
-        if (this.isAll) return this.$refs.scroll.forceUpdate()
+        if (this.isAll) return
         const _data = this._formatData()
         let page = ++this.page
         let limit = this.limit
@@ -161,7 +151,7 @@
           limit,
           ..._data
         }
-        Rank.getStaffList(data).then((res) => {
+        Rank.getStaffList(data, false).then((res) => {
           this.$loading.hide()
           if (res.error === this.$ERR_OK) {
             if (res.data && res.data.length) {
@@ -169,11 +159,11 @@
               this.dataArray = newArr
             } else {
               this.isAll = true
-              this.$refs.scroll.forceUpdate()
             }
           } else {
             this.$toast.show(res.message)
           }
+          this.$emit('loadEnd', this.dataArray)
         })
       },
       _rqGetStaffList() {
@@ -280,15 +270,8 @@
       onPullingUp() {
         // 更新数据
         console.info('pulling up and load data')
-        // if (this.isAll) return this.$refs.scroll.forceUpdate()
         this._rqGetMoreStaffList()
       },
-      rebuildScroll() {
-        this.nextTick(() => {
-          this.$refs.scroll.destroy()
-          this.$refs.scroll.initScroll()
-        })
-      }
     }
   }
 </script>
@@ -297,6 +280,8 @@
   $tab-top = (32 + 40)px
   $color-white = #fff
   @import "~@design"
+  .empty
+    height :0px
 
   .exception-box
     padding-top: (45)px

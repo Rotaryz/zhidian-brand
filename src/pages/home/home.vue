@@ -4,6 +4,7 @@
       <scroll
         ref="scroll"
         bcColor="#F8F7FA"
+        :data="dataArray"
         :pullUpLoad="pullUpLoadObj"
         :showNoMore="false"
         :pullDownRefresh="pullDownRefreshObj"
@@ -14,8 +15,8 @@
           <h-header></h-header>
           <h-tab :tabIndex="tabIndex" @change="changeHandle"></h-tab>
           <overview v-if="tabIndex === 0"></overview>
-          <ranking v-if="tabIndex === 1"></ranking>
-          <ai-analyse v-if="tabIndex === 2"></ai-analyse>
+          <ranking v-if="tabIndex === 1" ref="ranking" @loadEnd="loadEndHandle"></ranking>
+          <ai-analyse v-if="tabIndex === 2" ref="analyse" @loadEnd="loadEndHandle"></ai-analyse>
         </nav>
       </scroll>
     </article>
@@ -61,10 +62,6 @@
         pullDownRefresh: false,
         pullDownRefreshThreshold: 90,
         pullDownRefreshStop: 40,
-        page: 1,
-        limit: 10,
-        hasMore: true,
-        isEmpty: false,
         tabIndex: 0
       }
     },
@@ -107,37 +104,34 @@
     },
     created() {
       this.updateMerchant('')
-    // this._initGetMainStore()
     },
     methods: {
       ...infoMethods,
-      // _initGetMainStore() {
-      //   API.ShopManager.getMainStore().then(res => {
-      //     if (!this.$storage.has('selectStoreId')){
-      //       this.$storage.set('selectStoreId', res.data.store_id)
-      //     }
-      //   })
-      // },
       refresh() {
         this.updateMerchant('', false)
       },
       changeHandle(index) {
         this.tabIndex = index
+        this.$refs.scroll.forceUpdate()
       },
       scroll(pos) {
-        console.log(pos)
+      },
+      _loadMore() {
+        this.$refs.ranking && this.$refs.ranking._rqGetMoreStaffList()
+        this.$refs.analyse && this.$refs.analyse.onPullingUp()
+      },
+      loadEndHandle(arr) {
+        this.dataArray = arr
+        this.$refs.scroll.forceUpdate()
       },
       // scroll事件
       onPullingUp() {
-        if (!this.pullUpLoad) return this.$refs.scroll.forceUpdate()
-        this.page++
-      // console.log('触底上拉加载')
+        // console.log('触底上拉加载')
+        this._loadMore()
+        // if (!this.pullUpLoad) return this.$refs.scroll.forceUpdate()
       },
       onPullingDown() {
         // if (!this.pullDownRefresh) return this.$refs.scroll.forceUpdate()
-        this.page = 1
-        this.hasMore = true
-        this.pullUpLoad = true
       // console.log('下拉刷新')
       },
       rebuildScroll() {
@@ -151,7 +145,6 @@
 </script>
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
-  $tab-top = 42.13333333333333vw
   @import "~@design"
   .home
     height :100vh
