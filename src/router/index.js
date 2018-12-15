@@ -14,7 +14,7 @@ Vue.use(VueMeta, {
 
 const router = new VueRouter({
   routes,
-  mode: 'hash',
+  mode: 'history',
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition
