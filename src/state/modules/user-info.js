@@ -24,6 +24,7 @@ export const actions = {
   updateMerchant({commit, state}, ...args) {
     if (!storage.has('token')) return
     API.Global.getUserInfo(...args).then((res) => {
+      storage.set('logoUrl', res.data.logoUrl)
       commit('UPDATE_INFO', res.data)
     })
   }
