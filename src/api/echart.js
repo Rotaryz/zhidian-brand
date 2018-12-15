@@ -110,6 +110,20 @@ export default {
       store_id: _getStoreId()
     }
     return request.get(url, data, false)
+  },
+  /**
+   * 小程序二维码
+   * @returns {*}
+   */
+  getQrCode() {
+    let url = `/api/brand/get-store-qrcode`
+    let data = {
+      path: 'pages/guide',
+      is_hyaline: 1,
+      refresh: 1,
+      store_id: _getStoreId()
+    }
+    return request.get(url, data)
   }
 }
 

@@ -128,20 +128,25 @@
     },
     data() {
       return {
-        pieData: [],
+        pieData: new Array(4).fill({text:'', value: 0}),
         ationLine: {
-          x: [],
-          y: []
+          x: new Array(7).fill(0),
+          y: new Array(7).fill(0)
         },
         addationLine: {
-          x: [],
-          y: []
+          x: new Array(7).fill(0),
+          y: new Array(7).fill(0)
         },
         barData: {
           x: [],
           y: []
         },
-        successData: [],
+        successData: [
+          {name: 0, text:0, value: 80},
+          {name: 0, text:0, value: 60},
+          {name: 0, text:0, value: 40},
+          {name: 0, text:0, value: 20}
+        ],
         allDatas: {},
         tabList: [
           {
@@ -172,7 +177,10 @@
         let flag = from.path.includes('/home/shop-select')
         if (!flag) return
         this._initStoreData()
-        if (!this.$storage.get('selectStore', {}).storeId) return
+        if (!this.$storage.get('selectStore', {}).storeId) {
+          this._initDraw()
+          return
+        }
         this.getActionLineData()
         this.getPieData()
         this.getAddActionLineData()
@@ -181,7 +189,9 @@
       }
     },
     created() {
-      if (!this.$storage.get('selectStore', {}).storeId) return
+      if (!this.$storage.get('selectStore', {}).storeId) {
+        return
+      }
       this._initStoreData()
       this.getActionLineData()
       this.getPieData()
@@ -190,8 +200,20 @@
       this.getAllDataObj('all')
     // this.getBarData() // 暂时去掉最后一个图表
     },
+    mounted() {
+      this._initDraw()
+    },
     methods: {
-      // 初始化
+      // 初始化页面数据
+      _initDraw() {
+        if (this.$storage.get('selectStore', {}).storeId) {
+          return
+        }
+        this.drawPie()
+        this.drawLine()
+        this.drawAddLine()
+        this.drawSuccess()
+      },
       _initStoreData() {
         this.merchantName = this.$storage.get('selectStore', {}).merchantName || '请选择您要查看的店铺'
       },

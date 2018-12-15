@@ -3,10 +3,10 @@
     <div class="card-con"></div>
     <div class="card-main">
       <div class="main-con">
-        <div class="title">{{card.name}}</div>
+        <div class="title">{{name}}</div>
         <img src="./pic-myshop@2x.png" alt="" class="title-img">
-        <img :src="card.avatar" alt="" class="avatar-img">
-        <img :src="card.image_url" alt="" class="avatar-card">
+        <img :src="avatar" alt="" class="avatar-img">
+        <img :src="qrCodeUrl" alt="" class="avatar-card">
         <div class="qrcode-text">长按识别二维码</div>
       </div>
     </div>
@@ -16,7 +16,6 @@
 <script>
   import API from '@api'
 
-  const Business = API.Business
   export default {
     name: 'ShareCard',
     page: {
@@ -24,26 +23,29 @@
     },
     data() {
       return {
-        card: {}
+        avatar: '',
+        name: '',
+        qrCodeUrl: ''
       }
     },
     created() {
-    // this._getQrcode()
+      this._initCardData()
+      this._getQrCode()
     },
     methods: {
-      _getQrcode() {
-        let id = this.$route.query.id
-        Business.Myshop(id).then((res) => {
+      _initCardData() {
+        this.avatar = this.$storage.get('user').avatar
+        this.name = this.$storage.get('user').name
+      },
+      _getQrCode() {
+        // let id = this.$route.query.id
+        API.Echart.getQrCode().then((res) => {
           this.$loading.hide()
           if (this.$ERR_OK !== res.error) {
             this.$toast.show(res.message)
             return
           }
-          this.card = {
-            image_url: res.data.image_url || '',
-            avatar: this.$storage.get('user').avatar,
-            name: this.$storage.get('user').name
-          }
+          this.qrCodeUrl = res.data.image_url || ''
         })
       }
     }
@@ -55,6 +57,9 @@
   *
     -webkit-box-sizing: border-box
     box-sizing: border-box
+
+  img
+    object-fit :cover
 
   .share-card
     min-height: 100vh

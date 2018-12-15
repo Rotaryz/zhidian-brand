@@ -14,9 +14,11 @@
       >
         <dl class="scroll-wrapper">
           <dt class="placeholder-box-15"></dt>
-          <dd v-for="(item,index) in dataArray" :key="index" class="scroll-item">
-            <s-item useType="check" :itemInfo="item" @change="changeHandle"></s-item>
-          </dd>
+          <template v-for="(item,index) in dataArray">
+            <dd :key="index" class="scroll-item">
+              <s-item useType="check" :itemInfo="item" @change="changeHandle"></s-item>
+            </dd>
+          </template>
           <dt class="placeholder-box-15"></dt>
         </dl>
       </scroll>
@@ -106,7 +108,7 @@
       }
     },
     created() {
-      this._getList({storeId: this.storeId})
+      this._getList()
     },
     methods: {
       changeHandle(item) {
@@ -122,7 +124,7 @@
       _getList(data, loading) {
         if (!this.hasMore) return
         const {page, limit} = this
-        API.ShopManager.getList({page, limit, ...data}, loading).then((res) => {
+        API.ShopManager.getList({page, limit, status: 2, ...data}, loading).then((res) => {
           let arr = []
           if (res.meta.current_page === 1) {
             this.dataArray = res.data

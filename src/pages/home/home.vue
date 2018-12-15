@@ -62,7 +62,7 @@
         pullDownRefresh: false,
         pullDownRefreshThreshold: 90,
         pullDownRefreshStop: 40,
-        tabIndex: 0
+        tabIndex: -1
       }
     },
     computed: {
@@ -104,6 +104,10 @@
     },
     created() {
       this.updateMerchant('')
+      this.tabIndex = 0
+    },
+    beforeDestroy() {
+      this.tabIndex = -1
     },
     methods: {
       ...infoMethods,

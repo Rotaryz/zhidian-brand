@@ -101,23 +101,29 @@
         this.phoneNumber = ''
         this.$refs.phone.focus()
       },
-      submit() {
+      async submit() {
         if (!this._check()) return
         let data = {
           code: this.authCode,
           mobile: this.phoneNumber
         }
-        API.Jwt.getToken(data)
-          .then((res) => {
-            const token = res.data.access_token
-            const merchantInfo = res.data.merchant_info
-            this.$storage.set('token', token)
-            this.$storage.set('info', merchantInfo)
-            this.$router.replace('/home')
-          })
-          .catch((e) => {
-            console.error(e)
-          })
+        try {
+          // token
+          const res = await API.Jwt.getToken(data)
+          const token = res.data.access_token
+          const merchantInfo = res.data.merchant_info
+          this.$storage.set('token', token)
+          this.$storage.set('info', merchantInfo)
+
+          // 设置总店
+          const resp = await API.ShopManager.getMainStore()
+          this.$storage.set('selectStore', resp.data)
+
+          // 跳转
+          this.$router.replace('/home')
+        } catch (e) {
+          console.error(e)
+        }
       },
       getCode() {
         if (!checkIsPhoneNumber(this.phoneNumber)) {
