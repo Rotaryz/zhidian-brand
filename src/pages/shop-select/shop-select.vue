@@ -20,9 +20,8 @@
           <dt class="placeholder-box-15"></dt>
         </dl>
       </scroll>
-      <section v-if="isEmpty" class="nothing-box">
-        <!--<img src="./pic-indent@2x.png" class="nothing-img">-->
-        <div class="nothing-txt">你的店铺是空的</div>
+      <section v-if="isEmpty" class="exception-box">
+        <exception errType="nodata"></exception>
       </section>
     </div>
     <section class="button-group">
@@ -36,6 +35,7 @@
   import SItem from '@components/s-item/s-item'
   import API from '@api'
   import storage from 'storage-controller'
+  import Exception from '@components/exception/exception'
 
   const PAGE_NAME = 'SHOP_SELECT'
 
@@ -47,7 +47,8 @@
     },
     components: {
       Scroll,
-      SItem
+      SItem,
+      Exception
     },
     data() {
       return {
@@ -165,6 +166,10 @@
 <style scoped lang="stylus" rel="stylesheet/stylus">
   $button-height = 74px
   @import "~@design"
+
+  .exception-box
+    position :relative
+    padding-top: (50)px
 
   .shop-select
     z-index: 20

@@ -46,15 +46,18 @@
 
   export default {
     name: PAGE_NAME,
-    page: {
-      title: '新建店铺'
+    page() {
+      return {
+        title: this.pageTitle
+      }
     },
     data() {
       return {
         name: '',
         mobile: '',
         storeId: 0,
-        disable: true
+        disable: true,
+        pageTitle: '新建店铺'
       }
     },
     computed: {
@@ -79,6 +82,9 @@
       // 初始化数据
       _initDetailInfo() {
         Object.assign(this.$data, this.$route.query)
+        if (this.$route.query.name) {
+          this.pageTitle = '编辑店铺'
+        }
         console.log(this.$data)
       },
       // 提交

@@ -20,9 +20,8 @@
           <dt class="placeholder-box-15"></dt>
         </dl>
       </scroll>
-      <section v-if="isEmpty" class="nothing-box">
-        <!--<img src="./pic-indent@2x.png" class="nothing-img">-->
-        <div class="nothing-txt">你的订单是空的</div>
+      <section v-if="isEmpty" class="exception-box">
+        <exception errType="nodata"></exception>
       </section>
     </div>
     <section class="button-group">
@@ -36,6 +35,7 @@
   import Scroll from '@components/scroll/scroll'
   import SItem from '@components/s-item/s-item'
   import API from '@api'
+  import Exception from '@components/exception/exception'
 
   const PAGE_NAME = 'SHOP_LIST'
 
@@ -48,7 +48,8 @@
     },
     components: {
       Scroll,
-      SItem
+      SItem,
+      Exception
     },
     data() {
       return {
@@ -132,7 +133,7 @@
             this.hasMore = false
           }
           if (res.meta.total) {
-            this.pageTitle = `${this.pageTitle}(${res.meta.total})`
+            this.pageTitle = `店铺管理(${res.meta.total})`
           }
           this.lastLimit = this.dataArray.length
           this.limit = 10
@@ -170,6 +171,10 @@
 <style scoped lang="stylus" rel="stylesheet/stylus">
   $button-height = 74px
   @import "~@design"
+
+  .exception-box
+    position :relative
+    padding-top: (50)px
 
   .nothing-box
     position:relative
