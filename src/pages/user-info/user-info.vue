@@ -249,8 +249,7 @@
             object-fit :cover
           .input
             color: #363547
-            height :14px
-            line-height :1
+            height :18px
             outline :none
             text-align :right
     .button-wrapper

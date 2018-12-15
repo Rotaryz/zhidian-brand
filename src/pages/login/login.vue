@@ -161,6 +161,7 @@
       margin: 8vw 0 4vw
       width: 18.666666666666668vw
       height: @width
+      min-height :70px
       background: #FFFFFF;
       box-shadow: 0 8px 20px 0 rgba(39,39,39,0.10);
       border-radius: 3.733333333333334vw
@@ -171,6 +172,7 @@
       .logo-img
         width: 18.666666666666668vw
         height: @width
+        min-height :70px
         object-fit :cover
     .l-text
       font-family: PingFangSC-Medium;
