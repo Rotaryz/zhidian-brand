@@ -1,7 +1,10 @@
 <template>
   <transition>
     <div class="login">
-      <img class="logo" src="./icon-login_logo@3x.png" alt="">
+      <div class="logo">
+        <img class="logo-img" :src="logoUrl" alt="">
+      </div>
+      <p class="l-text">品牌管理系统</p>
       <section v-if="phoneNumber.length >= 11 && codeStyle" class="warn">
         <div class="icon-warn"></div>
         <div>手机号码格式错误</div>
@@ -31,6 +34,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import {DEFAULT_LOGO} from '@utils/constant'
   import {checkIsPhoneNumber} from '@utils/common'
   import API from '@api'
   import storage from 'storage-controller'
@@ -51,7 +55,8 @@
         showQrCode: false,
         codeStyle: true,
         btnStyle: true,
-        isShow: false
+        isShow: false,
+        logoUrl: DEFAULT_LOGO
       }
     },
     watch: {
@@ -78,10 +83,14 @@
       }
     },
     created() {
+      this._initLoginData()
       this.$loading.hide()
       this._hide()
     },
     methods: {
+      _initLoginData() {
+        this.logoUrl = storage.get('logoUrl', DEFAULT_LOGO)
+      },
       _hide() {
         let token = storage.get('token')
         if (token) {
@@ -149,13 +158,31 @@
     layout(column,block,nowrap)
     align-items: center
     .logo
-      margin: 9.6vw 0 10.2vw
-      width: 12.8vw
+      margin: 8vw 0 4vw
+      width: 18.666666666666668vw
       height: @width
-      object-fit :cover
+      background: #FFFFFF;
+      box-shadow: 0 8px 20px 0 rgba(39,39,39,0.10);
+      border-radius: 3.733333333333334vw
+      layout()
+      justify-content :center
+      align-items :center
+      overflow :hidden
+      .logo-img
+        width: 18.666666666666668vw
+        height: @width
+        object-fit :cover
+    .l-text
+      font-family: PingFangSC-Medium;
+      font-size: 16px;
+      color: #27273E;
+      letter-spacing: 1px;
+      text-align: center;
+      line-height: 1
+      margin-bottom :14vw
     .warn
       row-center()
-      top: 27.28vw
+      top: 37.28vw
       layout(row)
       align-items: center
       justify-content: center
@@ -170,7 +197,7 @@
         icon-image(icon-login_prompt)
     .content
       font-family: PingFangSC-Regular
-      padding: 0 27.5px
+      padding: 0 50px
       box-sizing: border-box
       width: 100%
       .input-wrapper
@@ -203,13 +230,13 @@
             color: #ccc
             border-1px(#ccc, 100px)
       .btn
-        margin-top: 50px
+        margin-top: 40px
         height: 45px
-        background: #363537
-        border-radius: 4px
+        background: $color-main
         layout(row, block, nowrap)
         align-items: center
         justify-content: center
+        border-radius :45px
         &.unable
           opacity: 0.5
         .txt

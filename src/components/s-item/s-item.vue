@@ -1,5 +1,5 @@
 <template>
-  <div class="s-item">
+  <div class="s-item" @click="selectHandle">
     <div class="wrapper">
       <img class="logo" :src="itemInfo.logoUrl" alt="">
       <ul class="middle" @click="chooseHandle">
@@ -62,9 +62,10 @@
           const storeId = this.itemInfo.storeId
           const url = `${this.$route.path}/shop-detail?name=${name}&mobile=${mobile}&storeId=${storeId}`
           this.$router.push(url)
-        } else {
-          this.isChecked = !this.isChecked
         }
+      },
+      selectHandle() {
+        this.isChecked = !this.isChecked
       }
     }
   }

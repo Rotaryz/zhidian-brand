@@ -92,6 +92,7 @@
               height :@width
               padding :0 10px
               border-radius :100%
+              object-fit :cover
             .middle
               flex:1
               color: #27273E

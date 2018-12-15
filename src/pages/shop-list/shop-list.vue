@@ -28,7 +28,7 @@
     <section class="button-group">
       <router-link tag="div" to="shop-detail" append class="btn">新建店铺</router-link>
     </section>
-    <base-router-view></base-router-view>
+    <base-router-view @refresh="refresh"></base-router-view>
   </div>
 </template>
 
@@ -41,9 +41,10 @@
 
   export default {
     name: PAGE_NAME,
-    page: {
-      title: '店铺管理',
-      meta: [{name: 'description', content: 'description'}]
+    page() {
+      return {
+        title: this.pageTitle
+      }
     },
     components: {
       Scroll,
@@ -63,7 +64,9 @@
         page: 1,
         limit: 10,
         hasMore: true,
-        isEmpty: false
+        isEmpty: false,
+        lastLimit: 10,
+        pageTitle: '店铺管理'
       }
     },
     computed: {
@@ -108,6 +111,8 @@
     },
     methods: {
       refresh() {
+        this.limit = Math.max(this.lastLimit, 10)
+        this._resetParams()
         this._getList()
       },
       _getList(data, loading) {
@@ -125,6 +130,11 @@
           if (res.meta.current_page === res.meta.last_page) {
             this.hasMore = false
           }
+          if (res.meta.total) {
+            this.pageTitle += `(${res.meta.total})`
+          }
+          this.lastLimit = this.dataArray.length
+          this.limit = 10
         })
       },
       // scroll事件
@@ -136,9 +146,7 @@
       },
       onPullingDown() {
         // if (!this.pullDownRefresh) return this.$refs.scroll.forceUpdate()
-        this.page = 1
-        this.hasMore = true
-        this.pullUpLoad = true
+        this._resetParams()
         this._getList({}, false)
       // console.log('下拉刷新')
       },
@@ -147,12 +155,16 @@
           this.$refs.scroll && this.$refs.scroll.destroy()
           this.$refs.scroll && this.$refs.scroll.initScroll()
         })
+      },
+      // 重置数据
+      _resetParams() {
+        this.page = 1
+        this.hasMore = true
+        this.pullUpLoad = true
       }
     }
   }
 </script>
-
-
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
   $button-height = 74px

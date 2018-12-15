@@ -18,7 +18,7 @@ export default {
   editor(data, loading, toast) {
     let url = '/api/brand/stores/' + data.storeId
     data = _formatCreateData(data)
-    return defaultProcess('post', url, data, loading, toast)
+    return defaultProcess('put', url, data, loading, toast)
   },
   getQrCode(data, loading, toast) {
     let url = '/api/brand/create-invite-qrcode'

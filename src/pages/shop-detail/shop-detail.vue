@@ -27,13 +27,14 @@
       </dd>
     </dl>
     <section class="button-wrapper">
-      <div class="btn" @click="submitHandle">保存</div>
+      <div class="btn" :class="{active: allowSubmit}" @click="submitHandle">保存</div>
     </section>
   </form>
 </template>
 
 <script type="text/ecmascript-6">
   import {infoComputed} from '@state/helpers'
+  import {checkIsPhoneNumber} from '@utils/common'
   import API from '@api'
   const PAGE_NAME = 'SHOP_DETAIL'
 
@@ -53,20 +54,28 @@
       ...infoComputed,
       useReplace () {
         return this.$route.path === '/home/shop-detail'
+      },
+      nameReg() {
+        return this.name.trim()
+      },
+      mobileReg() {
+        return checkIsPhoneNumber(this.mobile)
+      },
+      allowSubmit() {
+        return this.nameReg && this.mobileReg
       }
     },
     created() {
-      console.log(this.$route.path)
       this._initDetailInfo()
     },
     methods: {
-      submitHandle() {
-        this.storeId ? this._editor() : this._create()
-      },
+      // 初始化数据
       _initDetailInfo() {
         Object.assign(this.$data, this.$route.query)
-        if (this.storeId) {
-        }
+      },
+      // 提交
+      submitHandle() {
+        this.storeId ? this._editor() : this._create()
       },
       _create() {
         API.ShopManager.create(this.$data).then((res) => {
@@ -75,13 +84,14 @@
         })
       },
       _editor() {
-        API.ShopManager.create(this.$data).then((res) => {
+        API.ShopManager.editor(this.$data).then((res) => {
           this.$toast.show('编辑成功')
           this._routerBack()
         })
       },
       // 路由回退
       _routerBack() {
+        this.$emit('refresh')
         let url = `/home/shop-list`
         this.useReplace ? this.$router.replace(url) : this.$router.back()
       }
@@ -156,4 +166,7 @@
         color: #FFFFFF
         letter-spacing: 1px
         text-align: center
+        opacity :0.5
+        &.active
+          opacity :1
 </style>

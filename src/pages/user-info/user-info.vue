@@ -123,6 +123,10 @@
       },
       // 更新用户信息
       _updateUserInfo() {
+        if (!this.merchantName.trim()){
+          this.$toast.show('请输入您的名称')
+          return
+        }
         API.Global.updateUserInfo(this.$data, false).then(() => {
           this.$emit('refresh')
         })
@@ -242,6 +246,7 @@
             height :@width
             border-radius :2px
             margin-right :5px
+            object-fit :cover
           .input
             color: #363547
             height :14px
