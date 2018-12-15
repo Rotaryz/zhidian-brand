@@ -52,6 +52,7 @@
     },
     data() {
       return {
+        name: 'list',
         dataArray: [],
         pullUpLoad: true,
         pullUpLoadThreshold: 0,
