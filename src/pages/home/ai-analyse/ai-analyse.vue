@@ -134,9 +134,6 @@
   .ai-analyse
     position: relative
     .ai-analyse-box
-      fill-box(absolute)
-      overflow: hidden
-      top: 0
       background-color: #fff
     .user-card-box
       height: 75px

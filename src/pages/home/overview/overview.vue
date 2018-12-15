@@ -2,7 +2,7 @@
   <article class="overview">
     <section class="select-wrapper">
       <div class="s-container" @click="navToSelectHandle">
-        <p class="s-text">国颐堂海珠店总览</p>
+        <p class="s-text">{{merchantName}}</p>
         <base-right-arrow iconStyle="dark"></base-right-arrow>
       </div>
     </section>
@@ -163,10 +163,25 @@
         ],
         tabNumber: 0,
         pieHint: PIEHINT,
-        successHint: SUCCESSHINT
+        successHint: SUCCESSHINT,
+        merchantName: '请选择您要查看的店铺'
+      }
+    },
+    watch: {
+      $route(to, from) {
+        let flag = from.path.includes('/home/shop-select')
+        if (!flag) return
+        this._initStoreData()
+        this.getActionLineData()
+        this.getPieData()
+        this.getAddActionLineData()
+        this.getSuccessData()
+        this.getAllDataObj('all')
       }
     },
     created() {
+      if (!this.$storage.get('selectStore', {}).storeId) return
+      this._initStoreData()
       this.getActionLineData()
       this.getPieData()
       this.getAddActionLineData()
@@ -175,10 +190,16 @@
     // this.getBarData() // 暂时去掉最后一个图表
     },
     methods: {
+      // 初始化
+      _initStoreData() {
+        this.merchantName = this.$storage.get('selectStore', {}).merchantName || '请选择您要查看的店铺'
+      },
+      // 选择店铺
       navToSelectHandle() {
-        let url = `/home/shop-select?id=`
+        let url = `/home/shop-select`
         this.$router.push(url)
       },
+      // 画图
       drawPie() {
         let myChart = this.$echarts.init(document.getElementById('myPie'))
         myChart.setOption({
@@ -629,12 +650,12 @@
         })
       },
       eConsole(param) {
-        if (param.data.text > 0) {
-          const progress = param.value // id为80则分组0-50,60则分组51-80,40则分组81-99,20则分组100
-          const useType = 'overview'
-          const pageUrl = `/overview/customer-list`
-          this.$router.push({path: pageUrl, query: {pageUrl, useType, progress}})
-        }
+        // if (param.data.text >= 0) {
+        //   const progress = param.value // id为80则分组0-50,60则分组51-80,40则分组81-99,20则分组100
+        //   const useType = 'overview'
+        //   const pageUrl = `/overview/customer-list`
+        //   this.$router.push({path: pageUrl, query: {pageUrl, useType, progress}})
+        // }
       },
       getAllDataObj(time) {
         Echart.getAllData(time).then((res) => {

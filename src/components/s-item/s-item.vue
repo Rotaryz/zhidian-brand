@@ -1,5 +1,5 @@
 <template>
-  <div class="s-item" @click="selectHandle">
+  <div class="s-item" @click="selectHandle(itemInfo)">
     <div class="wrapper">
       <img class="logo" :src="itemInfo.logoUrl" alt="">
       <ul class="middle" @click="chooseHandle">
@@ -17,7 +17,7 @@
       </router-link>
       <section v-else-if="useType === 'check'" class="right">
         <div class="icon-wrapper">
-          <div class="icon" :class="{active: isChecked}"></div>
+          <div class="icon" :class="{active: itemInfo.isChecked}"></div>
         </div>
       </section>
       <section v-else></section>
@@ -44,8 +44,7 @@
     },
     data() {
       return {
-        logoUrl: DEFAULT_LOGO,
-        isChecked: false
+        logoUrl: DEFAULT_LOGO
       }
     },
     computed: {
@@ -64,8 +63,8 @@
           this.$router.push(url)
         }
       },
-      selectHandle() {
-        this.isChecked = !this.isChecked
+      selectHandle(item) {
+        this.$emit('change', item)
       }
     }
   }

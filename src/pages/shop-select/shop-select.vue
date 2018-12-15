@@ -15,7 +15,7 @@
         <dl class="scroll-wrapper">
           <dt class="placeholder-box-15"></dt>
           <dd v-for="(item,index) in dataArray" :key="index" class="scroll-item">
-            <s-item useType="check" :itemInfo="item"></s-item>
+            <s-item useType="check" :itemInfo="item" @change="changeHandle"></s-item>
           </dd>
           <dt class="placeholder-box-15"></dt>
         </dl>
@@ -26,7 +26,7 @@
       </section>
     </div>
     <section class="button-group">
-      <div class="btn">确定</div>
+      <div class="btn" @click="submitHandle">确定</div>
     </section>
   </div>
 </template>
@@ -35,6 +35,7 @@
   import Scroll from '@components/scroll/scroll'
   import SItem from '@components/s-item/s-item'
   import API from '@api'
+  import storage from 'storage-controller'
 
   const PAGE_NAME = 'SHOP_SELECT'
 
@@ -62,7 +63,8 @@
         page: 1,
         limit: 10,
         hasMore: true,
-        isEmpty: false
+        isEmpty: false,
+        store: storage.get('selectStore')
       }
     },
     computed: {
@@ -103,9 +105,19 @@
       }
     },
     created() {
-      this._getList()
+      this._getList({storeId: this.storeId})
     },
     methods: {
+      changeHandle(item) {
+        this.dataArray.forEach((child) => {
+          child.isChecked = child.storeId === item.storeId
+        })
+        this.store = item
+      },
+      submitHandle() {
+        this.$storage.set('selectStore', this.store)
+        this.$router.back()
+      },
       _getList(data, loading) {
         if (!this.hasMore) return
         const {page, limit} = this

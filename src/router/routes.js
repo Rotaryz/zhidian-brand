@@ -58,30 +58,6 @@ export default [
           }
         ]
       },
-      // ai分析
-      {
-        path: 'ai-analyse',
-        meta: {
-          defaultRouter: true
-        },
-        component: () => lazyLoadView(import('@pages/ai-analyse/ai-analyse')),
-      },
-      // 总览页面
-      {
-        path: 'overview',
-        meta: {
-          defaultRouter: true
-        },
-        component: () => lazyLoadView(import('@pages/overview/overview'))
-      },
-      // 排行榜页面
-      {
-        path: 'ranking',
-        meta: {
-          defaultRouter: true
-        },
-        component: () => lazyLoadView(import('@pages/ranking/ranking'))
-      }
     ]
   },
   // 登陆

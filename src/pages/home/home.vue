@@ -107,9 +107,17 @@
     },
     created() {
       this.updateMerchant('')
+      // this._initGetMainStore()
     },
     methods: {
       ...infoMethods,
+      // _initGetMainStore() {
+      //   API.ShopManager.getMainStore().then(res => {
+      //     if (!this.$storage.has('selectStoreId')){
+      //       this.$storage.set('selectStoreId', res.data.store_id)
+      //     }
+      //   })
+      // },
       refresh() {
         this.updateMerchant('', false)
       },

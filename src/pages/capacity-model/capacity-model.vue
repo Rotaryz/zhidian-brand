@@ -259,7 +259,7 @@
     {text: '100%', icon: 'four'}
   ]
   const Echart = API.Echart
-  const ClientDetail = API.ClientDetail
+  const ClientDetail = API.Echart
   export default {
     name: 'CapacityModel',
     components: {
@@ -378,7 +378,7 @@
       }
       this.getActionLineData() // 员工能力模型图
       this.getPieData()
-      this.getBarData()
+      // this.getBarData() 废弃
       this.getSixData()
       this.getSuccessData()
       this.getAllDataObj('all') // 全部数据展示
@@ -390,7 +390,8 @@
       this.tabhighgt = this.$refs.eleven.offsetHeight
     },
     beforeDestroy() {
-      this.$emit('refresh')
+      // this.$emit('refresh')
+      this.$storage.remove('user')
     },
     methods: {
       scroll(pos) {
@@ -848,16 +849,16 @@
           }
         })
       },
-      getBarData() {
-        Echart.getBar(this.id).then((res) => {
-          this.$loading.hide()
-          if (res.error === this.$ERR_OK) {
-            this.barData = res.data
-          } else {
-            this.$toast.show(res.message)
-          }
-        })
-      },
+      // getBarData() {
+      //   Echart.getBar(this.id).then((res) => {
+      //     this.$loading.hide()
+      //     if (res.error === this.$ERR_OK) {
+      //       this.barData = res.data
+      //     } else {
+      //       this.$toast.show(res.message)
+      //     }
+      //   })
+      // },
       getSixData() {
         Echart.getEmployee(this.id).then((res) => {
           this.$loading.hide()

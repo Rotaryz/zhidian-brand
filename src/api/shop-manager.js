@@ -1,5 +1,6 @@
 import {defaultProcess} from '@utils/api-utils'
 import {DEFAULT_LOGO, DEFAULT_STR, BRANCH_ARR} from '@utils/constant'
+import storage from 'storage-controller'
 
 export default {
   /**
@@ -23,10 +24,15 @@ export default {
   getQrCode(data, loading, toast) {
     let url = '/api/brand/create-invite-qrcode'
     return defaultProcess('post', url, data, loading, toast)
-  }
+  },
+  // getMainStore(data, loading,toast) {
+  //   let url = '/api/brand/get-boss-store'
+  //   return defaultProcess('get', url, data, loading, toast)
+  // }
 }
 
 function _resolveListData(res) {
+  let store = storage.get('selectStore', {})
   let data = res.data.map((item) => {
     const logo = item.logo || {}
     const merchant = item.merchant || {}
@@ -37,7 +43,8 @@ function _resolveListData(res) {
       eName: employee.name || DEFAULT_STR,
       eMobile: employee.mobile || DEFAULT_STR,
       storeId: item.id,
-      isActive: employee.activited // 是否绑定
+      isActive: employee.activited, // 是否绑定
+      isChecked: +item.id === +store.storeId
     }
   })
   res.data = data
