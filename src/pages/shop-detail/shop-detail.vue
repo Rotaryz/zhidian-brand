@@ -110,7 +110,7 @@
     margin-right :1px
 
   input
-    height :14px
+    height :18px
     &::-webkit-input-placeholder
       color: #DAD9E2
     &::-ms-input-placeholder
@@ -150,8 +150,7 @@
           color: #9B9B9B
           .input
             color: #363547
-            height :14px
-            line-height :1
+            height :18px
             outline :none
             text-align :right
     .button-wrapper
