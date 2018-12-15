@@ -17,7 +17,7 @@
   import API from '@api'
   import Exception from '@components/exception/exception'
 
-  const LIMIT = 3
+  const LIMIT = 10
   const Analyse = API.Rank
   export default {
     name: 'AI',
@@ -71,7 +71,7 @@
         this.isAll = false
       },
       toCapacityModel(item) {
-        const id = item.shop_id
+        const id = item.store_id
         const pageUrl = `/home/capacity-model`
         let url = `${pageUrl}?id=${id}&pageUrl=${pageUrl}`
         this.$storage.set('user', item)

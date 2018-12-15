@@ -76,7 +76,7 @@
   import Exception from '@components/exception/exception'
 
   const Rank = API.Rank
-  const LIMIT = 3
+  const LIMIT = 10
   const tabOne = ['按客户数', '按互动数', '按成交率']
   const tabCustomer = {data: ['客户总数', '新增客户'], idx: 0}
   const tabActive = {data: ['跟进客户数', '咨询客户数'], idx: 0}

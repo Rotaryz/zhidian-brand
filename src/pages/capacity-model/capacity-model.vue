@@ -262,6 +262,9 @@
   const ClientDetail = API.Echart
   export default {
     name: 'CapacityModel',
+    page: {
+      title: '能力模型'
+    },
     components: {
       Scroll,
       Exception

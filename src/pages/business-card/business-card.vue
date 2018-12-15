@@ -19,6 +19,9 @@
   const Business = API.Business
   export default {
     name: 'ShareCard',
+    page: {
+      title: '店铺二维码'
+    },
     data() {
       return {
         card: {}
