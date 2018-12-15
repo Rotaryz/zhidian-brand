@@ -39,14 +39,14 @@
     methods: {
       _getQrCode() {
         API.ShopManager.getQrCode().then((res) => {
-          QrCodeUtil.createQrCodePng(res.data.link_url, url => {
+          QrCodeUtil.createQrCodePng(res.data.link_url, (url) => {
             this.qrCode = url
           })
           this.linkUrl = res.data.link_url
         })
       },
       copyHandle() {
-        this.$copyText(this.linkUrl).then(res => {
+        this.$copyText(this.linkUrl).then((res) => {
           let msg = `${res.text}\n已经复制至剪切板`
           this.$toast.show(msg)
         })

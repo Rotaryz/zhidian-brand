@@ -89,12 +89,12 @@ export default {
       url,
       data // post 请求时带的参数
     })
-    .then((response) => {
-      return checkStatus(response)
-    })
-    .then((res) => {
-      return checkCode(res)
-    })
+      .then((response) => {
+        return checkStatus(response)
+      })
+      .then((res) => {
+        return checkCode(res)
+      })
   },
   get(url, params, loading = true) {
     Utils.showLoading(loading)
@@ -103,12 +103,12 @@ export default {
       url,
       params // get 请求时带的参数
     })
-    .then((response) => {
-      return checkStatus(response)
-    })
-    .then((res) => {
-      return checkCode(res)
-    })
+      .then((response) => {
+        return checkStatus(response)
+      })
+      .then((res) => {
+        return checkCode(res)
+      })
   },
   put(url, data, loading = true) {
     Utils.showLoading(loading)
@@ -117,12 +117,12 @@ export default {
       url,
       data // put 请求时带的参数
     })
-    .then((response) => {
-      return checkStatus(response)
-    })
-    .then((res) => {
-      return checkCode(res)
-    })
+      .then((response) => {
+        return checkStatus(response)
+      })
+      .then((res) => {
+        return checkCode(res)
+      })
   },
   delete(url, data, loading = true) {
     Utils.showLoading(loading)
@@ -131,11 +131,11 @@ export default {
       url,
       data // put 请求时带的参数
     })
-    .then((response) => {
-      return checkStatus(response)
-    })
-    .then((res) => {
-      return checkCode(res)
-    })
+      .then((response) => {
+        return checkStatus(response)
+      })
+      .then((res) => {
+        return checkCode(res)
+      })
   }
 }

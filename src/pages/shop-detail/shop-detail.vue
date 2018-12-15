@@ -39,7 +39,7 @@
 
   export default {
     name: PAGE_NAME,
-    page:{
+    page: {
       title: '新建店铺'
     },
     data() {
@@ -50,9 +50,13 @@
       }
     },
     computed: {
-      ...infoComputed
+      ...infoComputed,
+      useReplace () {
+        return this.$route.path === '/home/shop-detail'
+      }
     },
     created() {
+      console.log(this.$route.path)
       this._initDetailInfo()
     },
     methods: {
@@ -61,24 +65,25 @@
       },
       _initDetailInfo() {
         Object.assign(this.$data, this.$route.query)
-        if (this.storeId){
+        if (this.storeId) {
         }
       },
       _create() {
-        API.ShopManager.create(this.$data).then(res => {
+        API.ShopManager.create(this.$data).then((res) => {
           this.$toast.show('新建成功')
           this._routerBack()
         })
       },
       _editor() {
-        API.ShopManager.create(this.$data).then(res => {
+        API.ShopManager.create(this.$data).then((res) => {
           this.$toast.show('编辑成功')
           this._routerBack()
         })
       },
+      // 路由回退
       _routerBack() {
         let url = `/home/shop-list`
-        this.$router.replace(url)
+        this.useReplace ? this.$router.replace(url) : this.$router.back()
       }
     }
   }

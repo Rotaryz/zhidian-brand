@@ -16,7 +16,7 @@
             </router-link>
           </section>
           <ul class="c-bottom">
-            <router-link tag="li" to="/home/shop-list/shop-detail" class="b-item">
+            <router-link tag="li" to="/home/shop-detail" class="b-item">
               <div class="icon detail"></div>
               <p>新建店铺</p>
             </router-link>

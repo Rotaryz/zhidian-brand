@@ -27,7 +27,7 @@ export default {
 }
 
 function _resolveListData(res) {
-  let data = res.data.map(item => {
+  let data = res.data.map((item) => {
     const logo = item.logo || {}
     const merchant = item.merchant || {}
     const employee = item.employee || {}
@@ -36,7 +36,8 @@ function _resolveListData(res) {
       merchantName: merchant.name + BRANCH_ARR[item.is_branch] || DEFAULT_STR,
       eName: employee.name || DEFAULT_STR,
       eMobile: employee.mobile || DEFAULT_STR,
-      storeId: item.id
+      storeId: item.id,
+      isActive: employee.activited // 是否绑定
     }
   })
   res.data = data
