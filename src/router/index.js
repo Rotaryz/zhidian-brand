@@ -25,13 +25,14 @@ const router = new VueRouter({
 })
 
 const OAUTH_ROUTE = '/login' // 授权页面
+const HOME_ROUTE = '/home' // 首页
 
 router.beforeEach((routeTo, routeFrom, next) => {
   if (routeFrom.name !== null) {
     NProgress.start()
   }
   // 登陆
-  if (routeTo.path === '/') {
+  if (routeTo.path === HOME_ROUTE) {
     const hasToken = storage.has('token')
     !hasToken && next({path: OAUTH_ROUTE, replace: true})
   }
