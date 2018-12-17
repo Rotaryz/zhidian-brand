@@ -74,7 +74,7 @@
           font-family: $font-family-regular
           font-size: 16px
           color: #27273E
-          transition :all 0.6s
+          transition :all 0s
           &.active
             color: #fff
       .line-wrapper
@@ -86,8 +86,8 @@
         border-radius :32px
         transform :translate3d(0,0,0)
         transition :all 0.3s
-        overflow :hidden
         .line
           fill-box(absolute)
           background :$color-main
+          border-radius :32px
 </style>

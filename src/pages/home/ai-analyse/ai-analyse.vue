@@ -87,6 +87,7 @@
           } else {
             this.$toast.show(res.message)
           }
+          this.$emit('loadEnd', this.dataArray)
         })
       },
       onPullingUp() {

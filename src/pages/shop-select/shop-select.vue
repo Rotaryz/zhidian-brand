@@ -26,7 +26,7 @@
         <exception errType="nodata"></exception>
       </section>
     </div>
-    <section class="button-group">
+    <section class="button-group border-top-1px">
       <div class="btn" @click="submitHandle">确定</div>
     </section>
   </div>

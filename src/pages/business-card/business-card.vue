@@ -7,7 +7,7 @@
         <img src="./pic-myshop@2x.png" alt="" class="title-img">
         <img :src="avatar" alt="" class="avatar-img">
         <img :src="qrCodeUrl" alt="" class="avatar-card">
-        <div class="qrcode-text">长按识别二维码</div>
+        <div class="qr-code-text">长按识别二维码</div>
       </div>
     </div>
   </div>
@@ -58,9 +58,6 @@
     -webkit-box-sizing: border-box
     box-sizing: border-box
 
-  img
-    object-fit :cover
-
   .share-card
     min-height: 100vh
     fill-box(fixed)
@@ -90,11 +87,13 @@
         width: 175px
         height: 16px
         margin-top: 13.5px
+        object-fit :cover
       .avatar-img
         display: block
         width: 235px
         height: 235px
         margin-top: 21px
+        object-fit :cover
       .avatar-card
         display: block
         width: 120px
@@ -102,7 +101,7 @@
         padding: 20px
         -webkit-box-sizing: border-box
         box-sizing: border-box
-      .qrcode-text
+      .qr-code-text
         font-family: $font-family-regular
         font-size: $font-size-12
         color: #7C7C8F

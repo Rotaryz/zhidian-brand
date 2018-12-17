@@ -24,7 +24,7 @@
         <exception errType="nodata"></exception>
       </section>
     </div>
-    <section class="button-group">
+    <section class="button-group border-top-1px">
       <router-link tag="div" to="shop-detail" append class="btn">新建店铺</router-link>
     </section>
     <base-router-view @refresh="refresh"></base-router-view>

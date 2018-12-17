@@ -126,7 +126,9 @@
       },
       loadEndHandle(arr) {
         this.dataArray = arr
-        this.$refs.scroll.forceUpdate()
+        setTimeout(() => {
+          this.$refs.scroll.forceUpdate()
+        }, 20)
       },
       // scroll事件
       onPullingUp() {

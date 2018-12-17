@@ -184,6 +184,7 @@
           } else {
             this.$toast.show(res.message)
           }
+          this.$emit('loadEnd', this.dataArray)
         })
       },
       // 配置请求的参数
