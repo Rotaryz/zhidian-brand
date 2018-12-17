@@ -1,6 +1,7 @@
 import {defaultProcess} from '@utils/api-utils'
-import {DEFAULT_LOGO, DEFAULT_STR} from '@utils/constant'
+import {DEFAULT_LOGO, DEFAULT_STR, DEFAULT_MIDDLE_FN} from '@utils/constant'
 import storage from 'storage-controller'
+import request from '@utils/request'
 
 export default {
   /**
@@ -9,7 +10,7 @@ export default {
    */
   getList(data, loading, toast) {
     let url = '/api/brand/stores'
-    return defaultProcess('get', url, data, loading, toast, _resolveListData)
+    return request.get(url, data, loading, toast, DEFAULT_MIDDLE_FN, _resolveListData)
   },
   create(data, loading, toast) {
     let url = '/api/brand/stores'

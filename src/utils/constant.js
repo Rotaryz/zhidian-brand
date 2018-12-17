@@ -3,3 +3,4 @@ export const SEVER_HPONE = `18688843109`
 export const DEFAULT_STR = '未知'
 export const MER_NAME_ARR = ['单店', '品牌加盟']
 export const BRANCH_ARR = ['总店', '分店']
+export const DEFAULT_MIDDLE_FN = 'defaultMiddleWare'

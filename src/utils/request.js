@@ -4,8 +4,7 @@ import axios from 'axios'
 import storage from 'storage-controller'
 import * as Utils from './request-utils'
 import {BASE_URL} from './config'
-// import {defaultMethod} from './api-utils'
-// const methodList = {defaultMethod}
+import * as API_UTILS from './api-utils'
 
 const TIME_OUT = 10000
 const ERR_OK = 0
@@ -81,61 +80,31 @@ function requestException(res) {
   return error
 }
 
-export default {
-  post(url, data, loading = true) {
+// http请求
+const methodArr = ['get', 'post', 'put', 'delete']
+const HTTP = {}
+methodArr.forEach((item) => {
+  let method = item.toUpperCase()
+  HTTP[item] = (...args) => {
+    // 路径 数据 loading toast 中间件方法名称 自定义的方法...
+    const [url, data, loading = true, ,middleFnName] = args
     Utils.showLoading(loading)
     return http({
-      method: 'post',
+      method,
       url,
-      data // post 请求时带的参数
-    })
-      .then((response) => {
+      data,
+      params: data
+    }).then((response) => {
         return checkStatus(response)
       })
       .then((res) => {
         return checkCode(res)
       })
-  },
-  get(url, params, loading = true) {
-    Utils.showLoading(loading)
-    return http({
-      method: 'get',
-      url,
-      params // get 请求时带的参数
-    })
-      .then((response) => {
-        return checkStatus(response)
-      })
       .then((res) => {
-        return checkCode(res)
-      })
-  },
-  put(url, data, loading = true) {
-    Utils.showLoading(loading)
-    return http({
-      method: 'put',
-      url,
-      data // put 请求时带的参数
+        let fn = API_UTILS[middleFnName] // 调用中间件的方法
+        return fn ? fn(res, ...args) : res
     })
-      .then((response) => {
-        return checkStatus(response)
-      })
-      .then((res) => {
-        return checkCode(res)
-      })
-  },
-  delete(url, data, loading = true) {
-    Utils.showLoading(loading)
-    return http({
-      method: 'delete',
-      url,
-      data // put 请求时带的参数
-    })
-      .then((response) => {
-        return checkStatus(response)
-      })
-      .then((res) => {
-        return checkCode(res)
-      })
   }
-}
+})
+export default HTTP
+
