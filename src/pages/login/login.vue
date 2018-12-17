@@ -168,8 +168,8 @@
       width: 18.666666666666668vw
       height: @width
       min-height :70px
-      background: #FFFFFF;
-      box-shadow: 0 8px 20px 0 rgba(39,39,39,0.10);
+      background: #FFFFFF
+      box-shadow: 0 8px 20px 0 rgba(39,39,39,0.1)
       border-radius: 3.733333333333334vw
       layout()
       justify-content :center
@@ -181,11 +181,11 @@
         min-height :70px
         object-fit :cover
     .l-text
-      font-family: PingFangSC-Medium;
-      font-size: 16px;
-      color: #27273E;
-      letter-spacing: 1px;
-      text-align: center;
+      font-family: PingFangSC-Medium
+      font-size: 16px
+      color: #27273E
+      letter-spacing: 1px
+      text-align: center
       line-height: 1
       margin-bottom :14vw
     .warn
