@@ -78,13 +78,12 @@ export default [
     redirect: '404'
   }
 ]
-
 function lazyLoadView(AsyncView) {
   const AsyncHandler = () => ({
     component: AsyncView,
     loading: require('@pages/_loading/_loading').default,
     delay: 400,
-    error: require('@pages/_timeout/_timeout').default,
+    error: require('@pages/_404/_404').default,
     timeout: 100000
   })
 

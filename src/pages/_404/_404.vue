@@ -28,7 +28,6 @@
   @import "~@design"
 
   .page404
-    height :100vh
     layout()
     align-items :center
     margin-top :30%
