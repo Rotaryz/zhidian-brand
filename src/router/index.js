@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueMeta from 'vue-meta'
-import NProgress from 'nprogress/nprogress'
+// import NProgress from 'nprogress/nprogress'
 import routes from './routes'
 import storage from 'storage-controller'
 
-NProgress.configure({showSpinner: false})
+// NProgress.configure({showSpinner: false})
 
 Vue.use(VueRouter)
 Vue.use(VueMeta, {
@@ -28,9 +28,9 @@ const OAUTH_ROUTE = '/login' // 授权页面
 const HOME_ROUTE = '/home' // 首页
 
 router.beforeEach((routeTo, routeFrom, next) => {
-  if (routeFrom.name !== null) {
-    NProgress.start()
-  }
+  // if (routeFrom.name !== null) {
+  //   NProgress.start()
+  // }
   // 登陆
   if (routeTo.path === HOME_ROUTE) {
     const hasToken = storage.has('token')
@@ -40,34 +40,34 @@ router.beforeEach((routeTo, routeFrom, next) => {
 })
 
 router.beforeResolve(async (routeTo, routeFrom, next) => {
-  try {
-    for (const route of routeTo.matched) {
-      await new Promise((resolve, reject) => {
-        if (route.meta && route.meta.beforeResolve) {
-          route.meta.beforeResolve(routeTo, routeFrom, (...args) => {
-            if (args.length) {
-              if (routeFrom.name === args[0].name) {
-                NProgress.done()
-              }
-              next(...args)
-              reject(new Error('Redirected'))
-            } else {
-              resolve()
-            }
-          })
-        } else {
-          resolve()
-        }
-      })
-    }
-  } catch (error) {
-    return
-  }
+  // try {
+  //   for (const route of routeTo.matched) {
+  //     await new Promise((resolve, reject) => {
+  //       if (route.meta && route.meta.beforeResolve) {
+  //         route.meta.beforeResolve(routeTo, routeFrom, (...args) => {
+  //           if (args.length) {
+  //             if (routeFrom.name === args[0].name) {
+  //               NProgress.done()
+  //             }
+  //             next(...args)
+  //             reject(new Error('Redirected'))
+  //           } else {
+  //             resolve()
+  //           }
+  //         })
+  //       } else {
+  //         resolve()
+  //       }
+  //     })
+  //   }
+  // } catch (error) {
+  //   return
+  // }
   next()
 })
 
 router.afterEach((routeTo, routeFrom) => {
-  NProgress.done()
+  // NProgress.done()
 })
 
 export default router
