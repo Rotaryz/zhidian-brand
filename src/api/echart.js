@@ -119,7 +119,7 @@ export default {
     let url = `/api/brand/get-store-qrcode`
     let data = {
       // path: 'pages/guide',
-      is_hyaline: 1,
+      is_hyaline: 0,
       refresh: 1,
       store_id: _getStoreId()
     }
