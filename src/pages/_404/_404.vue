@@ -1,12 +1,7 @@
 <template>
-  <div class="404">
-    <h1 class="title">
-      404
-      <template v-if="resource">
-        {{resource}}
-      </template>
-      Not Found
-    </h1>
+  <div class="page404">
+    <div class="icon"></div>
+    <div class="text">网络请求失败,请稍后重试</div>
   </div>
 </template>
 
@@ -32,6 +27,19 @@
 <style scoped lang="stylus" rel="stylesheet/stylus">
   @import "~@design"
 
-  .title
-    text-align: center
+  .page404
+    height :100vh
+    layout()
+    align-items :center
+    margin-top :30%
+    .icon
+      width :197px
+      height :143px
+      icon-image(pic-404)
+    .text
+      font-family :$font-family-light
+      margin-top :15px
+      font-size :16px
+      color:$color-text-assist
+      text-align :center
 </style>

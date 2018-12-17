@@ -85,7 +85,6 @@
         if (this.$route.query.name) {
           this.pageTitle = '编辑店铺'
         }
-        console.log(this.$data)
       },
       // 提交
       submitHandle() {
