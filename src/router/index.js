@@ -31,7 +31,7 @@ router.beforeEach((routeTo, routeFrom, next) => {
     NProgress.start()
   }
   // 登陆
-  if (routeTo.path !== '/login') {
+  if (routeTo.path === '/') {
     const hasToken = storage.has('token')
     !hasToken && next({path: OAUTH_ROUTE, replace: true})
   }
