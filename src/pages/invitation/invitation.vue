@@ -6,7 +6,7 @@
         <div class="qr-code">
           <img v-if="qrCode" class="qr-img" :src="qrCode" alt="">
         </div>
-        <div class="explain">请长按二维码保存或者发送给店员</div>
+        <div class="explain">请长按二维码保存或者发送给加盟店</div>
       </article>
       <div class="btn-item">
         <div class="txt" @click="copyHandle">复制链接</div>
