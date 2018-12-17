@@ -128,16 +128,14 @@
         this.dataArray = arr
         setTimeout(() => {
           this.$refs.scroll.forceUpdate()
-        }, 20)
+        }, 150)
       },
       // scroll事件
       onPullingUp() {
         // console.log('触底上拉加载')
         this._loadMore()
-        // if (!this.pullUpLoad) return this.$refs.scroll.forceUpdate()
       },
       onPullingDown() {
-        // if (!this.pullDownRefresh) return this.$refs.scroll.forceUpdate()
       // console.log('下拉刷新')
       },
       rebuildScroll() {
