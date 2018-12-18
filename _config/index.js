@@ -20,7 +20,7 @@ argv.forEach((item) => {
 })
 const filePath = path.join(__dirname,'' + appPath, '' + envPath)
 // 写文件
-const targetPath = path.resolve('src/utils/app-config.js')
+const targetPath = path.resolve('src/utils/_app-config.js')
 const content = fs.readFileSync(filePath, 'utf-8')
 try {
   fs.unlinkSync('' + targetPath)
