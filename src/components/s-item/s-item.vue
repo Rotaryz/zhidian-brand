@@ -9,8 +9,8 @@
           <p>{{itemInfo.eMobile}}</p>
         </li>
       </ul>
-      <router-link v-if="useType === 'invitation'" class="right" :style="isActiveStyle" tag="section" to="invitation"
-                   append
+      <router-link v-if="useType === 'invitation'" class="right" :style="isActiveStyle" tag="section"
+                   to="/home/shop-list/invitation"
       >
         <p>邀请开店</p>
         <base-right-arrow></base-right-arrow>
@@ -44,7 +44,8 @@
     },
     data() {
       return {
-        logoUrl: DEFAULT_LOGO
+        logoUrl: DEFAULT_LOGO,
+        path: ''
       }
     },
     computed: {
@@ -53,13 +54,16 @@
         return flag ? 'display:none' : ''
       }
     },
+    mounted() {
+      this.path = this.$route.path
+    },
     methods: {
       chooseHandle() {
         if (this.useType === 'invitation' && !this.isActiveStyle) {
           const name = this.itemInfo.eName
           const mobile = this.itemInfo.eMobile
           const storeId = this.itemInfo.storeId
-          const url = `${this.$route.path}/shop-detail?name=${name}&mobile=${mobile}&storeId=${storeId}&disable=true`
+          const url = `${this.path}/shop-detail?name=${name}&mobile=${mobile}&storeId=${storeId}&disable=true`
           this.$router.push(url)
         }
       },
@@ -69,7 +73,7 @@
           const name = this.itemInfo.eName
           const mobile = this.itemInfo.eMobile
           const storeId = this.itemInfo.storeId
-          const url = `${this.$route.path}/shop-detail?name=${name}&mobile=${mobile}&storeId=${storeId}&disable=`
+          const url = `${this.path}/shop-detail?name=${name}&mobile=${mobile}&storeId=${storeId}&disable=`
           this.$router.push(url)
         }
       }

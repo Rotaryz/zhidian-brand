@@ -955,17 +955,17 @@
           display: block
           width: 100%
           height: 100%
-          left: 0px
-          top: 0px
-          z-index: 0
+          left: 0
+          top: 0
         .cliten-img
-          layout(row)
+          layout(row,block,nowrap)
           justify-content: space-between
           align-items: center
           position: relative
-          z-index: 1
           .detail-img-box
-            layout(row)
+            flex: 1
+            overflow :hidden
+            layout(row,block,nowrap)
             .img
               position: relative
               width: 60px
@@ -978,19 +978,24 @@
                 height: 60px
                 display: block
             .label-right
+              flex: 1
+              overflow :hidden
               margin-left: 10px
               .label-name
+                overflow :hidden
                 font-size: $font-size-16
                 color: #20202E
                 font-family: $font-family-medium
                 padding-top: 5px
                 margin-bottom: 20px
+                no-wrap()
               .label-box
-                layout(row)
+                layout(row,block,nowrap)
                 .full-name
                   font-size: $font-size-12
                   color: #888888
                   font-family: $font-family-medium
+                  no-wrap()
           .detail-jump
             height: 45px
             width: 25px

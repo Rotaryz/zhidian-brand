@@ -8,7 +8,7 @@ export default {
   getPie(shop_id = 0) {
     let url = '/api/brand/brand-analysis/interest-rate-chart'
     let data = {
-      shop_id,
+      // shop_id,
       store_id: _getStoreId()
     }
     return request.post(url, data, false)
@@ -20,7 +20,7 @@ export default {
   getActionLine(shop_id = 0) {
     let url = '/api/brand/brand-analysis/active-chart'
     let data = {
-      shop_id,
+      // shop_id,
       store_id: _getStoreId()
     }
     return request.post(url, data, false)
@@ -32,7 +32,7 @@ export default {
   getAddLine(shop_id = 0) {
     let url = '/api/brand/brand-analysis/new-customer-sum-chart'
     let data = {
-      shop_id,
+      // shop_id,
       store_id: _getStoreId()
     }
     return request.post(url, data, false)
@@ -44,7 +44,7 @@ export default {
   getSuccess(shop_id = 0) {
     let url = '/api/brand/brand-analysis/close-deal-rate-chart'
     let data = {
-      shop_id,
+      // shop_id,
       store_id: _getStoreId()
     }
     return request.post(url, data, false)
@@ -67,7 +67,7 @@ export default {
   getEmployee(shop_id = 0) {
     let url = '/api/brand/brand-analysis/boss-capacity-model-chart'
     let data = {
-      shop_id,
+      // shop_id,
       store_id: _getStoreId()
     }
     return request.post(url, data, false)
@@ -80,7 +80,7 @@ export default {
     let url = '/api/brand/brand-analysis/data-overview'
     let data = {
       time,
-      shop_id,
+      // shop_id,
       store_id: _getStoreId()
     }
     return request.post(url, data, false)
@@ -92,7 +92,7 @@ export default {
   getEmployeeRank(shop_id = 0) {
     let url = '/api/brand/brand-analysis/boss-all-type-rank'
     let data = {
-      shop_id,
+      // shop_id,
       store_id: _getStoreId()
     }
     return request.post(url, data, false)
