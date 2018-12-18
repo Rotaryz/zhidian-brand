@@ -100,10 +100,12 @@
               layout()
               margin :5px 0
               justify-content :space-between
+              overflow :hidden
               .m-top
                 font-family: PingFangSC-Medium
                 font-size: 16px
                 letter-spacing: 0.6px
+                no-wrap()
               .m-bottom
                 opacity: 0.8
                 font-family: PingFangSC-Regular

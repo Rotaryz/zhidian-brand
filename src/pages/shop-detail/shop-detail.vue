@@ -3,7 +3,7 @@
     <dl class="top">
       <dd class="t-item border-bottom-1px">
         <div class="left">品牌</div>
-        <div class="right">{{merchantInfo.merchantName}}</div>
+        <div class="right name">{{merchantInfo.merchantName}}</div>
       </dd>
       <dd class="t-item border-bottom-1px">
         <div class="left">类型</div>
@@ -159,11 +159,15 @@
         .right
           position :relative
           flex: 1
+          overflow :hidden
           height :100%
           layout(row,block,nowrap)
           justify-content :flex-end
           align-items :center
           color: #9B9B9B
+          &.name
+            margin-left :20px
+            no-wrap()
           .input
             color: #363547
             height :18px
