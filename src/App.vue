@@ -5,15 +5,15 @@
 </template>
 
 <script>
-  import appConfig from '@src/app.config'
+  // import appConfig from '@src/app.config'
 
   export default {
     page: {
       title: '品牌管理系统',
-      titleTemplate(title) {
-        title = typeof title === 'function' ? title(this.$store) : title
-        return title || appConfig.title
-      }
+      // titleTemplate(title) {
+      //   title = typeof title === 'function' ? title(this.$store) : title
+      //   return title || appConfig.title
+      // }
     }
   }
 </script>
