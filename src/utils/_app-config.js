@@ -1,5 +1,7 @@
 const version = ``
 module.exports = {
-  api: 'https://zhidian-api.jkweixin.net' + version,
-  upload: 'https://zhidian-api.jkweixin.net' + version
+  app: '赞播平台',
+  env: 'production',
+  api: 'https://zhidian-api.jkweixin.com' + version,
+  upload: 'https://zhidian-api.jkweixin.com' + version
 }
