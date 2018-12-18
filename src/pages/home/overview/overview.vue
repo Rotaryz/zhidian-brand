@@ -128,7 +128,7 @@
     },
     data() {
       return {
-        pieData: new Array(4).fill({text:'', value: 0}),
+        pieData: [{name:'请选择店铺', value: 0}],
         ationLine: {
           x: new Array(7).fill(0),
           y: new Array(7).fill(0)
@@ -169,7 +169,7 @@
         tabNumber: 0,
         pieHint: PIEHINT,
         successHint: SUCCESSHINT,
-        merchantName: '请选择您要查看的店铺'
+        merchantName: '请选择店铺'
       }
     },
     watch: {
@@ -622,6 +622,7 @@
           this.$loading.hide()
           if (res.error === ERR_OK) {
             this.pieData = res.data
+            console.log(this.pieData)
             this.drawPie()
           } else {
             this.$refs.toast.show(res.message)
