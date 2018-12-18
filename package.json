@@ -24,7 +24,7 @@
     "test": "run-s test:unit test:e2e",
     "test:ci": "run-s test:unit:ci test:e2e",
     "new": "hygen new",
-    "tt": "node create-config/exe.js"
+    "tt": "node _config/index.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
