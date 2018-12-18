@@ -1,6 +1,5 @@
 const env = process.env
 const version = ``
-
 const LOCAL_URL = {
   api: 'http://local.com'
 }
