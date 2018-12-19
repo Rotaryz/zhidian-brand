@@ -81,5 +81,6 @@ function _resolveBranchPath(branch, argv) {
       ENV[key] && (envPath = ENV[key])
     })
   }
-  return appPath + envPath
+  let filePath = path.join('' + appPath ,''  +envPath)
+  return '' + filePath
 }
