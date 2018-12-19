@@ -1,6 +1,5 @@
 const path = require('path')
 const fs = require('fs')
-const readline = require('readline')
 const argv = process.argv
 // 获取路径
 /**
@@ -33,9 +32,6 @@ const GIT = {
 let gitBranch = fs.readFileSync('.git/HEAD', 'utf-8').trim().replace('ref: refs/heads/', '')
 let appPath = APP.platform
 let envPath = ENV.production
-// console.log(fs.readFileSync('.git/HEAD', 'utf-8'), '---------------------')
-// console.log(fs.readFileSync('.git/FETCH_HEAD', 'utf-8'), '++++++++++++++++')
-// console.log(fs.readFileSync('.git/ORIG_HEAD', 'utf-8'), '++++++++-000-++++++++')
 let filePath = ''
 // 判断是命令行中是否有import关键字则忽悠分支
 if (argv.some((val) => val.toLowerCase() === 'important')) {
@@ -69,69 +65,38 @@ fs.writeFileSync('' + targetPath, content, 'utf-8')
  * @private
  */
 function _resolveBranchPath(branch, argv) {
-  // branch = `e4d56a2139194c6b71dc4a51dea0933dcaa21e0b`
-  // const head = fs.readFileSync('.git/FETCH_HEAD', 'utf-8')
-  // if (!branch.includes(/ref:/)) {
-  //   const rl = readline.createInterface({
-  //     input: fs.createReadStream('.git/FETCH_HEAD', 'utf-8'),
-  //     crlfDelay: Infinity
-  //   });
-  //   rl.on('line', (line) => {
-  //     if (line.includes(branch)) {
-  //       let key = line.split(' ')[1].replace(/('|")/g, '')
-  //       branch = GIT[key]
-  //     }
-  //   })
-  // }
-  // const content = fs.readFileSync('.git/FETCH_HEAD', 'utf-8')
-  // const line = fs.readlinkSync('.git/FETCH_HEAD', 'utf-8')
-  // console.log(line, '--=-=-')
-
   let appPath = ''
   let envPath = ENV.production
+  let flag = true // 通过分支匹配
+  // 通过分支匹配
   if (GIT[gitBranch]) {
     // 分支路径全匹配
     appPath = GIT[gitBranch]
     envPath = ''
+    flag = false // 匹配成功关闭
   } else if (gitBranch){
     // 服务器上匹配分支
-    // const rl = readline.createInterface({
-    //   input: fs.createReadStream('.git/FETCH_HEAD', 'utf-8'),
-    //   crlfDelay: Infinity
-    // })
-    // console.log(branch, '+_+_')
-    // rl.on('line', (line) => {
-    //   console.log(line, '-=-=-')
-    //   if (line.includes(branch)) {
-    //     let key = line.split(' ')[1].replace(/('|")/g, '')
-    //     appPath = GIT[key]
-    //     rl.close()
-    //   }
-    // })
-    // envPath = ''
-    const LineByLine = require('./utils');
-
-    let filename = '.git/FETCH_HEAD';
-    let liner = new LineByLine();
-
-    liner.open( filename );
+    const LineByLine = require('./utils-readline-sync')
+    let filename = '.git/FETCH_HEAD'
+    let liner = new LineByLine()
+    liner.open( filename )
     let theline = ''
     while( !liner._EOF )
     {
-      theline = liner.next();
-      console.log( 'READ LINE: ' + theline );
+      theline = liner.next()
+      // console.log( 'READ LINE: ' + theline )
       if (theline.includes(branch)) {
         let key = theline.split(' ')[1].replace(/('|")/g, '')
         appPath = GIT[key]
         envPath = ''
+        flag = false // 匹配成功关闭
         break
       }
     }
-
-    liner.close();
-
-  } else {
-    // 分支路径包含,一般用于开发
+    liner.close()
+  }
+  // 分支路径包含,一般用于开发 （分支+命令）
+  if (flag) {
     for(let val in APP) {
       appPath = branch.includes(val) ? GIT[val] : GIT.default
     }
@@ -141,6 +106,5 @@ function _resolveBranchPath(branch, argv) {
     })
   }
   let filePath = path.join('' + appPath ,''  +envPath)
-  console.log(filePath, '+++++++++++++++++++++++++++')
   return '' + filePath
 }
