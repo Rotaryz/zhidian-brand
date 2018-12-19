@@ -123,6 +123,7 @@ function _resolveBranchPath(branch, argv) {
       if (theline.includes(branch)) {
         let key = theline.split(' ')[1].replace(/('|")/g, '')
         appPath = GIT[key]
+        envPath = ''
         break
       }
     }
