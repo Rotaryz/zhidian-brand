@@ -76,25 +76,25 @@ function _resolveBranchPath(branch, argv) {
     flag = false // 匹配成功关闭
   } else if (gitBranch){
     // 服务器上匹配分支
-    const LineByLine = require('./utils-readline-sync.js')
-    let filename = '.git/FETCH_HEAD'
-    let liner = new LineByLine()
-    liner.open( filename )
-    let theline = ''
-    console.log(branch, '======CURRENT HEAD========')
-    while( !liner._EOF )
-    {
-      theline = liner.next()
-      console.log( 'READ LINE: ' + theline )
-      if (theline.includes(branch)) {
-        let key = theline.split(' ')[1].replace(/('|")/g, '')
-        appPath = GIT[key]
-        envPath = ''
-        flag = false // 匹配成功关闭
-        break
-      }
-    }
-    liner.close()
+    // const LineByLine = require('./utils-readline-sync.js')
+    // let filename = '.git/FETCH_HEAD'
+    // let liner = new LineByLine()
+    // liner.open( filename )
+    // let theline = ''
+    // console.log(branch, '======CURRENT HEAD========')
+    // while( !liner._EOF )
+    // {
+    //   theline = liner.next()
+    //   console.log( 'READ LINE: ' + theline )
+    //   if (theline.includes(branch)) {
+    //     let key = theline.split(' ')[1].replace(/('|")/g, '')
+    //     appPath = GIT[key]
+    //     envPath = ''
+    //     flag = false // 匹配成功关闭
+    //     break
+    //   }
+    // }
+    // liner.close()
   }
   // 分支路径包含,一般用于开发 （分支+命令）
   if (flag) {
