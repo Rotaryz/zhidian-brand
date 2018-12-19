@@ -1,23 +1,29 @@
 <template>
   <div class="share-card">
-    <div class="card-con"></div>
-    <div class="card-main">
-      <div class="main-con">
-        <div class="title">{{name}}</div>
-        <img src="./pic-myshop@2x.png" alt="" class="title-img">
-        <img :src="avatar" alt="" class="avatar-img">
-        <img :src="qrCodeUrl" alt="" class="avatar-card">
-        <div class="qr-code-text">长按识别二维码</div>
+    <scroll>
+      <div class="card-con"></div>
+      <div class="card-main">
+        <div class="main-con">
+          <div class="title">{{name}}</div>
+          <img src="./pic-myshop@2x.png" alt="" class="title-img">
+          <img :src="avatar" alt="" class="avatar-img">
+          <img :src="qrCodeUrl" alt="" class="avatar-card">
+          <div class="qr-code-text">长按识别二维码</div>
+        </div>
       </div>
-    </div>
+    </scroll>
   </div>
 </template>
 
 <script>
   import API from '@api'
+  import Scroll from '@components/scroll/scroll'
 
   export default {
     name: 'ShareCard',
+    components: {
+      Scroll
+    },
     page: {
       title: '店铺二维码'
     },
