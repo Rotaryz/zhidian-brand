@@ -89,6 +89,8 @@
           bottom :0
           layout()
           .c-top
+            width: 100%
+            overflow: hidden
             padding-top :13.5px
             height :14.492753623188406vw
             layout(row,block,nowrap)
@@ -98,13 +100,16 @@
               padding :0 10px
               border-radius :100%
               object-fit :cover
+              display: block
             .middle
               flex:1
+              overflow :hidden
               color: #27273E
-              layout()
+              display: flex
+              flex-direction: column
               margin :5px 0
               justify-content :space-between
-              overflow :hidden
+
               .m-top
                 font-family: PingFangSC-Medium
                 font-size: 16px
