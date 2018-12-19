@@ -25,5 +25,6 @@
 //       : env.NODE_ENV === 'development'
 //         ? DEV_URL
 //         : LOCAL_URL
-export const BASE_URL = require('./_app-config')
+import APP_CONFIG from './_app-config'
 export const ERR_OK = 0
+export const BASE_URL = APP_CONFIG
