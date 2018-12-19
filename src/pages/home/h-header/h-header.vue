@@ -82,7 +82,11 @@
         border-radius: 6px
         overflow :hidden
         .card-container
-          fill-box(absolute)
+          position :absolute
+          top:0
+          left :0
+          width :100%
+          bottom :0
           layout()
           .c-top
             padding-top :13.5px
