@@ -9,7 +9,7 @@
     <div class="data-top">
       <div class="cliten-box">
         <section class="data-number-box" style="padding-top: 0">
-          <article class="data-tab-container border-bottom-1px">
+          <div class="data-tab-container border-bottom-1px">
             <nav class="data-tab-wrapper">
               <div v-for="(item, index) in tabList" :key="index" class="tab"
                    :class="tabNumber === index ? 'active' : '' " @click="getAllTab(item, index)"
@@ -19,7 +19,7 @@
                 <li class="line"></li>
               </ul>
             </nav>
-          </article>
+          </div>
           <div class="data-list">
             <div class="list-box">
               <div class="number">{{allDatas.customer_total || 0}}</div>
@@ -722,6 +722,7 @@
     background :#fff
     padding :0 63px
     .data-tab-wrapper
+      width: 100%
       height :45px
       background :#fff
       layout(row,block,nowrap)
