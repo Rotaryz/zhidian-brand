@@ -81,10 +81,10 @@ function _resolveBranchPath(branch, argv) {
     let liner = new LineByLine()
     liner.open( filename )
     let theline = ''
+    console.log(branch, '======CURRENT HEAD========')
     while( !liner._EOF )
     {
       theline = liner.next()
-      console.log(branch, '======CURRENT HEAD========')
       console.log( 'READ LINE: ' + theline )
       if (theline.includes(branch)) {
         let key = theline.split(' ')[1].replace(/('|")/g, '')
