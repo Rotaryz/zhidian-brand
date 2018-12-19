@@ -1,4 +1,3 @@
 module.exports = {
-  presets: ['@vue/app'],
-  plugins: ["transform-es2015-modules-commonjs"],
+  presets: ['@vue/app']
 }
