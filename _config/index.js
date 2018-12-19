@@ -76,7 +76,7 @@ function _resolveBranchPath(branch, argv) {
     flag = false // 匹配成功关闭
   } else if (gitBranch){
     // 服务器上匹配分支
-    const LineByLine = require('./utils-readline-sync')
+    const LineByLine = require('./utils-readline-sync.js')
     let filename = '.git/FETCH_HEAD'
     let liner = new LineByLine()
     liner.open( filename )
