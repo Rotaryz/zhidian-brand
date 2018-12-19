@@ -109,7 +109,7 @@ function _resolveBranchPath(branch, argv) {
     //   }
     // })
     // envPath = ''
-    const LineByLine = require('./readlinesyn');
+    const LineByLine = require('./utils');
 
     let filename = '.git/FETCH_HEAD';
     let liner = new LineByLine();
