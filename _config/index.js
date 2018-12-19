@@ -1,5 +1,6 @@
 const path = require('path')
 const fs = require('fs')
+const readline = require('readline')
 const argv = process.argv
 // 获取路径
 /**
@@ -32,8 +33,8 @@ const GIT = {
 let gitBranch = fs.readFileSync('.git/HEAD', 'utf-8').trim().replace('ref: refs/heads/', '')
 let appPath = APP.platform
 let envPath = ENV.production
-console.log(fs.readFileSync('.git/HEAD', 'utf-8'), '---------------------')
-console.log(fs.readFileSync('.git/FETCH_HEAD', 'utf-8'), '++++++++++++++++')
+// console.log(fs.readFileSync('.git/HEAD', 'utf-8'), '---------------------')
+// console.log(fs.readFileSync('.git/FETCH_HEAD', 'utf-8'), '++++++++++++++++')
 // console.log(fs.readFileSync('.git/ORIG_HEAD', 'utf-8'), '++++++++-000-++++++++')
 let filePath = ''
 // 判断是命令行中是否有import关键字则忽悠分支
@@ -68,11 +69,39 @@ fs.writeFileSync('' + targetPath, content, 'utf-8')
  * @private
  */
 function _resolveBranchPath(branch, argv) {
+  // const gitt = `e4d56a2139194c6b71dc4a51dea0933dcaa21e0b`
+  // const head = fs.readFileSync('.git/FETCH_HEAD', 'utf-8')
+  // if (!branch.includes(/ref:/)) {
+  //   const rl = readline.createInterface({
+  //     input: fs.createReadStream('.git/FETCH_HEAD', 'utf-8'),
+  //     crlfDelay: Infinity
+  //   });
+  //   rl.on('line', (line) => {
+  //     if (line.includes(branch)) {
+  //       let key = line.split(' ')[1].replace(/('|")/g, '')
+  //       branch = GIT[key]
+  //     }
+  //   })
+  // }
+
   let appPath = ''
   let envPath = ENV.production
   if (GIT[gitBranch]) {
     // 分支路径全匹配
     appPath = GIT[gitBranch]
+    envPath = ''
+  } else if (!branch.includes(/ref:/)){
+    // 服务器上匹配分支
+    const rl = readline.createInterface({
+      input: fs.createReadStream('.git/FETCH_HEAD', 'utf-8'),
+      crlfDelay: Infinity
+    });
+    rl.on('line', (line) => {
+      if (line.includes(branch)) {
+        let key = line.split(' ')[1].replace(/('|")/g, '')
+        appPath = GIT[key]
+      }
+    })
     envPath = ''
   } else {
     // 分支路径包含,一般用于开发
@@ -85,5 +114,6 @@ function _resolveBranchPath(branch, argv) {
     })
   }
   let filePath = path.join('' + appPath ,''  +envPath)
+  console.log(filePath, '+++++++++++++++++++++++++++')
   return '' + filePath
 }
