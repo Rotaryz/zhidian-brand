@@ -98,13 +98,16 @@
               padding :0 10px
               border-radius :100%
               object-fit :cover
+              display: block
             .middle
               flex:1
+              overflow :hidden
               color: #27273E
-              layout()
+              display: flex
+              flex-direction: column
               margin :5px 0
               justify-content :space-between
-              overflow :hidden
+
               .m-top
                 font-family: PingFangSC-Medium
                 font-size: 16px
