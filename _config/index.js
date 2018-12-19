@@ -69,7 +69,7 @@ fs.writeFileSync('' + targetPath, content, 'utf-8')
  * @private
  */
 function _resolveBranchPath(branch, argv) {
-  // const gitt = `e4d56a2139194c6b71dc4a51dea0933dcaa21e0b`
+  // branch = `e4d56a2139194c6b71dc4a51dea0933dcaa21e0b`
   // const head = fs.readFileSync('.git/FETCH_HEAD', 'utf-8')
   // if (!branch.includes(/ref:/)) {
   //   const rl = readline.createInterface({
@@ -83,6 +83,9 @@ function _resolveBranchPath(branch, argv) {
   //     }
   //   })
   // }
+  // const content = fs.readFileSync('.git/FETCH_HEAD', 'utf-8')
+  // const line = fs.readlinkSync('.git/FETCH_HEAD', 'utf-8')
+  // console.log(line, '--=-=-')
 
   let appPath = ''
   let envPath = ENV.production
@@ -92,19 +95,40 @@ function _resolveBranchPath(branch, argv) {
     envPath = ''
   } else if (gitBranch){
     // 服务器上匹配分支
-    const rl = readline.createInterface({
-      input: fs.createReadStream('.git/FETCH_HEAD', 'utf-8'),
-      crlfDelay: Infinity
-    })
-    console.log(branch, '+_+_')
-    rl.on('line', (line) => {
-      console.log(line, '-=-=-')
-      if (line.includes(branch)) {
-        let key = line.split(' ')[1].replace(/('|")/g, '')
+    // const rl = readline.createInterface({
+    //   input: fs.createReadStream('.git/FETCH_HEAD', 'utf-8'),
+    //   crlfDelay: Infinity
+    // })
+    // console.log(branch, '+_+_')
+    // rl.on('line', (line) => {
+    //   console.log(line, '-=-=-')
+    //   if (line.includes(branch)) {
+    //     let key = line.split(' ')[1].replace(/('|")/g, '')
+    //     appPath = GIT[key]
+    //     rl.close()
+    //   }
+    // })
+    // envPath = ''
+    const LineByLine = require('./readlinesyn');
+
+    let filename = '.git/FETCH_HEAD';
+    let liner = new LineByLine();
+
+    liner.open( filename );
+    let theline = ''
+    while( !liner._EOF )
+    {
+      theline = liner.next();
+      console.log( 'READ LINE: ' + theline );
+      if (theline.includes(branch)) {
+        let key = theline.split(' ')[1].replace(/('|")/g, '')
         appPath = GIT[key]
+        break
       }
-    })
-    envPath = ''
+    }
+
+    liner.close();
+
   } else {
     // 分支路径包含,一般用于开发
     for(let val in APP) {
