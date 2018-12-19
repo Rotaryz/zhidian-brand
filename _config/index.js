@@ -32,6 +32,7 @@ const GIT = {
 let gitBranch = fs.readFileSync('.git/HEAD', 'utf-8').trim().replace('ref: refs/heads/', '')
 let appPath = APP.platform
 let envPath = ENV.production
+let filePath = ''
 // 判断是命令行中是否有import关键字则忽悠分支
 if (argv.some((val) => val.toLowerCase() === 'important')) {
   // 根据命令行定义文件路径
@@ -40,12 +41,13 @@ if (argv.some((val) => val.toLowerCase() === 'important')) {
     APP[key] && (appPath = APP[key])
     ENV[key] && (envPath = ENV[key])
   })
+  // 路径名称
+  filePath = path.join(__dirname,'' + appPath, '' + envPath)
 } else {
   // 根据分支确定文件路径
-  [appPath, envPath] = _resolveBranchPath(gitBranch, argv)
+  filePath = _resolveBranchPath(gitBranch, argv)
 }
 // 写文件
-const filePath = path.join(__dirname,'' + appPath, '' + envPath)
 const targetPath = path.resolve('src/utils/_app-config.js')
 const content = fs.readFileSync(filePath, 'utf-8')
 try {
@@ -79,5 +81,5 @@ function _resolveBranchPath(branch, argv) {
       ENV[key] && (envPath = ENV[key])
     })
   }
-  return [appPath, envPath]
+  return appPath + envPath
 }
