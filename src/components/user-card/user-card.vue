@@ -127,6 +127,7 @@
         justify-content: space-around
         padding-right: 15px
         flex: 1
+        overflow :hidden
         .info-box
           font-family: $font-family-regular
           font-size: $font-size-16
@@ -137,6 +138,8 @@
             font-size: $font-size-16
             color: #20202E
             font-family: $font-family-regular
+            width :30%
+            no-wrap()
           .sale-power
             font-size: $font-size-20
             font-family: $font-family-bold

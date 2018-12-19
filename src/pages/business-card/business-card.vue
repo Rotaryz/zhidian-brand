@@ -82,6 +82,8 @@
         font-family: $font-family-medium
         font-size: $font-size-18
         color: #20202E
+        no-wrap()
+        width :90%
       .title-img
         display: block
         width: 175px

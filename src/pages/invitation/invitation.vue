@@ -76,8 +76,11 @@
         font-size: 16px
         color: #FFFFFF
         letter-spacing: 0.6px
-        text-align: center
         padding-top: 15vw
+        no-wrap-plus()
+        word-break :break-all
+        text-align :justify
+        margin :0 15px
       .qr-code
         width: 60vw
         height: @width
