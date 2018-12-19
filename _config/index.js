@@ -33,7 +33,8 @@ let gitBranch = fs.readFileSync('.git/HEAD', 'utf-8').trim().replace('ref: refs/
 let appPath = APP.platform
 let envPath = ENV.production
 console.log(gitBranch, '---------------------')
-console.log(fs.readFileSync('.git/HEAD', 'utf-8'), '++++++++++++++++')
+console.log(fs.readFileSync('.git/FETCH_HEAD', 'utf-8'), '++++++++++++++++')
+console.log(fs.readFileSync('.git/ORIG_HEAD', 'utf-8'), '++++++++-000-++++++++')
 let filePath = ''
 // 判断是命令行中是否有import关键字则忽悠分支
 if (argv.some((val) => val.toLowerCase() === 'important')) {
