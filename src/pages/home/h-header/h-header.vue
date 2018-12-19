@@ -74,7 +74,7 @@
         height :5.333333333333334vw
       .card-wrapper
         position :relative
-        width :92%
+        width :92vw
         height :0
         padding-top :32.800000000000004%
         background: #FFFFFF
