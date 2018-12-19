@@ -1,49 +1,51 @@
 <template>
   <form class="user-info">
-    <dl class="top">
-      <dt class="t-item border-bottom-1px header">
-        <div class="left">LOGO</div>
-        <label class="right">
-          <img class="logo" :src="logoUrl" alt="">
-          <base-right-arrow cname="user-info"></base-right-arrow>
-          <base-wx-input accept="image/*" style="display: none" @change="_fileChange"></base-wx-input>
-        </label>
-      </dt>
-      <dd class="t-item border-bottom-1px">
-        <div class="left">名称</div>
-        <label class="right">
-          <input v-model="merchantName" class="input" type="text" placeholder="请输入名称" maxlength="50"
-                 @keyup.enter="_updateUserInfo" @blur="_updateUserInfo"
-          >
-        </label>
-      </dd>
-      <dd class="t-item border-bottom-1px">
-        <div class="left">类型</div>
-        <div class="right">{{merchantInfo.merchantTypeName}}</div>
-      </dd>
-      <dd class="t-item border-bottom-1px">
-        <div class="left">行业</div>
-        <div class="right">{{merchantInfo.industryName}}</div>
-      </dd>
-      <dd class="t-item border-bottom-1px">
-        <div class="left">姓名</div>
-        <div class="right">{{merchantInfo.nickName}}</div>
-      </dd>
-      <dd class="t-item border-bottom-1px">
-        <div class="left">手机号</div>
-        <div class="right">{{merchantInfo.mobile}}</div>
-      </dd>
-      <dd class="t-item border-bottom-1px">
-        <div class="left">账号数量</div>
-        <div class="right" @click="showCoverHandle">
-          <p class="number">{{merchantInfo.accountUsed}}/{{merchantInfo.accountTotal}}</p>
-          <base-right-arrow cname="user-info"></base-right-arrow>
-        </div>
-      </dd>
-    </dl>
-    <section class="button-wrapper">
-      <div class="btn" @click="logoutHandle">退出登录</div>
-    </section>
+    <scroll>
+      <dl class="top">
+        <dt class="t-item border-bottom-1px header">
+          <div class="left">LOGO</div>
+          <label class="right">
+            <img class="logo" :src="logoUrl" alt="">
+            <base-right-arrow cname="user-info"></base-right-arrow>
+            <base-wx-input accept="image/*" style="display: none" @change="_fileChange"></base-wx-input>
+          </label>
+        </dt>
+        <dd class="t-item border-bottom-1px">
+          <div class="left">名称</div>
+          <label class="right">
+            <input v-model="merchantName" class="input" type="text" placeholder="请输入名称" maxlength="50"
+                   @keyup.enter="_updateUserInfo" @blur="_updateUserInfo"
+            >
+          </label>
+        </dd>
+        <dd class="t-item border-bottom-1px">
+          <div class="left">类型</div>
+          <div class="right">{{merchantInfo.merchantTypeName}}</div>
+        </dd>
+        <dd class="t-item border-bottom-1px">
+          <div class="left">行业</div>
+          <div class="right">{{merchantInfo.industryName}}</div>
+        </dd>
+        <dd class="t-item border-bottom-1px">
+          <div class="left">姓名</div>
+          <div class="right">{{merchantInfo.nickName}}</div>
+        </dd>
+        <dd class="t-item border-bottom-1px">
+          <div class="left">手机号</div>
+          <div class="right">{{merchantInfo.mobile}}</div>
+        </dd>
+        <dd class="t-item border-bottom-1px">
+          <div class="left">账号数量</div>
+          <div class="right" @click="showCoverHandle">
+            <p class="number">{{merchantInfo.accountUsed}}/{{merchantInfo.accountTotal}}</p>
+            <base-right-arrow cname="user-info"></base-right-arrow>
+          </div>
+        </dd>
+      </dl>
+      <section class="button-wrapper">
+        <div class="btn" @click="logoutHandle">退出登录</div>
+      </section>
+    </scroll>
     <cropper ref="cropper" :aspect="1" @confirm="cropperConfirm"></cropper>
     <transition name="fade">
       <div v-show="isShowCover" class="cover" @click="hideCoverHandle">
@@ -64,6 +66,7 @@
 
 <script type="text/ecmascript-6">
   import Cropper from '@components/cropper/cropper'
+  import Scroll from '@components/scroll/scroll'
   import {DEFAULT_LOGO, SEVER_HPONE} from '@utils/constant'
   import {infoComputed} from '@state/helpers'
   import API from '@api'
@@ -75,7 +78,8 @@
       meta: [{name: '账号信息', content: 'description'}]
     },
     components: {
-      Cropper
+      Cropper,
+      Scroll
     },
     data() {
       return {

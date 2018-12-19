@@ -622,7 +622,6 @@
           this.$loading.hide()
           if (res.error === ERR_OK) {
             this.pieData = res.data
-            console.log(this.pieData)
             this.drawPie()
           } else {
             this.$refs.toast.show(res.message)
