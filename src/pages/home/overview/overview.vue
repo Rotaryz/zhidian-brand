@@ -741,6 +741,7 @@
           color: $color-main
       .line-wrapper
         position :absolute
+        left: 0
         bottom :0
         width :25%
         height :3px
