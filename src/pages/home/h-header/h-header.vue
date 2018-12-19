@@ -89,6 +89,8 @@
           bottom :0
           layout()
           .c-top
+            width: 100%
+            overflow: hidden
             padding-top :13.5px
             height :14.492753623188406vw
             layout(row,block,nowrap)
