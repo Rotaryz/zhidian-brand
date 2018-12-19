@@ -1,3 +1,4 @@
+
 <template>
   <div class="invitation">
     <div class="scroll-main">
