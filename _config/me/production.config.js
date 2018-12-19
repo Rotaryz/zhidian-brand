@@ -1,5 +1,5 @@
 const version = ``
-module.exports = {
+export default {
   app: 'ME时代',
   env: 'production',
   api: 'https://zhidian-me-era-api.jkweixin.com' + version,

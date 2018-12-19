@@ -1,5 +1,5 @@
 const version = ``
-module.exports = {
+export default {
   app: 'ME时代',
   env: 'dev',
   api: 'https://zhidian-me-api.jerryf.cn' + version,

@@ -1,5 +1,6 @@
 import storage from 'storage-controller'
 import APP_CONFIG from './_app-config'
+// const APP_CONFIG = require('./_app-config')
 const APP_ENV = process.env.NODE_ENV
 // 清理缓存
 function envClear() {

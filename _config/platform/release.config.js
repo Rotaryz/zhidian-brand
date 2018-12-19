@@ -1,5 +1,5 @@
 const version = ``
-module.exports = {
+export default {
   app: '赞播平台',
   env: 'release',
   api: 'https://zhidian-api.jkweixin.net' + version,
