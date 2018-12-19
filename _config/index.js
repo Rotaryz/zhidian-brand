@@ -84,7 +84,8 @@ function _resolveBranchPath(branch, argv) {
     while( !liner._EOF )
     {
       theline = liner.next()
-      // console.log( 'READ LINE: ' + theline )
+      console.log(branch, '---------')
+      console.log( 'READ LINE: ' + theline )
       if (theline.includes(branch)) {
         let key = theline.split(' ')[1].replace(/('|")/g, '')
         appPath = GIT[key]
