@@ -26,6 +26,5 @@
 //         ? DEV_URL
 //         : LOCAL_URL
 import APP_CONFIG from './_app-config'
-// const APP_CONFIG = require('./_app-config')
-export const ERR_OK = 0
 export const BASE_URL = APP_CONFIG
+export const ERR_OK = 0
