@@ -11,7 +11,7 @@
     "prod": "vue-cli-service serve --mode production",
     "build": "vue-cli-service build --modern",
     "build:dev": "vue-cli-service build --mode development",
-    "build:release": "vue-cli-service build --mode release",
+    "build:release": "npm run init && vue-cli-service build --mode release",
     "build:prod": "vue-cli-service build --mode production",
     "build:ci": "vue-cli-service build --report",
     "lint": "run-s lint:all:*",
