@@ -60,10 +60,12 @@
   @import "~@design"
 
   .action-sheet
-    fill-box()
+    fill-box(fixed)
+    height :100vh
     z-index: 200
     .mask
-      fill-box()
+      fill-box(fixed)
+      height :100%
       background-color: #20202E
       opacity: 0.8
     .sheet-box
