@@ -86,12 +86,11 @@ function _resolveBranchPath(branch, argv) {
 
   let appPath = ''
   let envPath = ENV.production
-  let serverGitBranchFlag = !branch.includes(/ref:/)
   if (GIT[gitBranch]) {
     // 分支路径全匹配
     appPath = GIT[gitBranch]
     envPath = ''
-  } else if (serverGitBranchFlag){
+  } else if (gitBranch){
     // 服务器上匹配分支
     const rl = readline.createInterface({
       input: fs.createReadStream('.git/FETCH_HEAD', 'utf-8'),
