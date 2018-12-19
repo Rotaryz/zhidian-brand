@@ -80,6 +80,7 @@
         background: #FFFFFF
         box-shadow: 0 8px 20px 0 rgba(39,39,39,0.06)
         border-radius: 6px
+        overflow :hidden
         .card-container
           fill-box(absolute)
           layout()
@@ -96,7 +97,6 @@
             .middle
               flex:1
               color: #27273E
-              line-height :1
               layout()
               margin :5px 0
               justify-content :space-between
