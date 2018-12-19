@@ -95,8 +95,10 @@ function _resolveBranchPath(branch, argv) {
     const rl = readline.createInterface({
       input: fs.createReadStream('.git/FETCH_HEAD', 'utf-8'),
       crlfDelay: Infinity
-    });
+    })
+    console.log(branch, '+_+_')
     rl.on('line', (line) => {
+      console.log(line, '-=-=-')
       if (line.includes(branch)) {
         let key = line.split(' ')[1].replace(/('|")/g, '')
         appPath = GIT[key]
