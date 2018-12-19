@@ -18,12 +18,12 @@
           <ul class="c-bottom">
             <router-link tag="li" to="/home/shop-detail" class="b-item">
               <div class="icon detail"></div>
-              <p>新建店铺</p>
+              <span>新建店铺</span>
             </router-link>
             <li class="line"></li>
             <router-link tag="li" to="/home/shop-list" class="b-item">
               <div class="icon list"></div>
-              <p>全部店铺</p>
+              <span>全部店铺</span>
             </router-link>
           </ul>
         </div>
