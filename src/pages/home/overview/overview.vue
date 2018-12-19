@@ -725,11 +725,11 @@
       width: 100%
       height :45px
       background :#fff
-      layout(row,block,nowrap)
+      display: flex
       position:relative
       .tab
         flex:1
-        layout()
+        display: flex
         justify-content :center
         align-items : center
         font-family: PingFangSC-Medium;
