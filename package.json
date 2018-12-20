@@ -42,8 +42,7 @@
     "weixin-js-sdk": "^1.4.0-test"
   },
   "pre-commit": [
-    "check:appconfig",
-    "lint-staged"
+    "check:appconfig"
   ],
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.2.0",
@@ -74,5 +73,9 @@
     "vue-jest": "2.6.x",
     "vue-template-compiler": "^2.5.17"
   },
-  "gitHooks": {}
+  "gitHooks": {
+    "pre-commit": [
+      "lint-staged"
+    ]
+  }
 }
