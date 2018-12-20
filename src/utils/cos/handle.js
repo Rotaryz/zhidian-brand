@@ -108,3 +108,21 @@ export function createFormData($Blob, type = 'image/jpeg') {
   formData.append('file', $Blob, 'file_' + Date.now() + imageExt)
   return formData
 }
+
+// 创建文件名
+export function createFileName(fileType) {
+  fileType = fileType ? fileType.replace('jgp', 'jpeg') : '.png'
+  let extend = (~~(Math.random() * 1000) + '').padStart(4, '0')
+  return Date.now() + '-' + extend + fileType.replace('image/', '.')
+}
+
+export function checkFileSize(fileSize = 0) {
+  const maxSize = 1024 * 1024 * 10
+  if (fileSize > maxSize) {
+    return {
+      error: 1,
+      message: '上传图片大小不能大于10MB'
+    }
+  }
+}
+
