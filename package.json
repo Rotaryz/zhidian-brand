@@ -24,7 +24,8 @@
     "test": "run-s test:unit test:e2e",
     "test:ci": "run-s test:unit:ci test:e2e",
     "new": "hygen new",
-    "init": "node _config/index.js"
+    "init": "node _config/index.js",
+    "check": "node _config/check.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
