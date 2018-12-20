@@ -24,7 +24,8 @@
     "test": "run-s test:unit test:e2e",
     "test:ci": "run-s test:unit:ci test:e2e",
     "new": "hygen new",
-    "init": "node _config/index.js"
+    "init": "node _config/index.js",
+    "check:appconfig": "node _config/check.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -40,6 +41,9 @@
     "vuex": "^3.0.1",
     "weixin-js-sdk": "^1.4.0-test"
   },
+  "pre-commit": [
+    "check:appconfig"
+  ],
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.2.0",
     "@vue/cli-plugin-e2e-cypress": "^3.2.0",
@@ -61,6 +65,7 @@
     "lint-staged": "8.0.x",
     "listr": "^0.14.2",
     "npm-run-all": "4.1.x",
+    "pre-commit": "^1.2.2",
     "qr-image": "^3.2.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
@@ -69,6 +74,8 @@
     "vue-template-compiler": "^2.5.17"
   },
   "gitHooks": {
-    "pre-commit": "lint-staged"
+    "pre-commit": [
+      "lint-staged"
+    ]
   }
 }
