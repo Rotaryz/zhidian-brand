@@ -1,4 +1,4 @@
-const version = ``
+const version = `/v1`
 export default {
   app: '赞播平台',
   env: 'production',

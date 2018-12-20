@@ -23,7 +23,8 @@ const GIT = {
   'released': path.join(__dirname,'' + APP.platform, '' + ENV.release),
   'master': path.join(__dirname,'' + APP.platform, '' + ENV.production),
   'me': path.join(__dirname, '' + APP.me),
-  'default': path.join(__dirname, '' + APP.platform)
+  'default': path.join(__dirname, '' + APP.platform),
+  'dev_version' : ''
 }
 
 module.exports = {
