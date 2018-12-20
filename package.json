@@ -25,7 +25,7 @@
     "test:ci": "run-s test:unit:ci test:e2e",
     "new": "hygen new",
     "init": "node _config/index.js",
-    "check": "node _config/check.js"
+    "check:appconfig": "node _config/check.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -70,6 +70,9 @@
     "vue-template-compiler": "^2.5.17"
   },
   "gitHooks": {
-    "pre-commit": "lint-staged"
+    "pre-commit": [
+      "lint-staged",
+      "check:appconfig"
+    ]
   }
 }
