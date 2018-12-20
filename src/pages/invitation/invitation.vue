@@ -78,10 +78,11 @@
         color: #FFFFFF
         letter-spacing: 0.6px
         padding-top: 15vw
-        no-wrap-plus()
+        no-wrap()
         word-break :break-all
-        text-align :justify
+        text-align :center
         margin :0 15px
+        line-height :1.6
       .qr-code
         width: 60vw
         height: @width
