@@ -67,14 +67,14 @@
         <div id="myLine"></div>
         <div class="title-box">
           <div class="title">近7日客户活跃度</div>
-          <div class="sub-title">(每小时更新)</div>
+          <!--<div class="sub-title">(每小时更新)</div>-->
         </div>
       </div>
       <div class="pie-box">
         <div id="myPie"></div>
         <div class="title-box">
           <div class="title">客户兴趣占比</div>
-          <div class="sub-title">(每小时更新)</div>
+          <!--<div class="sub-title">(每小时更新)</div>-->
         </div>
         <div class="pie-list">
           <div v-for="(item, index) in pieHint" :key="index" class="list">
@@ -87,7 +87,7 @@
         <div id="myAddLine"></div>
         <div class="title-box">
           <div class="title">近7日新增客户数</div>
-          <div class="sub-title">(每小时更新)</div>
+          <!--<div class="sub-title">(每小时更新)</div>-->
         </div>
       </div>
       <div v-if="false" class="pie-box">
@@ -622,7 +622,6 @@
           this.$loading.hide()
           if (res.error === ERR_OK) {
             this.pieData = res.data
-            console.log(this.pieData)
             this.drawPie()
           } else {
             this.$refs.toast.show(res.message)

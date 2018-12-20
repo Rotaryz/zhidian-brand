@@ -5,16 +5,16 @@
       <div class="empty"></div>
       <div class="card-wrapper">
         <div class="card-container">
-          <section class="c-top">
+          <router-link tag="section" to="/home/user-info" class="c-top">
             <img class="logo" :src="merchantInfo.logoUrl" alt="">
             <article class="middle">
               <div class="m-top">{{merchantInfo.merchantName}}</div>
               <div class="m-bottom">账号数量：{{merchantInfo.accountUsed}}/{{merchantInfo.accountTotal}}</div>
             </article>
-            <router-link tag="div" to="/home/user-info" class="right">
+            <div class="right">
               <base-right-arrow cname="home"></base-right-arrow>
-            </router-link>
-          </section>
+            </div>
+          </router-link>
           <ul class="c-bottom">
             <router-link tag="li" to="/home/shop-detail" class="b-item">
               <div class="icon detail"></div>

@@ -88,6 +88,14 @@
       },
       // 提交
       submitHandle() {
+        if (!this.nameReg) {
+          this.$toast.show('请输入正确的姓名')
+          return
+        }
+        if (!this.mobileReg) {
+          this.$toast.show('请输入正确的手机号')
+          return
+        }
         this.storeId ? this._editor() : this._create()
       },
       _create() {
