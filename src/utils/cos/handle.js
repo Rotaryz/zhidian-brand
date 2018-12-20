@@ -111,7 +111,9 @@ export function createFormData($Blob, type = 'image/jpeg') {
 
 // 创建文件名
 export function createFileName(fileType) {
-  return Date.now() + '-' + (~~(Math.random() * 1000) + '').padStart(4, '0') + ((fileType && fileType.replace('image/', '.')) || '.png')
+  fileType = fileType ? fileType.replace('jgp', 'jpeg') : '.png'
+  let extend = (~~(Math.random() * 1000) + '').padStart(4, '0')
+  return Date.now() + '-' + extend + fileType.replace('image/', '.')
 }
 
 export function checkFileSize(fileSize = 0) {
