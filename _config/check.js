@@ -1,3 +1,6 @@
+require('babel-register')
+import tttt from '../src/utils/_app-config'
+console.log(tttt)
 const fs = require('fs')
 const path = require('path')
 const {GIT} = require('./constant')
