@@ -6,6 +6,7 @@
   import wx from 'weixin-js-sdk'
   import API from '@api'
   import {mapActions, mapGetters} from 'vuex'
+  import {createFileName} from '@utils/cos/handle'
 
   const COMPONENT_NAME = 'BASE_WX_INPUT'
   const Global = API.Global
@@ -60,6 +61,7 @@
             if (this.outFileType === 'file') {
               base64Arr.forEach((b64) => {
                 let file = this.dataURLtoFile(b64)
+                alert(JSON.stringify(file))
                 arr.push(file)
               })
             } else {
@@ -103,6 +105,7 @@
       },
       // base64转file类型
       dataURLtoFile(base64, filename, fileType = 'image/jpeg') {
+        alert(base64)
         let bstr
         if (/base64/.test(base64)) {
           let arr = []
@@ -117,7 +120,7 @@
         while (n--) {
           u8arr[n] = bstr.charCodeAt(n)
         }
-        filename = Date.now() + '-' + Math.random() + (fileType || '.jpeg')
+        filename = createFileName(fileType)
         return new File([u8arr], filename, {type: fileType})
       },
       // 注册api

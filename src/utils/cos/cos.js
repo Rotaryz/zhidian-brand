@@ -1,6 +1,7 @@
 import request from '@utils/request'
 import {BASE_URL} from '@utils/config'
 import storage from 'storage-controller'
+import {createFileName, checkFileSize} from '@utils/cos/handle'
 
 /**
  * 数据入库
@@ -62,7 +63,14 @@ export function uploadFiles(fileType, files, showProcess, processCallBack) {
   showProcess && showProcess()
   return new Promise((resolve, reject) => {
     let requests = files.map((file) => {
-      let Key = Date.now() + '-' + (file.name || Math.random())
+      // 检查文件大小
+      let dataObj = checkFileSize(file.size)
+      if (dataObj) {
+        return dataObj
+      }
+      // 拼装文件名称
+      let Key = createFileName(file.type)
+      alert(Key)
       return new Promise((resolve, reject) => {
         _getAuthorization({Method: 'PUT', Key: Key}, (err, info) => {
           if (err) {
