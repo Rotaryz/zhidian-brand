@@ -70,7 +70,6 @@ export function uploadFiles(fileType, files, showProcess, processCallBack) {
       }
       // 拼装文件名称
       let Key = createFileName(file.type)
-      alert(Key)
       return new Promise((resolve, reject) => {
         _getAuthorization({Method: 'PUT', Key: Key}, (err, info) => {
           if (err) {

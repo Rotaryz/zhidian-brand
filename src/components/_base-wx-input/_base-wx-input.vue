@@ -61,7 +61,6 @@
             if (this.outFileType === 'file') {
               base64Arr.forEach((b64) => {
                 let file = this.dataURLtoFile(b64)
-                alert(JSON.stringify(file))
                 arr.push(file)
               })
             } else {
@@ -105,7 +104,7 @@
       },
       // base64转file类型
       dataURLtoFile(base64, filename, fileType = 'image/jpeg') {
-        alert(base64)
+        fileType = fileType.replace(/jgp/i, 'jpeg')
         let bstr
         if (/base64/.test(base64)) {
           let arr = []
