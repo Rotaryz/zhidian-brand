@@ -39,7 +39,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import {infoComputed} from '@state/helpers'
+  import {infoComputed, infoMethods} from '@state/helpers'
   import {checkIsPhoneNumber} from '@utils/common'
   import API from '@api'
   const PAGE_NAME = 'SHOP_DETAIL'
@@ -79,6 +79,7 @@
       this._initDetailInfo()
     },
     methods: {
+      ...infoMethods,
       // 初始化数据
       _initDetailInfo() {
         Object.assign(this.$data, this.$route.query)
@@ -112,9 +113,15 @@
       },
       // 路由回退
       _routerBack() {
-        this.$emit('refresh')
-        let url = `/home/shop-list`
-        this.useReplace ? this.$router.replace(url) : this.$router.back()
+        // this.useReplace ? this.$router.replace(url) : this.$router.back()
+        if (this.useReplace) {
+          let url = `/home/shop-list`
+          this.$emit('refresh')
+          this.$router.replace(url)
+        } else {
+          this.updateMerchant('', false)
+          this.$router.back()
+        }
       }
     }
   }

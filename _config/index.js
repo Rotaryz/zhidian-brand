@@ -30,6 +30,7 @@ try {
 
 }
 fs.writeFileSync('' + targetPath, content, 'utf-8')
+console.log(content)
 
 /**
  * 根据分支名称或参数名称定义路径
