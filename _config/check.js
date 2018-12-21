@@ -23,3 +23,4 @@ function _readApi(url) {
   let version = content.match(/version.*/) ? content.match(/version.*/)[0].split('=')[1].replace(/('|"|`)/g, '').trim() : ''
   return api + version
 }
+// test -fix
