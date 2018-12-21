@@ -2,7 +2,6 @@ const path = require('path')
 const fs = require('fs')
 const {APP,ENV,GIT} = require('./constant')
 const argv = process.argv
-
 // 获取git分支
 let gitBranch = fs.readFileSync('.git/HEAD', 'utf-8').trim().replace('ref: refs/heads/', '')
 let appPath = APP.platform
