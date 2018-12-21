@@ -114,12 +114,12 @@
       // 路由回退
       _routerBack() {
         // this.useReplace ? this.$router.replace(url) : this.$router.back()
+        this.updateMerchant('', false)
         if (this.useReplace) {
           let url = `/home/shop-list`
-          this.$emit('refresh')
           this.$router.replace(url)
         } else {
-          this.updateMerchant('', false)
+          this.$emit('refresh')
           this.$router.back()
         }
       }
