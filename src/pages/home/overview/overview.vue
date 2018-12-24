@@ -186,6 +186,7 @@
         this.getAddActionLineData()
         this.getSuccessData()
         this.getAllDataObj('all')
+        this.tabNumber = 0
       }
     },
     created() {
