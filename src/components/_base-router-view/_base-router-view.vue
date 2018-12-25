@@ -26,7 +26,6 @@
     },
     methods: {
       refresh() {
-        console.log('asdadrefe')
         this.$emit('refresh', ...arguments)
       }
     }
