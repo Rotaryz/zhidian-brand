@@ -5,6 +5,7 @@ import APP_CONFIG from './_app-config'
 function envClear() {
   const env = APP_CONFIG.env + '：' + APP_CONFIG.api
   const app = APP_CONFIG.app
+  const IM_API = APP_CONFIG.imRecord
   const currentEnv = storage.get('env')
   if (env !== currentEnv && currentEnv) {
     storage.clear()
@@ -12,6 +13,7 @@ function envClear() {
   }
   console.warn('应用' + app)
   console.warn('环境：' + env)
+  console.warn('数据系统：' + IM_API)
 }
 // 检查生产环境是否配置正确
 // function checkVersion() {
@@ -20,4 +22,5 @@ function envClear() {
 //   }
 // }
 // checkVersion()
+// test
 envClear()

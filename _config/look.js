@@ -1,0 +1,5 @@
+const path = require('path')
+const fs = require('fs')
+const targetPath = path.resolve('src/utils/_app-config.js')
+const content = fs.readFileSync(targetPath, 'utf-8')
+console.log(content)
