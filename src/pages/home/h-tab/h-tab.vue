@@ -1,6 +1,6 @@
 <template>
-  <div class="h-tab">
-    <div class="h-wrapper">
+  <div class="h-tab border-bottom-1px">
+    <div class="h-wrapper ">
       <nav class="tab-wrapper">
         <ul class="line-wrapper" :style="{transform: 'translate3d(' + tabIndex*100+'%,0,0)'}">
           <li class="line"></li>
@@ -12,6 +12,7 @@
         </template>
       </nav>
     </div>
+    <!--<div style="height: 19.5px;background-color: #fff"></div>-->
   </div>
 </template>
 
@@ -50,19 +51,16 @@
   @import "~@design"
 
   .h-tab
-    padding :20px 50px
+    padding :30px 37.5px 0px
     background : $tab-background
     .h-wrapper
       position :relative
-      border-radius :6px 6px 0 0
       .tab-wrapper
         position :relative
-        height :32px
-        background :rgba(218,217,226,0.3)
-        border-radius :32px
         width :100%
         box-sizing :border-box
         layout(row,block,nowrap)
+        padding-bottom :13px
         .tab-item
           position: relative
           overflow: hidden
@@ -71,23 +69,27 @@
           layout()
           justify-content :center
           align-items :center
-          font-family: $font-family-regular
-          font-size: 16px
-          color: #27273E
-          transition :all 0s
+          font-family: $font-family-medium
+          font-size: 15px
+          color: #333
+          transition :color 0.6s
           &.active
-            color: #fff
+            color: #5929DC
       .line-wrapper
         position :absolute
         left :0
         right :0
-        height :100%
+        height :4px
+        bottom :0
         width :(100/3)%
-        border-radius :32px
         transform :translate3d(0,0,0)
         transition :all 0.3s
+        display :flex
+        align-items :center
+        justify-content :center
         .line
-          fill-box(absolute)
-          background :$color-main
-          border-radius :32px
+          width :42.5px
+          height :100%
+          background-image: linear-gradient(127deg, #953DE1 0%, #4541F9 100%);
+          border-radius: 2px;
 </style>

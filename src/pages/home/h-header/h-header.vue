@@ -56,27 +56,28 @@
 
   .h-header
     height :0
-    padding-top :42.13333333333333%
+    padding-top :38.4%
     position :relative
-    background :$color-background
+    background :#fff
+    z-index :2
     .wrapper
       fill-box(absolute)
       layout()
       align-items :center
       .bg
         position :absolute
-        height :21.866666666666667vw
+        height :34.93333333333333vw
         top:0
         left :0
         right :0
-        icon-image(bg-ppgl)
+        icon-image('bg-khxq')
       .empty
-        height :5.333333333333334vw
+        height :4vw
       .card-wrapper
         position :relative
         width :92vw
         height :0
-        padding-top :32.800000000000004%
+        padding-top :34.4%
         background: #FFFFFF
         box-shadow: 0 8px 20px 0 rgba(39,39,39,0.06)
         border-radius: 6px
@@ -85,17 +86,19 @@
           position :absolute
           top:0
           left :0
+          top:0
           width :100%
           bottom :0
           layout()
           .c-top
             width: 100%
+            flex: 1.3888888888888888
             overflow: hidden
-            padding-top :13.5px
-            height :14.492753623188406vw
+            box-sizing border-box
             layout(row,block,nowrap)
+            align-items :center
             .logo
-              width :14.492753623188406vw
+              width :14.666666666666666vw
               height :@width
               padding :0 10px
               border-radius :100%
@@ -109,13 +112,13 @@
               flex-direction: column
               margin :5px 0
               justify-content :space-between
-
               .m-top
                 font-family: PingFangSC-Medium
                 font-size: 16px
                 letter-spacing: 0.6px
                 no-wrap()
               .m-bottom
+                margin-top :10px
                 opacity: 0.8
                 font-family: PingFangSC-Regular
                 font-size: 14px
