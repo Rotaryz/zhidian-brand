@@ -1,0 +1,1129 @@
+[33mcommit 289dc168937573d704acb743f3b5cb342506e84f[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Tue Dec 25 16:33:12 2018 +0800
+
+    auto publish
+
+[33mcommit 46c604c061f819acbd0a2ea88d936236082ff2b6[m[33m ([m[1;31morigin/released[m[33m, [m[1;31morigin/fix-branch[m[33m, [m[1;32mreleased[m[33m, [m[1;32mfix-branch[m[33m)[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Tue Dec 25 16:31:26 2018 +0800
+
+    input优化
+
+[33mcommit fb342a4ec35bdcecf75bc58b1750003ba3c4bbab[m
+Merge: fb9faa5 bfdf4d4
+Author: jtr <jtr354@foxmail.com>
+Date:   Tue Dec 25 16:27:03 2018 +0800
+
+    Merge remote-tracking branch 'origin/master' into fix-branch
+
+[33mcommit bfdf4d4ced6f713ef679456010555da037657de9[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Mon Dec 24 17:11:39 2018 +0800
+
+    auto publish
+
+[33mcommit fb9faa5bf0d5cce65152f7cb9d267779b51b86f8[m
+Merge: afbaf97 559a8eb
+Author: jtr <jtr354@foxmail.com>
+Date:   Mon Dec 24 17:11:22 2018 +0800
+
+    Merge branch 'fix-branch' into released
+
+[33mcommit 559a8eb9df7a2405ae22d00ee9a291a377b94904[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Mon Dec 24 17:11:01 2018 +0800
+
+    选择overview TAB栏选项还原0
+
+[33mcommit afbaf9749c0e248cc0c923d3c8c31a59517bab17[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Mon Dec 24 10:00:08 2018 +0800
+
+    auto publish
+
+[33mcommit df2d89d58e56e09a48ae510aa89fcd023ae7baf5[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Mon Dec 24 09:59:43 2018 +0800
+
+    优化清空缓存
+
+[33mcommit 89efbc5898ebc415d7eb96725a55bea584565cb7[m
+Merge: 1bc0a40 afbd6c6
+Author: jtr <jtr354@foxmail.com>
+Date:   Fri Dec 21 16:57:26 2018 +0800
+
+    Merge branch 'fix-branch'
+
+[33mcommit afbd6c6f88cf0e8f73d009ab93cc81521f560a74[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Fri Dec 21 16:56:44 2018 +0800
+
+    修改刷新BUG
+
+[33mcommit 1bc0a40dca250cb6e31c50a98a1261e60cdd4655[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Fri Dec 21 11:51:29 2018 +0800
+
+    auto publish
+
+[33mcommit 0026977565aea68330b82779816229ddca41986b[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Fri Dec 21 11:49:14 2018 +0800
+
+    修改刷新BUG
+
+[33mcommit ac7fbe925358dd52835f1a1d32ebed1d178162e3[m
+Merge: 392beb5 40fc5f4
+Author: jtr <jtr354@foxmail.com>
+Date:   Fri Dec 21 11:24:29 2018 +0800
+
+    Merge remote-tracking branch 'origin/me-master' into fix-branch
+    
+    # Conflicts:
+    #       src/utils/_app-config.js
+
+[33mcommit 392beb51b797bd1739338dd3db7ab001a9b3831d[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Fri Dec 21 11:14:47 2018 +0800
+
+    auto publish
+
+[33mcommit a056cff64d62887e74e8c8808d12daaae0778d7c[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Fri Dec 21 11:08:46 2018 +0800
+
+    auto publish
+
+[33mcommit f4ba3f8607166a8aa797268f0b41151aeb42b404[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Fri Dec 21 11:04:22 2018 +0800
+
+    auto publish
+
+[33mcommit 0a7db99f569d614ab874d8cf60a23a78203fe796[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Fri Dec 21 10:39:09 2018 +0800
+
+    auto publish
+
+[33mcommit 1cde410e6e497901bf421b114d8c199c315bcda7[m
+Merge: 7478f28 9ace324
+Author: jtr <jtr354@foxmail.com>
+Date:   Thu Dec 20 21:54:44 2018 +0800
+
+    Merge branch 'released'
+    
+    # Conflicts:
+    #       src/utils/_app-config.js
+
+[33mcommit 9ace3242e14ecff350447dc2932ccffbab724ced[m
+Merge: 99a3b94 9875e8e
+Author: jtr <jtr354@foxmail.com>
+Date:   Thu Dec 20 21:52:05 2018 +0800
+
+    Merge branch 'me-release' into released
+
+[33mcommit 40fc5f43fa44bb41d53b42590ad13406e66d4776[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Thu Dec 20 21:51:11 2018 +0800
+
+    检查版本工具
+
+[33mcommit 9875e8ea531bfddf8e3a627584b9d7fbb1c81e17[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Thu Dec 20 21:47:41 2018 +0800
+
+    检查版本工具
+
+[33mcommit d150b977fbeeef448edce5d9368318bb6459c7a9[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Thu Dec 20 21:45:39 2018 +0800
+
+    检查版本工具
+
+[33mcommit 6603cc0d0ddc1440b92d97b83e51c42385a80987[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Thu Dec 20 21:43:32 2018 +0800
+
+    检查版本工具
+
+[33mcommit b5d0be61ad30f14b1071df913c534998e4182efd[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Thu Dec 20 21:38:32 2018 +0800
+
+    检查版本工具
+
+[33mcommit 0233f55db3c84d1ff94be49a1fb458446a18e322[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Thu Dec 20 21:37:11 2018 +0800
+
+    检查版本工具
+
+[33mcommit 278cef4c61bae11e2a02ff6882f5a33ba9db7d1f[m
+Merge: e615094 eebaf8f
+Author: jtr <jtr354@foxmail.com>
+Date:   Thu Dec 20 21:35:20 2018 +0800
+
+    Merge branch 'me-release' into me-master
+
+[33mcommit eebaf8fbcc9e13378165be66347684e72035f0c4[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Thu Dec 20 21:35:03 2018 +0800
+
+    检查版本工具
+
+[33mcommit 5d47572d4bb375736b9cc082bc65388d1ef8dc42[m
+Merge: b1e91d1 42c67c0
+Author: jtr <jtr354@foxmail.com>
+Date:   Thu Dec 20 21:24:56 2018 +0800
+
+    Merge branch 'dev_version' into me-release
+    
+    # Conflicts:
+    #       src/utils/_app-config.js
+
+[33mcommit 42c67c0fb079e49262219bcd47eed56cd5cc45c8[m[33m ([m[1;31morigin/dev_version[m[33m, [m[1;32mdev_version[m[33m)[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Thu Dec 20 21:24:09 2018 +0800
+
+    检查版本工具
+
+[33mcommit 7478f280839a7c360ce96fa810d6da6608a68299[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Thu Dec 20 20:54:56 2018 +0800
+
+    调试COS
+
+[33mcommit 99a3b94e22546225bc98b14445d74a6432856585[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Thu Dec 20 20:54:25 2018 +0800
+
+    调试COS
+
+[33mcommit b1e91d1c3d8ffce0a17bf8612b51e86611ee4458[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Thu Dec 20 20:53:40 2018 +0800
+
+    调试COS
+
+[33mcommit a5463dd272a0e88696f312daf2ff97fbf89f8978[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Thu Dec 20 20:20:10 2018 +0800
+
+    调试COS
+
+[33mcommit 602f9b41c4b05657d8218996afd5c7130904e6b1[m
+Merge: 2155f8f 495fde9
+Author: jtr <jtr354@foxmail.com>
+Date:   Thu Dec 20 18:41:54 2018 +0800
+
+    Merge branch 'master' into me-release
+
+[33mcommit 495fde92ee6ee6ffabe5c231cfe7e488eadf71e4[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Thu Dec 20 18:41:23 2018 +0800
+
+    调试COS
+
+[33mcommit 4abf360bf0ce489e265e4498f56f3e16c78153f0[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Thu Dec 20 16:41:02 2018 +0800
+
+    修改检查
+
+[33mcommit 4b9bdeff468eca5c29612ed1ac4ce1a9df98a1a9[m
+Merge: 75bcb54 29a38e3
+Author: jtr <jtr354@foxmail.com>
+Date:   Thu Dec 20 14:19:33 2018 +0800
+
+    Merge branch 'released'
+
+[33mcommit 29a38e307dcd2fa467c0f16d5237b80270b9ffc0[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Thu Dec 20 14:19:05 2018 +0800
+
+    修改发送邀请样式
+
+[33mcommit 292ec491d1d6eb6acdb1e28c3f4c531d411e0b15[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Thu Dec 20 12:29:42 2018 +0800
+
+    提交ME安全文件正式站
+
+[33mcommit e61509405bd4006240989b4c90e80a4efbba7adc[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Thu Dec 20 11:40:59 2018 +0800
+
+    提交ME安全文件正式站
+
+[33mcommit 2155f8f38a12394b87306a81f9f5d77da528c50f[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Thu Dec 20 11:36:42 2018 +0800
+
+    提交ME安全文件正式站
+
+[33mcommit 95c6f3d68bb23757223ca403f5148431ccc9a6b4[m
+Merge: 3eb6da0 75bcb54
+Author: jtr <jtr354@foxmail.com>
+Date:   Thu Dec 20 11:35:53 2018 +0800
+
+    Merge remote-tracking branch 'origin/master' into me-release
+    
+    # Conflicts:
+    #       src/utils/_app-config.js
+
+[33mcommit 3eb6da09b5cbde18fa1e997e5683284a2313e9c9[m
+Merge: 1d53584 a9c1e2a
+Author: jtr <jtr354@foxmail.com>
+Date:   Thu Dec 20 11:35:28 2018 +0800
+
+    Merge remote-tracking branch 'origin/released' into me-release
+
+[33mcommit a8ba149b8b209aeb24aa033f0287831a90e47b1f[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Thu Dec 20 11:33:57 2018 +0800
+
+    版本检测
+
+[33mcommit 75bcb547b0dd37d9e33106027bb001c43c1ba115[m
+Merge: 4b6da7b a9c1e2a
+Author: jtr <jtr354@foxmail.com>
+Date:   Thu Dec 20 09:37:18 2018 +0800
+
+    Merge branch 'released'
+    
+    # Conflicts:
+    #       src/utils/_app-config.js
+
+[33mcommit caaae8043cf18d38384e98b18b4efc6a6f8d4f95[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Thu Dec 20 09:36:55 2018 +0800
+
+    研发版本
+
+[33mcommit a9c1e2a72d0e637a558d713652c0ce60827a1c6a[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 21:29:44 2018 +0800
+
+    修改弹窗样式
+
+[33mcommit 1d53584d937ada9db64f40cd0413577f57d85361[m
+Merge: a0a60a9 b419225
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 21:07:05 2018 +0800
+
+    Merge branch 'released' into me-release
+    
+    # Conflicts:
+    #       src/utils/_app-config.js
+
+[33mcommit b419225cb239d3ef273333776099298e1e159176[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 21:02:45 2018 +0800
+
+    优化样式
+
+[33mcommit d446d39b0a531d836e30906ebe4047b9c9db6cc2[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 17:15:43 2018 +0800
+
+    优化用户信息页面等
+
+[33mcommit d7731810af8c0817a055bb50aa4e568a26670485[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 16:09:10 2018 +0800
+
+    发布版本
+
+[33mcommit a0a60a9f8c9a9eb4c337761132ffb45e4cb33265[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 16:08:25 2018 +0800
+
+    发布版本
+
+[33mcommit 4b6da7b2d845ee2d000db143b479d8efb0afc87a[m
+Merge: 699d2b7 e42c1ae
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 16:03:55 2018 +0800
+
+    Merge branch 'me-master'
+    
+    # Conflicts:
+    #       src/utils/_app-config.js
+
+[33mcommit e42c1ae900b10a216c49b59d8e78f4206cde7164[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 16:03:23 2018 +0800
+
+    发布版本
+
+[33mcommit a188e0224ee3db34ab43c62f0e0ed159ac81e920[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 15:50:35 2018 +0800
+
+    发布版本
+
+[33mcommit 699d2b7ebafdc9a0bb4be1736b4bb1dd741dcb27[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 15:49:56 2018 +0800
+
+    发布版本
+
+[33mcommit 5225848388acfa5b51d50db39b960eb0d5ade69b[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 15:47:44 2018 +0800
+
+    发布版本
+
+[33mcommit 2bdfeba1292172ba285f58f51093fb1802c10955[m
+Merge: e10d243 2decb37
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 15:44:29 2018 +0800
+
+    Merge remote-tracking branch 'origin/fix_guojing' into me-release
+
+[33mcommit 2decb374168a50df5f8079b0b7c5ae74f168b1e6[m[33m ([m[1;31morigin/fix_guojing[m[33m)[m
+Author: guojing <939316942@qq.com>
+Date:   Wed Dec 19 15:43:43 2018 +0800
+
+    二维码页面添加scroll
+
+[33mcommit e10d24309f180684dc8b24d3d4d8a74ead299258[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 15:41:04 2018 +0800
+
+    发布版本
+
+[33mcommit 9ef45cccc26c0df3b3e33c468951b4db5ff558ee[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 15:34:51 2018 +0800
+
+    发布版本
+
+[33mcommit cdcca09aab97756222140e292fbd12634bd289d3[m
+Merge: 97b22b0 dd80c35
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 15:33:43 2018 +0800
+
+    Merge remote-tracking branch 'origin/released' into dev_version
+
+[33mcommit 97b22b0a1b4fc92185307146b53b678e0d1c3060[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 15:31:55 2018 +0800
+
+    调整配置模块
+
+[33mcommit dd80c35927a7c58d6e5897cf64fa2b35e2977d95[m
+Author: philly <346692921@qq.com>
+Date:   Wed Dec 19 15:23:37 2018 +0800
+
+    调试
+
+[33mcommit 794737c9e5254d6672cd794b2595ab70f9b5e2de[m
+Author: philly <346692921@qq.com>
+Date:   Wed Dec 19 15:21:44 2018 +0800
+
+    调试
+
+[33mcommit 057f28ed4f047af91fc51191428da1901748cd81[m
+Author: philly <346692921@qq.com>
+Date:   Wed Dec 19 15:18:10 2018 +0800
+
+    调试
+
+[33mcommit 6377e199da78564cf3dd6b968394dc63fed62006[m
+Author: philly <346692921@qq.com>
+Date:   Wed Dec 19 15:11:40 2018 +0800
+
+    调试
+
+[33mcommit 496c752ea792ba1fc14095afe413e855b184ae84[m
+Author: philly <346692921@qq.com>
+Date:   Wed Dec 19 15:10:51 2018 +0800
+
+    调试
+
+[33mcommit f28eacccea51859107bdcf13176687c86b913b5d[m
+Merge: ce4d7ac a4fb020
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 15:07:37 2018 +0800
+
+    Merge branch 'released' of gitlab.jerryf.cn:ai/zhidian-brand into released
+
+[33mcommit ce4d7ac2cb7b39568af1b0a10514f783ea31e84d[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 15:07:19 2018 +0800
+
+    合并代码
+
+[33mcommit a4fb02064877a9ec651a48693501d8900d76fedc[m
+Merge: 06cc8ee 8faf118
+Author: philly <346692921@qq.com>
+Date:   Wed Dec 19 15:06:38 2018 +0800
+
+    Merge branch 'released' of gitlab.jerryf.cn:ai/zhidian-brand into released
+
+[33mcommit 06cc8ee8863e1d9203fbf08a59c843705dd6f849[m
+Author: philly <346692921@qq.com>
+Date:   Wed Dec 19 15:06:21 2018 +0800
+
+    调试
+
+[33mcommit 8faf1188c843aa851f348838de6c7c32ad413a41[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 15:01:23 2018 +0800
+
+    调试
+
+[33mcommit 19f01408273ba8a229927a3d72beb572cc8cf6b0[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 14:54:05 2018 +0800
+
+    调试
+
+[33mcommit 4910cfd9a7eefb6e13236a4388f073234ad02076[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 14:44:58 2018 +0800
+
+    调试
+
+[33mcommit 09c105a50986684b69fb1439202d2438d6147229[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 14:41:02 2018 +0800
+
+    调试
+
+[33mcommit 9dffc5b648c5245cc00e9f65838107718f7c0634[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 14:38:45 2018 +0800
+
+    调试
+
+[33mcommit 6c28c175f133988e97770f5f164142e436f3462a[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 14:29:20 2018 +0800
+
+    分支
+
+[33mcommit 27c736abb8ba6841ff007bc9f7ac6ab41c3dc9d6[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 14:27:07 2018 +0800
+
+    分支
+
+[33mcommit 1c3b44f6e455993bc2755d85825395f5b7503739[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 14:25:16 2018 +0800
+
+    分支
+
+[33mcommit 03f0aa0efaf141989b6d27be8d216e9abe76b9af[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 14:11:40 2018 +0800
+
+    配置文件
+
+[33mcommit bb682c75c455f1bf3af05a635132a862b8eff827[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 12:27:43 2018 +0800
+
+    配置文件
+
+[33mcommit 1500f30ca00243bcb3769a66f56f4eac38e380af[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 12:20:49 2018 +0800
+
+    配置文件
+
+[33mcommit ba19cd35c8f3c75150e9ad34e6500f880a129efc[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 12:19:06 2018 +0800
+
+    配置文件
+
+[33mcommit 7ff4dd3affae180b3803eb87972002ea2a219f67[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 12:16:03 2018 +0800
+
+    配置文件
+
+[33mcommit 989351413683a85ed5876a934ff9d63192ac6e1e[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 11:59:06 2018 +0800
+
+    配置文件
+
+[33mcommit dc1745e46e7d1c3bf489a936e3115b359fa39a69[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 11:56:31 2018 +0800
+
+    配置文件
+
+[33mcommit a88eeb3c144209f5fd70b5062cce5117b1f508c7[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 11:54:57 2018 +0800
+
+    配置文件
+
+[33mcommit 06ab98f053abb7b0d93d44c111af3ad7a55800fd[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 11:54:45 2018 +0800
+
+    配置文件
+
+[33mcommit be61e209709e6b95e15df4ffaa7b63575c2a3d68[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 11:52:19 2018 +0800
+
+    配置文件
+
+[33mcommit c82e6817ce9bc262b2629fc32ae26c6439f178a0[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 11:25:55 2018 +0800
+
+    配置文件
+
+[33mcommit c2010b3036ac039b6573d6cafd88299ff2c71aa7[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 11:23:39 2018 +0800
+
+    配置文件
+
+[33mcommit e4d56a2139194c6b71dc4a51dea0933dcaa21e0b[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 11:07:16 2018 +0800
+
+    配置文件
+
+[33mcommit 419a9d6112e65e4c23c6f059e6d97365a718f691[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 11:04:13 2018 +0800
+
+    配置文件
+
+[33mcommit 85d18d4b93a7ef58d0473ad4397c72cb4122e719[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 10:58:51 2018 +0800
+
+    配置文件
+
+[33mcommit 866fb68beef27428f5e39f59a9df15da8b712943[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 10:58:32 2018 +0800
+
+    配置文件
+
+[33mcommit 3777a4c9e72a9cbb3b445ddea725d649be2df6ca[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 10:57:38 2018 +0800
+
+    配置文件
+
+[33mcommit f7759ea3d31bbd402fbd1f9dbfd36773ee4cd40c[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 10:53:40 2018 +0800
+
+    配置文件
+
+[33mcommit 5001fa10aefaad3a80a66899f3b6d8b1054294b2[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 10:53:10 2018 +0800
+
+    配置文件
+
+[33mcommit 5a1b0f9813453957e1aa082bcd1fd936bd0bdd3e[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 10:51:50 2018 +0800
+
+    配置文件
+
+[33mcommit 470ed3d2489f405f0b5dc5557603514116286b3d[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 10:48:44 2018 +0800
+
+    配置文件
+
+[33mcommit f3223af6815b82af0fc8b868792717e433057a1b[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 10:40:29 2018 +0800
+
+    配置文件
+
+[33mcommit c2d2550e3aacd663922197bd9ffeddf32d26b278[m
+Merge: c111a0d 08f9c38
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 10:34:35 2018 +0800
+
+    Merge branch 'released' into fix-jtr
+
+[33mcommit c111a0d98ac96c9a386e15389d4ed23b29843440[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 19 10:34:12 2018 +0800
+
+    调试配置文件
+
+[33mcommit 08f9c383e21a1f6b7ae1dfe86b2f9aac1f8a5ebd[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Tue Dec 18 20:27:59 2018 +0800
+
+    修改路由跳转，连续点击
+    名称过长的样式修复
+
+[33mcommit acd93a73debfe5cb1b3cd3503a6e5e6a11185a95[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Tue Dec 18 18:34:08 2018 +0800
+
+    修改配置文件
+
+[33mcommit ca44c049169fd99b094573e0e02836f7cd007223[m
+Merge: 02479ac 8435325
+Author: jtr <jtr354@foxmail.com>
+Date:   Tue Dec 18 18:13:27 2018 +0800
+
+    Merge branch 'released' into fix-jtr
+
+[33mcommit 02479ace5c15ae6f05febe85b7e147dc286401c3[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Tue Dec 18 18:12:39 2018 +0800
+
+    修改配置文件
+
+[33mcommit a136febf0883a275fa5ecd5d71495b4475834486[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Tue Dec 18 18:12:22 2018 +0800
+
+    修改配置文件
+
+[33mcommit 84353258db0c3b608ec5ebdb55d9c12d2321016e[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Tue Dec 18 18:05:55 2018 +0800
+
+    样式
+
+[33mcommit 1ce5cb712a1571324c16e01e38ae359369fcdf8e[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Tue Dec 18 17:56:59 2018 +0800
+
+    配置文件
+
+[33mcommit f831ead2f68316796b5aa307205e690ea03e1412[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Tue Dec 18 17:56:48 2018 +0800
+
+    配置文件
+
+[33mcommit 29d772c269d6469e0bd2f647e87018c0f7a0db47[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Tue Dec 18 17:24:05 2018 +0800
+
+    修改首页名称的问题
+
+[33mcommit 8ebd214d3d89c7abbf12c7ceea1db415949a05d6[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Tue Dec 18 17:16:50 2018 +0800
+
+    配置环境
+
+[33mcommit 4091807fd98dfe6caec7506f26b9b009d3958449[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Tue Dec 18 10:31:03 2018 +0800
+
+    修改样式
+
+[33mcommit 6ab9a553e0c929a4fab359bbdea8703ac39d61cb[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Mon Dec 17 20:24:07 2018 +0800
+
+    封装request
+
+[33mcommit d6fa66bb7bb5e0faec47f1700f1c7abdabf8d590[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Mon Dec 17 17:47:07 2018 +0800
+
+    添加404页面
+
+[33mcommit 05f5460ed1385262b7c9a8783955b62c52d5cba0[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Mon Dec 17 17:40:31 2018 +0800
+
+    添加404页面
+
+[33mcommit 4e014092ccb195ece1d935a3851f2a6166a2b162[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Mon Dec 17 15:07:17 2018 +0800
+
+    优化路由
+
+[33mcommit a8bdcd7e842a4725bb3d0a0bcba7768586183308[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Mon Dec 17 15:03:58 2018 +0800
+
+    优化路由
+
+[33mcommit afc5812c44ffb7718d8b4758dec6313529ddab3b[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Mon Dec 17 14:23:25 2018 +0800
+
+    修改
+
+[33mcommit 11dcc557f867d9dc1a4796a07b519281340531cc[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Mon Dec 17 12:31:02 2018 +0800
+
+    文案修改
+
+[33mcommit 35fb1b03bd636ff94e5f6eba4ad0861e86a38a5a[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Mon Dec 17 12:08:04 2018 +0800
+
+    logo
+
+[33mcommit 5a5f80f0f8a0bef0898d9d4beeec6b6613180c23[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Mon Dec 17 11:30:14 2018 +0800
+
+    优化load-more
+
+[33mcommit 10926c9877a2ccdd0464077fd8b55add1d7ec8fe[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Mon Dec 17 11:05:13 2018 +0800
+
+    优化
+
+[33mcommit 776c1838fd7ab8b0483592174c5cf71da6cd42f9[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Mon Dec 17 10:52:37 2018 +0800
+
+    优化
+
+[33mcommit d41b6c7080f84109c7a54501441a2113fa8df017[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Sat Dec 15 21:22:31 2018 +0800
+
+    修改店铺名字
+
+[33mcommit 6e9615f2f095fafe9d4dbe711764fde9eeedc48d[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Sat Dec 15 19:30:13 2018 +0800
+
+    修改bug
+
+[33mcommit da7576abc5755b2b4457adca6eeffb39ac236d0f[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Sat Dec 15 18:15:11 2018 +0800
+
+    完成数据模块
+
+[33mcommit 919787f5d377001a50f32a0f2b4b850057758f99[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Sat Dec 15 18:07:13 2018 +0800
+
+    接口基本对完
+
+[33mcommit 939016dfba860393f0f5852ff9a9508a3ed2f677[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Sat Dec 15 17:07:05 2018 +0800
+
+    接口基本对完
+
+[33mcommit 084720c57ca78cf2fc7da245302e469bab3e332a[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Sat Dec 15 17:06:51 2018 +0800
+
+    接口基本对完
+
+[33mcommit 09a07b4e249c4cc86d844c7214c8f231f1096e57[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Sat Dec 15 16:47:23 2018 +0800
+
+    数据模块接口对接基本完成
+
+[33mcommit bc6b2c047a44a992f4cf016ff18b5ca175424401[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Sat Dec 15 15:07:32 2018 +0800
+
+    修改首页面
+
+[33mcommit 11488ba3cbd3dc9a3cbbd2cf60eb36f99eefa278[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Sat Dec 15 12:31:42 2018 +0800
+
+    input
+
+[33mcommit b3f25b3c3757a4479d5dc5693d68c4fadd687f6b[m
+Merge: c8f4c3e d677757
+Author: jtr <jtr354@foxmail.com>
+Date:   Sat Dec 15 12:26:29 2018 +0800
+
+    Merge branch 'dev_jtr_1.4' into released
+
+[33mcommit d6777575ee6991e42eb4e04dc6f53fdb39bf0e05[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Sat Dec 15 12:19:05 2018 +0800
+
+    input
+
+[33mcommit c8f4c3e3256c8baf9394440fa8614df432e63ec5[m
+Author: philly <346692921@qq.com>
+Date:   Sat Dec 15 11:14:11 2018 +0800
+
+    调试
+
+[33mcommit 81634b4c540f54417a4e582dd2197eeffcf5dd36[m
+Merge: 8ff8478 c8049ae
+Author: philly <346692921@qq.com>
+Date:   Sat Dec 15 11:11:40 2018 +0800
+
+    Merge remote-tracking branch 'origin/released' into released
+
+[33mcommit c8049ae3ed0d1d59a97509b58ae6ba38e0b44356[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Sat Dec 15 11:04:22 2018 +0800
+
+    路由模式改为h
+
+[33mcommit 8ff847850238801451009833e6932e112abae67e[m
+Merge: f211b70 db13f5c
+Author: philly <346692921@qq.com>
+Date:   Sat Dec 15 11:02:29 2018 +0800
+
+    Merge remote-tracking branch 'origin/released' into released
+
+[33mcommit db13f5cca4c8011a6a04a26ca8f678a74f88d036[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Sat Dec 15 10:59:35 2018 +0800
+
+    路由模式改为h
+
+[33mcommit 28f16549f67e4bb94a717ce1ecb0e2f9e14d3fe6[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Sat Dec 15 10:54:59 2018 +0800
+
+    路由模式改为hash
+
+[33mcommit 4af841bb769633ab75f6c106e6adae290c10655f[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Sat Dec 15 10:49:31 2018 +0800
+
+    店铺管理优化
+
+[33mcommit f211b7050c9ed12a7615cfe028c49f03acf24a5b[m
+Merge: 5239064 1f96402
+Author: philly <346692921@qq.com>
+Date:   Sat Dec 15 10:22:19 2018 +0800
+
+    Merge remote-tracking branch 'origin/released' into released
+
+[33mcommit 1f96402c4b849a881c318d56fc672ca1737dda56[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Fri Dec 14 18:34:27 2018 +0800
+
+    静态页面完成了
+
+[33mcommit 25bcfd3af639525b5a21fc7370c6b91d7f4d950f[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Fri Dec 14 18:16:04 2018 +0800
+
+    数据模块数据搬迁基本完成
+
+[33mcommit 95715821cd3da4d29b9fc6462a7d92c4f9938014[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Fri Dec 14 16:57:42 2018 +0800
+
+    排行榜静态搬迁
+
+[33mcommit d1a110a4cb94fc6bcc6c365e2217eeab4ac3a984[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Fri Dec 14 16:02:20 2018 +0800
+
+    总览静态搬迁
+
+[33mcommit 52390641034075ee44894c4b58c65ad1387aad3d[m
+Author: philly <346692921@qq.com>
+Date:   Fri Dec 14 15:32:32 2018 +0800
+
+    调试
+
+[33mcommit b129c16655e4ec99c5dcd3ce706febf5acc72d23[m
+Merge: d65bf8b c184c29
+Author: philly <346692921@qq.com>
+Date:   Fri Dec 14 14:32:21 2018 +0800
+
+    Merge branch 'dev_philly' into released
+    
+    # Conflicts:
+    #       src/pages/invitation/invitation.vue
+    #       src/pages/shop-list/shop-list.vue
+    #       src/pages/shop-select/shop-select.vue
+    #       src/pages/user-info/user-info.vue
+
+[33mcommit c184c296e791c500973902b8766998417a1f2ef9[m[33m ([m[1;31morigin/dev_philly[m[33m)[m
+Author: philly <346692921@qq.com>
+Date:   Fri Dec 14 14:31:22 2018 +0800
+
+    调试
+
+[33mcommit d65bf8bb11a7433205bbeeaa82ae300f36ba351b[m
+Merge: 7fcbf51 996abe2
+Author: jtr <jtr354@foxmail.com>
+Date:   Fri Dec 14 14:17:08 2018 +0800
+
+    Merge branch 'dev_jtr_1.4' into released
+
+[33mcommit 996abe2013da81b289d48e9c5e5b4b25dbcc61e1[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Fri Dec 14 14:16:42 2018 +0800
+
+    测试 合并代码
+
+[33mcommit 781f92c1b4afa0fc9d3e84ce0c5c1724f365ada7[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Fri Dec 14 11:51:58 2018 +0800
+
+    创建店铺接口基本完成
+
+[33mcommit 8542e5019c0fade4245f4cc65f99c4f631b3a28e[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Thu Dec 13 21:12:23 2018 +0800
+
+    合并分支
+
+[33mcommit 24cfa582d34cb0f85a941b8e9ca03f4e037c2410[m
+Author: philly <346692921@qq.com>
+Date:   Thu Dec 13 20:01:42 2018 +0800
+
+    拨打电话弹窗
+
+[33mcommit a903ea9895c8be5ae2143ea618810efaab69d8f3[m
+Merge: 7c33950 91141ea
+Author: jtr <jtr354@foxmail.com>
+Date:   Thu Dec 13 19:51:15 2018 +0800
+
+    Merge remote-tracking branch 'origin/dev_philly' into dev_jtr_1.4
+
+[33mcommit 7c3395043aff36fd515a52bc8454e8e95330199b[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Thu Dec 13 19:50:48 2018 +0800
+
+    合并分支
+
+[33mcommit 91141ea97cbaf2f8bc0ab7789861cd37ad3426d8[m
+Author: philly <346692921@qq.com>
+Date:   Thu Dec 13 19:50:13 2018 +0800
+
+    合并分支
+
+[33mcommit 2bd065e1c3a5d2d679e4cc87b01e2d11dacb9efd[m
+Author: philly <346692921@qq.com>
+Date:   Thu Dec 13 19:43:25 2018 +0800
+
+    合并分支
+
+[33mcommit 166375778c47a556fffc07235a6cc3870e2b7282[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Thu Dec 13 19:20:17 2018 +0800
+
+    save code
+
+[33mcommit 7fcbf518481fed0ef1f0cc4d06892730254216fb[m
+Author: philly <346692921@qq.com>
+Date:   Thu Dec 13 19:17:27 2018 +0800
+
+    合并分支
+
+[33mcommit 1af94f518d98686ecc13d27b4a27e3f69c0da9c0[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Thu Dec 13 19:12:20 2018 +0800
+
+    静态页面
+
+[33mcommit 6342086d088745be5c7dc6bc11f6e2d2439ee9ee[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Thu Dec 13 18:32:35 2018 +0800
+
+    静态页面
+
+[33mcommit 93fc79f2e7e7862bc583d5c3e4c9cc8d92cab9ac[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Thu Dec 13 10:54:12 2018 +0800
+
+    调试input
+
+[33mcommit 87e6ce2dee23dfbef4ecb331e9fcd36e8064b986[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Thu Dec 13 10:47:49 2018 +0800
+
+    调试input
+
+[33mcommit 726b6fac77e41c3a0c554f7de9a84107780ef63e[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Thu Dec 13 10:41:48 2018 +0800
+
+    调试input
+
+[33mcommit 90d5d7d76a40db33193e73dfba2b43e1e36448d3[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Thu Dec 13 10:36:49 2018 +0800
+
+    调试input
+
+[33mcommit 7d9ba685c547f81eb3d5f3277683ad4a026a33a0[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Thu Dec 13 10:32:47 2018 +0800
+
+    调试input
+
+[33mcommit 29109ba12fe81b3e51517e5f73722192ad21d277[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Thu Dec 13 10:28:18 2018 +0800
+
+    调试input
+
+[33mcommit 38601fac16aa5d783bb1536dc9d983d76c363abb[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Thu Dec 13 10:08:36 2018 +0800
+
+    域名设置
+
+[33mcommit 797b02d1f5fa9815fc016895491769cabd7cfd9d[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 12 18:39:43 2018 +0800
+
+    测试微信input
+
+[33mcommit 85ebfee57db2aa337bd1da46a44e12de0c48ba69[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 12 16:18:36 2018 +0800
+
+    引入input
+
+[33mcommit 4778ddb4d00cdb54ce7eb8457313220cf2c365a2[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 12 15:59:47 2018 +0800
+
+    打包
+
+[33mcommit c083a0cb33f6adbe960281013c7127e9049df855[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 12 10:35:43 2018 +0800
+
+    调试build
+
+[33mcommit 77d2ba0e671fd682405e917f7fcc070b893d3c25[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Wed Dec 12 10:35:25 2018 +0800
+
+    调试build
+
+[33mcommit 38f88e0f570af2d8df042632431f6d713186eb15[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Tue Dec 11 18:23:20 2018 +0800
+
+    init
+
+[33mcommit 150aba214a440d6ab4121b4d7c92bb19e56f7b66[m
+Author: jtr <jtr354@foxmail.com>
+Date:   Tue Dec 11 11:37:42 2018 +0800
+
+    init project
