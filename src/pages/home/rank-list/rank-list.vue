@@ -39,7 +39,9 @@
         tabList: PAGE_CONFIG,
         dataArray: new Array(12).fill({}),
         tabIndex: 0,
-        willIndex: 0
+        willIndex: 0,
+        limit: 15,
+        page: 1
       }
     },
     created() {
@@ -48,7 +50,10 @@
     methods: {
       _getList() {
         // let obj = this
-        let data = {}
+        let data = {
+          merchant_id: '',
+          // type:
+        }
         API.Rank.getMarketList(data).then((res) => {
           console.log(res)
         })
