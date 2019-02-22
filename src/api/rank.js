@@ -10,5 +10,10 @@ export default {
   getStaffSellList(data, loading) {
     const url = `/api/brand/brand-analysis/boss-shop-sell-rank` // todo
     return request.post(url, data, loading)
+  },
+  //  销售排行统计
+  getMarketList(data, loading = false) {
+    const url = `/api/brand/brand-boss/boss-shop-ranking`
+    return request.get(url, data, loading)
   }
 }

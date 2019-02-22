@@ -15,7 +15,7 @@
           <h-header></h-header>
           <h-tab :tabIndex="tabIndex" @change="changeHandle"></h-tab>
           <overview v-if="tabIndex === 0"></overview>
-          <ranking v-if="tabIndex === 1" ref="ranking" @loadEnd="loadEndHandle"></ranking>
+          <rank-list v-if="tabIndex === 1" ref="ranking" @loadEnd="loadEndHandle"></rank-list>
           <ai-analyse v-if="tabIndex === 2" ref="analyse" @loadEnd="loadEndHandle"></ai-analyse>
         </nav>
       </scroll>
@@ -33,8 +33,9 @@
   import Scroll from '@components/scroll/scroll'
   import HTab from './h-tab/h-tab'
   import Overview from './overview/overview'
-  import Ranking from './ranking/ranking'
+  // import Ranking from './ranking/ranking'
   import AiAnalyse from './ai-analyse/ai-analyse'
+  import RankList from './rank-list/rank-list'
 
   const PAGE_NAME = 'HOME'
 
@@ -49,8 +50,9 @@
       HHeader,
       Scroll,
       Overview,
-      Ranking,
-      AiAnalyse
+      // Ranking,
+      AiAnalyse,
+      RankList
     },
     data() {
       return {
@@ -121,7 +123,7 @@
       scroll(pos) {
       },
       _loadMore() {
-        this.$refs.ranking && this.$refs.ranking._rqGetMoreStaffList()
+        this.$refs.ranking && this.$refs.ranking.onPullingUp()
         this.$refs.analyse && this.$refs.analyse.onPullingUp()
       },
       loadEndHandle(arr) {

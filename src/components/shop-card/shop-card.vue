@@ -13,7 +13,7 @@
         <div class="left-wrapper">{{cardInfo.name}}</div>
         <div class="right-wrapper">
           <p class="number">{{cardInfo.number}}</p>
-          <p class="copy">销售力</p>
+          <p v-if="useType === 'ai'" class="copy">销售力</p>
         </div>
       </section>
     </div>
@@ -33,6 +33,10 @@
       cardInfo: {
         type: Object,
         default: () => {}
+      },
+      useType: {
+        type: String,
+        default: 'ai'
       }
     },
     data() {
