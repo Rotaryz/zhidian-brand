@@ -121,7 +121,6 @@
   @import "~@design"
   .empty
     height :20px
-    background :$color-background
 
   .exception-box
     position :relative
