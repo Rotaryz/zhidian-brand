@@ -1,11 +1,11 @@
 <template>
   <article class="ai-analyse">
-    <div class="ai-analyse-box">
-      <div v-for="(item,index) in dataArray" :key="index" class="user-card-box" @click="toCapacityModel(item)">
-        <user-card :cardInfo="item" :idx="index" useType="ai"></user-card>
-      </div>
-      <div class="empty"></div>
-    </div>
+    <dl class="ai-analyse-box">
+      <dd v-for="(item,index) in dataArray" :key="index" class="user-card-box" @click="toCapacityModel(item)">
+        <shop-card :cardInfo="item" :idx="index" useType="ai"></shop-card>
+      </dd>
+      <dt class="empty"></dt>
+    </dl>
     <section v-if="isEmpty" class="exception-box">
       <exception errType="nodata"></exception>
     </section>
@@ -13,16 +13,16 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import UserCard from '@components/user-card/user-card'
   import API from '@api'
   import Exception from '@components/exception/exception'
+  import ShopCard from '@components/shop-card/shop-card'
 
   const LIMIT = 10
   const Analyse = API.Rank
   export default {
     name: 'AI',
     components: {
-      UserCard,
+      ShopCard,
       Exception
     },
     data() {
@@ -84,6 +84,7 @@
           if (res.error === this.$ERR_OK) {
             this.dataArray = res.data
             this.isEmpty = !this.dataArray.length
+            console.log(this.dataArray)
           } else {
             this.$toast.show(res.message)
           }
@@ -93,7 +94,6 @@
       onPullingUp() {
         // 更新数据 todo
         if (this.isAll) return
-        console.info('pulling up and load data')
         let page = ++this.page
         let limit = this.limit
         const data = {page, limit}
@@ -120,7 +120,8 @@
   $tab-top = (32 + 40)px
   @import "~@design"
   .empty
-    height :0px
+    height :20px
+    background :$color-background
 
   .exception-box
     position :relative
@@ -131,6 +132,17 @@
     .ai-analyse-box
       background-color: #fff
     .user-card-box
-      height: 75px
-      padding-left: 15px
+      height: 60px
+      margin: 0 15px
+      background :#fff
+      position: relative
+      &:after
+        content: ""
+        display: block
+        position: absolute
+        border-bottom: 1px dotted $color-line
+        left: 0
+        bottom: 0
+        width: 100%
+        transform-origin: 0 bottom
 </style>
