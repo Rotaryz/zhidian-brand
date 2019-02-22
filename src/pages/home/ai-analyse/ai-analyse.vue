@@ -84,7 +84,6 @@
           if (res.error === this.$ERR_OK) {
             this.dataArray = res.data
             this.isEmpty = !this.dataArray.length
-            console.log(this.dataArray)
           } else {
             this.$toast.show(res.message)
           }
