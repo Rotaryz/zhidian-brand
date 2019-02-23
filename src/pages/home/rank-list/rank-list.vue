@@ -11,20 +11,23 @@
         <img v-else class="icon" src="./icon-noselect@2x.png" alt="">
       </li>
     </ul>
-    <ul class="content-wrapper">
+    <ul v-if="!isEmpty" class="content-wrapper">
       <li v-for="(item, index) in dataArray" :key="index" class="card-wrapper">
         <shop-card :cardInfo="item" :idx="index" useType="rank-list"></shop-card>
       </li>
+      <li class="empty"></li>
     </ul>
-    <select-sheet ref="sheet" @change="sheetChangeHandle"></select-sheet>
+    <section v-if="isEmpty" class="exception-box">
+      <exception errType="nodata"></exception>
+    </section>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import PAGE_CONFIG from './config-rank-list'
   import ShopCard from '@components/shop-card/shop-card'
-  import SelectSheet from '@components/select-sheet/select-sheet'
   import API from '@api'
+  import Exception from '@components/exception/exception'
 
   const COMPONENT_NAME = 'RANK_LIST'
 
@@ -32,7 +35,7 @@
     name: COMPONENT_NAME,
     components: {
       ShopCard,
-      SelectSheet
+      Exception
     },
     data() {
       return {
@@ -41,57 +44,63 @@
         tabIndex: 0,
         willIndex: 0,
         limit: 15,
-        page: 1
+        page: 1,
+        hasMore: true,
+        isEmpty: false
       }
     },
     created() {
-
+      this._getList(true)
     },
     methods: {
-      _getList() {
-        // let obj = this
+      _resetUploadParams() {
+        this.page = 1
+        this.hasMore = true
+      },
+      _getList(loading) {
+        if (!this.hasMore) return
+        let id = this.$storage.get('info', {}).id || 0
+        let currentTab = this.tabList[this.tabIndex]
         let data = {
-          merchant_id: '',
-          // type:
+          merchant_id: id,
+          type: currentTab.one,
+          [currentTab.secondKey]: currentTab.second[currentTab.key],
+          limit: this.limit,
+          page: this.page
         }
-        API.Rank.getMarketList(data).then((res) => {
-          console.log(res)
+        API.Rank.getMarketList(data, loading).then((res) => {
+          if (res.error !== this.$ERR_OK){
+            this.$toast.show(res.message)
+            this.$emit('loadEnd', this.dataArray)
+            this.hasMore = false
+            return
+          }
+          if (this.page === 1) {
+            // res.data = [] // todo
+            this.dataArray = res.data
+            this.isEmpty = res.data.length === 0
+          } else {
+            let arr = this.dataArray.concat(res.data)
+            this.dataArray = arr
+            this.$emit('loadEnd', this.dataArray)
+          }
+          this.hasMore = res.data.length
         })
-        // todo
       },
       changeHandle(item, index) {
         this.willIndex = index
-        this.$refs.sheet.show(item.title, item.key)
+        let key = this.willIndex === this.tabIndex ? item.key : -1
+        this.$sheet.show(item.title, key, (obj) => this.sheetChangeHandle(obj))
       },
       sheetChangeHandle(obj) {
+        this._resetUploadParams()
         this.tabIndex = this.willIndex
         this.tabList[this.tabIndex].key = obj.key
+        this._getList()
       },
       onPullingUp() {
-        console.log(1231)
-        // if (this.isAll) return
-        // const _data = this._formatData()
-        // let page = ++this.page
-        // let limit = this.limit
-        // const data = {
-        //   page,
-        //   limit,
-        //   ..._data
-        // }
-        // Rank.getStaffList(data, false).then((res) => {
-        //   this.$loading.hide()
-        //   if (res.error === this.$ERR_OK) {
-        //     if (res.data && res.data.length) {
-        //       let newArr = this.dataArray.concat(res.data)
-        //       this.dataArray = newArr
-        //     } else {
-        //       this.isAll = true
-        //     }
-        //   } else {
-        //     this.$toast.show(res.message)
-        //   }
-        //   this.$emit('loadEnd', this.dataArray)
-        // })
+        this.page++
+        this._getList()
       },
     }
   }
@@ -108,9 +117,17 @@
     transform-origin :top center
     transform :rotate(-45deg)
 
+  .exception-box
+    padding-top: (45)px
+
+  .empty
+    height :20px
+
   .rank-list
     position: relative
     layout(column, block, nowrap)
+    background :#fff
+    min-height:80vh
     .select-wrapper
       display :flex
       padding :17.5px 17.5px 15.5px

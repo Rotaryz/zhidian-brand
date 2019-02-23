@@ -97,8 +97,9 @@
           font-family: $font-family-regular
           font-size: 15px;
           color: #1F1F1F;
-          line-height :1.2
+          line-height :1.4
           no-wrap-plus()
+          padding-right :10px
         .right-wrapper
           font-family: DINAlternate-Bold;
           text-align :right

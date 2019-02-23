@@ -32,14 +32,16 @@
       return {
         isShow: false,
         key: -1,
-        dataArray: []
+        dataArray: [],
+        callback: null
       }
     },
     methods: {
-      show(arr, key) {
+      show(arr, key, callback) {
         this.dataArray = arr
         this.key = key
         this.isShow = true
+        this.callback = callback
       },
       hidden() {
         this.isShow = false
@@ -47,7 +49,8 @@
       change(index) {
         this.key = index
         this.isShow = false
-        this.$emit('change', this)
+        // this.$emit('change', this)
+        typeof this.callback === 'function' && this.callback(this)
       }
     }
   }
@@ -59,6 +62,7 @@
 
   .action-sheet
     fill-box(fixed)
+    position :fixed !important
     height :100vh
     z-index: 200
     .mask
