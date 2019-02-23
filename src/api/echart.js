@@ -124,6 +124,86 @@ export default {
       store_id: _getStoreId()
     }
     return request.get(url, data)
+  },
+  /**
+   * 客户性别占比
+   * @returns {*}
+   */
+  sexRetio(data) {
+    let url = 'api/brand/brand-boss/sex-report'
+    return request.get(url, data, false)
+  },
+  /**
+   * 客户城市占比 TOP6
+   * @returns {*}
+   */
+  cityRetio(data) {
+    let url = 'api/brand/brand-boss/city-report'
+    return request.get(url, data, false)
+  },
+  /**
+   * KOL传播 TOP10
+   * @returns {*}
+   */
+  KOLRetio(data) {
+    let url = 'api/brand/brand-boss/city-report'
+    return request.get(url, data, false)
+  },
+  /**
+   * 近15天活跃度
+   * @returns {*}
+   */
+  actionRetio(data) {
+    let url = 'api/brand/brand-boss/active-chart'
+    return request.post(url, data, false)
+  },
+  /**
+   * 客户近15天活跃度
+   * @returns {*}
+   */
+  actionCustomerRetio(data) {
+    let url = 'api/brand/brand-boss/get-active-day-report'
+    return request.get(url, data, false)
+  },
+  /**
+   * 兴趣商品占比top5
+   * @returns {*}
+   */
+  interestedRetio(data) {
+    let url = 'api/brand/brand-boss/get-user-interests'
+    return request.get(url, data, false)
+  },
+  /**
+   * 兴趣商品分类
+   * @returns {*}
+   */
+  classifyRetio(data) {
+    let url = 'api/brand/brand-boss/get-event-count-by-group'
+    return request.get(url, data, false)
+  },
+  /**
+   * 客单价、订单与金额、主力客户一周下单次数
+   * @returns {*}
+   */
+  orderRetio(data) {
+    let url = 'api/brand/brand-boss/get-order-data-report'
+    return request.get(url, data, false)
+  },
+  /**
+   * 用户分组占比
+   * @returns {*}
+   */
+  groupRetio(data) {
+    let url = 'api/brand/brand-boss/get-pnes-count-average'
+    return request.get(url, data, false)
+  },
+  /**
+   * PNES动力模型
+   * @returns {*}
+   */
+  PENSRetio(data) {
+    let url = 'api/brand/brand-boss/get-pnes-rate-report'
+    return request.get(url, data, false)
   }
 }
 

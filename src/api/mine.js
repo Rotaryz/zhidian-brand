@@ -20,5 +20,14 @@ export default {
   getUserInfo() {
     let url = '/api/merchant/profile'
     return request.get(url)
-  }
+  },
+  /**
+   * 获取个人信息
+   * @param data
+   * @returns {*}
+   */
+  getMineData (data, loading) {
+    let url = 'api/brand/brand-boss/get-trade-description'
+    return request.get(url, data, false)
+  },
 }

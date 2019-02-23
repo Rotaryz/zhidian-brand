@@ -24,7 +24,7 @@
   import PAGE_CONFIG from './config-rank-list'
   import ShopCard from '@components/shop-card/shop-card'
   import SelectSheet from '@components/select-sheet/select-sheet'
-  import API from 'api'
+  import API from '@api'
 
   const COMPONENT_NAME = 'RANK_LIST'
 
