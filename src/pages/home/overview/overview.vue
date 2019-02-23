@@ -8,7 +8,7 @@
           </nav>
           <div class="data-list">
             <div v-for="(item, index) in dataArr" :key="index" @click="showPop(index)" class="list-item border-top-1px border-right-1px">
-              <div class="num">{{0}}</div>
+              <div class="num">{{allDatas[item.type] || 0}}</div>
               <div class="title">{{item.name}}<span class="icon" v-if="index === 0"></span></div>
             </div>
           </div>

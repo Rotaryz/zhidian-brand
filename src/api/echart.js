@@ -89,12 +89,8 @@ export default {
    * 数据总览 各种能力排行(9) 能力模型
    * @returns {*}
    */
-  getEmployeeRank(shop_id = 0) {
-    let url = '/api/brand/brand-analysis/boss-all-type-rank'
-    let data = {
-      // shop_id,
-      store_id: _getStoreId()
-    }
+  getEmployeeRank(data) {
+    let url = 'api/brand/brand-boss/boss-all-type-rank'
     return request.post(url, data, false)
   },
   /**

@@ -50,28 +50,28 @@
             <div class="right">{{dataRank.sales_force || 0}}</div>
           </div>
           <div class="six-bottom">
+            <div class="left">KOL分享力排名</div>
+            <div class="right">{{dataRank.kol_share || 0}}</div>
+          </div>
+          <div class="six-bottom">
             <div class="left">获客能力排名</div>
             <div class="right">{{dataRank.customer_competence || 0}}</div>
           </div>
           <div class="six-bottom">
-            <div class="left">销售能力排行</div>
+            <div class="left">推广能力排名</div>
+            <div class="right">{{dataRank.promotion_force || 0}}</div>
+          </div>
+          <div class="six-bottom">
+            <div class="left">营销能力排名</div>
+            <div class="right">{{dataRank.marketing_ability || 0}}</div>
+          </div>
+          <div class="six-bottom">
+            <div class="left">订单能力排名</div>
             <div class="right">{{dataRank.order_force || 0}}</div>
           </div>
           <div class="six-bottom">
-            <div class="left">客户互动力排名</div>
-            <div class="right">{{dataRank.customer_interaction || 0}}</div>
-          </div>
-          <div class="six-bottom">
-            <div class="left">产品推动力排名</div>
-            <div class="right">{{dataRank.product_drive || 0}}</div>
-          </div>
-          <div class="six-bottom">
-            <div class="left">客户跟进力排行</div>
-            <div class="right">{{dataRank.customer_followup || 0}}</div>
-          </div>
-          <div class="six-bottom">
-            <div class="left">活动推动力排行</div>
-            <div class="right">{{dataRank.activity_drive || 0}}</div>
+            <div class="left">业绩能力排名</div>
+            <div class="right">{{dataRank.solid_result || 0}}</div>
           </div>
         </div>
       </div>
@@ -86,7 +86,7 @@
               </nav>
               <div class="data-list">
                 <div v-for="(item, index) in dataArr" :key="index" class="list-item border-top-1px border-right-1px">
-                  <div class="num">{{0}}</div>
+                  <div class="num">{{allDatas[item.type] || 0}}</div>
                   <div class="title">{{item.name}}</div>
                 </div>
               </div>
@@ -285,7 +285,9 @@
         CHARTS_TYPE,
         groupList,
         charTab: 0,
-        flowList: []
+        flowList: [],
+        allDatas: {},
+        storeId: ''
       }
     },
     computed: {
@@ -308,24 +310,74 @@
     },
     created() {
       this.id = this.$route.query.id
+      this.storeId = this.$storage.get('info').store_id
       this.clientData = {
         name: this.$storage.get('user').name,
         avatar: this.$storage.get('user').avatar,
         position: this.$storage.get('user').position
       }
-
       this.getAllDataObj('all') // 全部数据展示
       this.getNewActionList(this.id) // 行为事件列表
+
+      this.getRadarData() // 能力模型
+      this.getEmployeeRank() // 能力排名
     },
     mounted() {
       this.highgt = this.$refs.eleven.offsetHeight + 20
-      this.$refs.c7.action()
     },
     beforeDestroy() {
       // this.$emit('refresh')
       this.$storage.remove('user')
     },
     methods: {
+      // 能力模型图
+      getRadarData() {
+        API.Capacity.getRadarData()
+          .then(res => {
+            this.$loading.hide()
+            if (res.error === this.$ERR_OK) {
+              this.$nextTick(() => {
+                let radarData = {
+                  xAxisData: res.data.value,
+                  seriesData: res.data.data,
+                  total: res.data.total
+                }
+                this.$refs.c7 && this.$refs.c7.action(radarData)
+              })
+            } else {
+              this.$toast.show(res.message)
+            }
+          })
+      },
+      // 能力排行
+      getEmployeeRank() {
+        API.Echart.getEmployeeRank({store_id: this.storeId})
+          .then(res => {
+            this.$loading.hide()
+            if (res.error === this.$ERR_OK) {
+              this.dataRank = res.data
+            } else {
+              this.$toast.show(res.message)
+            }
+          })
+      },
+      // 商家交易数据
+      getMerchantData() {
+        let data = {
+          merchant_id: this.id,
+          store_id: this.storeId,
+          time: this.tabMoreList[this.tabNumber].value
+        }
+        API.Capacity.getMerchantData(data)
+          .then(res => {
+            this.$loading.hide()
+            if (res.error === this.$ERR_OK) {
+              this.allDatas = res.data
+            } else {
+              this.$toast.show(res.message)
+            }
+          })
+      },
       scroll(pos) {
         let hightPx = pos.y * -1
         if (hightPx >= this.highgt) {
@@ -334,41 +386,162 @@
           this.showTab = false
         }
       },
+      // tab栏切换
       switchTab(index) {
         this.$refs.scroll.scrollTo(0, 0)
         this.scroll(0)
         this.menuIdx = index
         if (index === 0) {
-          this.$nextTick(() => {
-            this.$refs.c7.action()
-          })
+          this.getRadarData()
+          this.getEmployeeRank()
         } else if (index === 1) {
+          this.getMerchantData()
           this.$nextTick(() => {
-            this.$refs.c1.action()
-            this.$refs.c2.action()
+            this.groupRetio()
+            this.PENSRetio()
             this.$refs.c3.action()
-            this.$refs.c4.action()
-            this.$refs.c5.action()
-            this.$refs.c6.action()
           })
         }
         setTimeout(() => {
           this.$refs.scroll.forceUpdate()
         }, 20)
       },
+      // 用户分组占比
+      groupRetio() {
+        let data = {
+          store_id: this.storeId,
+          merchant_id: this.id,
+          time: 'week'
+        }
+        API.Echart.groupRetio(data)
+          .then(res => {
+            if (res.error !== this.$ERR_OK) {
+              this.$toast.show(res.message)
+              return
+            }
+            let pieData = {
+              seriesData: [
+                {name: '潜在客户', value: res.data.p},
+                {name: '新客户', value: res.data.n},
+                {name: '主力客户', value: res.data.e},
+                {name: '沉睡客户', value: res.data.s}
+              ]
+            }
+            this.$refs.c1.action(pieData)
+          })
+      },
+      // PNES动力模型
+      PENSRetio() {
+        let data = {
+          store_id: this.storeId,
+          merchant_id: this.id,
+          time: 'week'
+        }
+        API.Echart.PENSRetio(data)
+          .then(res => {
+            if (res.error !== this.$ERR_OK) {
+              this.$toast.show(res.message)
+              return
+            }
+            let day = res.data.map(item => {
+              return item.day
+            })
+            // 新增
+            let growth = res.data.map(item => {
+              return item.growth
+            })
+            // 转化
+            let conversion = res.data.map(item => {
+              return item.conversion
+            })
+            // 流失
+            let churn = res.data.map(item => {
+              return item.churn
+            })
+            // 唤醒
+            let wakeup = res.data.map(item => {
+              return item.wakeup
+            })
+            // let seriesData = [
+            //   {data: [50, 70, 30, 80, 40]},
+            //   {data: [10, 50, 40, 70, 20]},
+            //   {data: [30, 60, 20, 60, 50]},
+            //   {data: [60, 10, 100, 90, 60]}
+            // ]
+            let lineData = {
+              xAxisData: day.length > 1 ? day : ['3/10', '3/15', '3/20', '3/25', '3/30'],
+              seriesData: [
+                {data: growth.length > 1 ? growth : [0, 0, 0, 0, 0]},
+                {data: conversion.length > 1 ? conversion : [0, 0, 0, 0, 0]},
+                {data: churn.length > 1 ? churn : [0, 0, 0, 0, 0]},
+                {data: wakeup.length > 1 ? wakeup : [0, 0, 0, 0, 0]}
+              ]
+            }
+            this.$refs.c2.action(lineData)
+          })
+      },
+      // 订单金额、客单价、一周活跃
+      orderRetio() {
+        let data = {
+          shop_id: this.shopId,
+          marchant_id: this.id,
+          time: 'week'
+        }
+        API.Echart.orderRetio(data)
+          .then(res => {
+            if (res.error !== this.$ERR_OK) {
+              this.$toast.show(res.message)
+              return
+            }
+            // 主力客户一周下单数
+            let mainOrderCount = res.data.map(item => {
+              return item.main_order_count
+            })
+            // 客单价
+            let personMoney = res.data.map(item => {
+              return item.per_money
+            })
+            // 订单金额
+            let total = res.data.map(item => {
+              return item.total
+            })
+            // 日期
+            let day = res.data.map(item => {
+              return item.day
+            })
+
+            if (this.charTab === 1) {
+              let lineData = {
+                xAxisData: day.length ? day : ['3/10', '3/15', '3/20', '3/25', '3/30'],
+                seriesData: [ {data: mainOrderCount.length ? mainOrderCount : [0, 0, 0, 0, 0]} ]
+              }
+              this.$refs.c4.action(lineData)
+            } else if (this.charTab === 2) {
+              let lineData = {
+                xAxisData: day.length ? day : ['3/10', '3/15', '3/20', '3/25', '3/30'],
+                seriesData: [ {data: personMoney.length ? personMoney : [0, 0, 0, 0, 0]} ]
+              }
+              let lineData2 = {
+                xAxisData: day.length ? day : ['3/10', '3/15', '3/20', '3/25', '3/30'],
+                seriesData: [ {data: total.length ? total : [0, 0, 0, 0, 0]}, {data: res.data.y ? res.data.y : [0, 0, 0, 0, 0]} ]
+              }
+              this.$refs.c5.action(lineData)
+              this.$refs.c6.action(lineData2)
+            }
+          })
+      },
       // 图表tab切换
       changeChart(item, index) {
         if (this.charTab === index) return
         this.charTab = index
         if (index === 0) {
-          this.$nextTick(() => {
-          })
+          this.groupRetio()
+          this.PENSRetio()
+          this.$refs.c3.action()
         } else if (index === 1) {
-          this.$nextTick(() => {
-          })
+          this.orderRetio()
         } else if (index === 2) {
-          this.$nextTick(() => {
-          })
+          this.orderRetio()
         }
       },
       getAllDataObj(time) {
@@ -437,8 +610,8 @@
         })
       },
       getAllTab(item, index) {
-        this.getAllDataObj(item.value)
         this.tabNumber = index
+        this.getMerchantData()
       }
     }
   }

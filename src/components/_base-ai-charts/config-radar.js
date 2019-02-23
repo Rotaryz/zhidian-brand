@@ -18,8 +18,7 @@
 // console.log(dataShadow)
 
 export function createPower(args = {}) {
-  let {xAxisData, seriesData} = args
-  console.log(xAxisData, seriesData)
+  let {xAxisData, seriesData, total} = args
   // if (!xAxisData || !xAxisData.length) {
   //   xAxisData = DEFAULT_X_DATA
   // }
@@ -34,7 +33,7 @@ export function createPower(args = {}) {
       z: 2,
       zlevel: 100,
       style: {
-        text: 98, // 后台数据-中间值
+        text: total, // 后台数据-中间值
         x: 100,
         y: 100,
         textAlign: 'center',
@@ -49,7 +48,7 @@ export function createPower(args = {}) {
       splitNumber: 4,
       splitArea: {
         areaStyle: {
-          color: ['#eae3fb', '#eae3fb', '#f4f0fd', '#faf8fe'],
+          color: ['#eae3fb', '#eae3fb', '#f4f0fd', '#faf8fe'], // 后台数据 - 每个角最大值
           shadowBlur: 0
         }
       },
@@ -59,14 +58,7 @@ export function createPower(args = {}) {
       axisLine: {
         show: false
       },
-      indicator: [ // 后台数据 - 每个角最大值
-        {name: '获客能力', max: 6500},
-        {name: 'KOL分享力', max: 25000},
-        {name: '业绩能力', max: 52000},
-        {name: '订单能力', max: 38000},
-        {name: '营销能力', max: 30000},
-        {name: '推广能力', max: 16000}
-      ]
+      indicator: seriesData
     },
     series: [
       {
@@ -74,7 +66,7 @@ export function createPower(args = {}) {
         symbolKeepAspect: true,
         data: [
           {
-            value: [4300, 20000, 5200, 30000, 25000, 16000], // 后台数据 - 每个角的当前值
+            value: xAxisData, // 后台数据 - 每个角的当前值
             areaStyle: {
               color: '#baa4f0'
             },
