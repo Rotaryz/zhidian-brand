@@ -240,7 +240,7 @@
       .btn
         margin-top: 40px
         height: 45px
-        background: $color-main
+        background: #d42b2b
         layout(row, block, nowrap)
         align-items: center
         justify-content: center

@@ -261,7 +261,7 @@
       .btn
         height :44px
         line-height :@height
-        background: $color-main
+        background: #d42b2b
         border-radius: 44px
         font-family: PingFangSC-Regular
         font-size: 16px

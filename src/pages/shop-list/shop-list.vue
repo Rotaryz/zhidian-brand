@@ -225,7 +225,7 @@
     justify-content:center
     padding :0 15px
     .btn
-      background: $color-main
+      background: #d42b2b
       border-radius: 44px;
       height :44px
       line-height :@height
