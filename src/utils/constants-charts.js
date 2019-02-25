@@ -7,7 +7,7 @@ import {createPower} from '@components/_base-ai-charts/config-radar'
 
 export const BASE_CHARTS_HEIGHT = 64.67236467236467 // 折线图高度百分比
 export const CHARTS_TYPE = {
-  VITALITY: 'VITALITY', // 近15天活跃度
+  VITALITY: 'VITALITY', // 近7天活跃度
   PNES: 'PNES', // NES动力模型
   GENDER: 'GENDER', // 客户性别占比
   SHOP: 'SHOP', // 兴趣的商品占比

@@ -138,7 +138,7 @@ export default {
     return request.get(url, data, false)
   },
   /**
-   * 近15天活跃度
+   * 近7天活跃度
    * @returns {*}
    */
   actionRetio(data) {
@@ -146,7 +146,7 @@ export default {
     return request.post(url, data, false)
   },
   /**
-   * 客户近15天活跃度
+   * 客户近7天活跃度
    * @returns {*}
    */
   actionCustomerRetio(data) {

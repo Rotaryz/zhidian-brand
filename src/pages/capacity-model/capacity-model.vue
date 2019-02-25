@@ -112,7 +112,8 @@
             </article>
             <router-link tag="div" to="" class="panel">
               <router-link tag="div" to="z-test" class="title">用户来源-KOL分享传播</router-link>
-              <base-ai-charts ref="c3" :CHARTS_TYPE="CHARTS_TYPE.USER_TOP6"></base-ai-charts>
+              <base-ai-charts v-if="KOLData" ref="c3" :CHARTS_TYPE="CHARTS_TYPE.USER_TOP6"></base-ai-charts>
+              <div v-else class="no-data">暂无数据</div>
               <div class="list" v-if="personList.length > 0">
                 <h3 class="list-title">
                   <span class="num">排序</span>
@@ -287,7 +288,8 @@
         charTab: 0,
         flowList: [],
         allDatas: {},
-        storeId: ''
+        storeId: '',
+        KOLData: false
       }
     },
     computed: {
@@ -399,12 +401,44 @@
           this.$nextTick(() => {
             this.groupRetio()
             this.PENSRetio()
-            this.$refs.c3.action()
+            this.KOLRetio()
+            this.KOLList()
           })
         }
         setTimeout(() => {
           this.$refs.scroll.forceUpdate()
         }, 20)
+      },
+      // KOL传播
+      KOLRetio() {
+        let data = {
+          store_id: this.storeId,
+          time: 'week'
+        }
+        API.Echart.KOLRetio(data)
+          .then(res => {
+            if (res.error !== this.$ERR_OK) {
+              this.$toast.show(res.message)
+              return
+            }
+            this.KOLData = res.data.elements.length
+            this.$refs.c3 && this.$refs.c3.action(res.data)
+          })
+      },
+      // KOL列表
+      KOLList() {
+        let data = {
+          store_id: this.storeId,
+          time: 'week'
+        }
+        API.Echart.KOLList(data)
+          .then(res => {
+            if (res.error !== this.$ERR_OK) {
+              this.$toast.show(res.message)
+              return
+            }
+            this.personList = res.data
+          })
       },
       // 用户分组占比
       groupRetio() {
@@ -483,7 +517,7 @@
       // 订单金额、客单价、一周活跃
       orderRetio() {
         let data = {
-          shop_id: this.shopId,
+          store_id: this.storeId,
           marchant_id: this.id,
           time: 'week'
         }
@@ -537,7 +571,8 @@
         if (index === 0) {
           this.groupRetio()
           this.PENSRetio()
-          this.$refs.c3.action()
+          this.KOLRetio()
+          this.KOLList()
         } else if (index === 1) {
           this.orderRetio()
         } else if (index === 2) {
@@ -942,6 +977,13 @@
         line-height: 16px
         padding: 13.5px 0
         margin: 0 15px
+      .no-data
+        height: 223px
+        line-height: 223px
+        text-align: center
+        font-size: $font-size-14
+        color: #333
+        font-family: $font-family-regular
       .list
         margin: 0 15px
         .list-title,.item

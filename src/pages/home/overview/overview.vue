@@ -181,7 +181,7 @@
       // KOL传播
       KOLRetio() {
         let data = {
-          shop_id: this.shopId,
+          store_id: this.storeId,
           time: 'week'
         }
         API.Echart.KOLRetio(data)
@@ -196,7 +196,11 @@
       },
       // KOL列表
       KOLList() {
-        API.Echart.KOLList()
+        let data = {
+          store_id: this.storeId,
+          time: 'week'
+        }
+        API.Echart.KOLList(data)
           .then(res => {
             if (res.error !== this.$ERR_OK) {
               this.$toast.show(res.message)
