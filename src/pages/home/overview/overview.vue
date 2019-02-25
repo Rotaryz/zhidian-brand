@@ -16,7 +16,8 @@
         <div class="chart-box">
           <router-link tag="div" to="" class="panel">
             <router-link tag="div" to="z-test" class="title">用户来源-KOL分享传播</router-link>
-            <base-ai-charts ref="c1" :CHARTS_TYPE="CHARTS_TYPE.USER_TOP6"></base-ai-charts>
+            <base-ai-charts v-if="KOLData" ref="c1" :CHARTS_TYPE="CHARTS_TYPE.USER_TOP6"></base-ai-charts>
+            <div v-else class="no-data">暂无数据</div>
             <div class="list" v-if="personList.length > 0">
               <h3 class="list-title">
                 <span class="num">排序</span>
@@ -25,10 +26,10 @@
                 <span class="count">次数</span>
               </h3>
               <p class="item" v-for="(item, index) in personList" :key="index">
-                <span class="num">{{index}}</span>
+                <span class="num">{{index+1}}</span>
                 <span class="name">{{item.name}}</span>
-                <span class="person">{{item.value}}</span>
-                <span class="count">{{item.value}}次</span>
+                <span class="person">{{item.share_person_count}}</span>
+                <span class="count">{{item.share_times}}次</span>
               </p>
             </div>
           </router-link>
@@ -132,6 +133,7 @@
         CHARTS_TYPE,
         pop: false,
         storeId: '',
+        KOLData: false
       }
     },
     watch: {
@@ -146,16 +148,9 @@
       this.getAllDataObj('all')
       this.groupRetio()
       this.PENSRetio()
-      // this.actionRetio()
       this.orderRetio()
-    },
-    mounted() {
-      this.$refs.c1.action()
-      // this.$refs.c2.action()
-      // this.$refs.c3.action()
-      // this.$refs.c4.action()
-      // this.$refs.c5.action()
-      // this.$refs.c6.action()
+      this.KOLRetio()
+      this.KOLList()
     },
     methods: {
       showPop(index) {
@@ -182,6 +177,33 @@
             this.$toast.show(res.message)
           }
         })
+      },
+      // KOL传播
+      KOLRetio() {
+        let data = {
+          shop_id: this.shopId,
+          time: 'week'
+        }
+        API.Echart.KOLRetio(data)
+          .then(res => {
+            if (res.error !== this.$ERR_OK) {
+              this.$toast.show(res.message)
+              return
+            }
+            this.KOLData = res.data.elements.length
+            this.$refs.c1 && this.$refs.c1.action(res.data)
+          })
+      },
+      // KOL列表
+      KOLList() {
+        API.Echart.KOLList()
+          .then(res => {
+            if (res.error !== this.$ERR_OK) {
+              this.$toast.show(res.message)
+              return
+            }
+            this.personList = res.data
+          })
       },
       // 用户分组占比
       groupRetio() {
@@ -401,6 +423,13 @@
             line-height: 16px
             padding: 13.5px 0
             margin: 0 15px
+          .no-data
+            height: 223px
+            line-height: 223px
+            text-align: center
+            font-size: $font-size-14
+            color: #333
+            font-family: $font-family-regular
           .list
             margin: 0 15px
             .list-title,.item

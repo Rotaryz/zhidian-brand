@@ -138,14 +138,6 @@ export default {
     return request.get(url, data, false)
   },
   /**
-   * KOL传播 TOP10
-   * @returns {*}
-   */
-  KOLRetio(data) {
-    let url = 'api/brand/brand-boss/city-report'
-    return request.get(url, data, false)
-  },
-  /**
    * 近15天活跃度
    * @returns {*}
    */
@@ -199,6 +191,23 @@ export default {
    */
   PENSRetio(data) {
     let url = 'api/brand/brand-boss/get-pnes-rate-report'
+    return request.get(url, data, false)
+  },
+  /**
+   * KOL传播 TOP10
+   * @returns {*}
+   */
+  KOLRetio(data) {
+    let url = 'api/brand/brand-boss/get-kol-relation'
+    return request.get(url, data, false)
+  },
+  /**
+   * KOL排名列表
+   * @param data
+   * @returns {*}
+   */
+  KOLList (data) {
+    let url = 'api/brand/brand-boss/get-kol-list'
     return request.get(url, data, false)
   }
 }

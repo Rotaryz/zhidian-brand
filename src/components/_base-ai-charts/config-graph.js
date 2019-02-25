@@ -4,12 +4,16 @@
 // pic-default@1x.png
 const hostUrl = `${window.location.protocol}//${window.location.host}/static/chart-icon`
 const number = 20
+const wx = {
+  customer_id: 0,
+  share_person_count: 99
+}
 const jjj = {
   nodes: new Array(number).fill(1).map((item, index) => {
     return {
-      name: `元素${index + 1}`,
-      symbol: `image://${hostUrl}/${index === 0 ? 'pic-xcx@1x.png' : 'pic-default@1x.png'}`,
-      symbolSize: index === 0 ? 40 : Math.random() * 10 > 5 ? 25 : 20,
+      name: item.customer_id,
+      symbol: `image://${hostUrl}/${index === 0 ? 'pic-xcx@1x.png' : item.image_url || 'pic-default@1x.png'}`,
+      symbolSize: index === 0 ? 40 : item.share_person_count > 1 ? 25 : 20,
       symbolKeepAspect: true,
       itemStyle: {
         borderColor: '#8867F2',
@@ -28,13 +32,13 @@ const jjj = {
   //     name: `元素${index + 1}`
   //   }
   // }),
-  links: new Array(number * 1).fill(1).map((item, index) => {
+  links: new Array(number * 1).fill(1).map((item, index, arr) => {
     // new Array(number).fill(1).map((child, idx) => {
     //
     // })
     return {
-      source: `元素${index % number + 1}`,
-      target: `元素${1}`
+      source: item.customer_id,
+      target: item.from_customer_id
       // lineStyle: {
       //   normal: {
       //     color: 'red'
@@ -48,8 +52,9 @@ const jjj = {
 // console.log(jjj.categories)
 export function createUserTop6() {
   return {
-    animationDurationUpdate: 1500,
-    animationEasingUpdate: 'quinticInOut',
+    // animation: false,
+    // animationDurationUpdate: 500,
+    // animationEasingUpdate: 'quinticInOut',
     series: [
       {
         type: 'graph',
@@ -76,7 +81,7 @@ export function createUserTop6() {
             opacity: 1,
             color: '#8867F2',
             width: 2,
-            curveness: 0.1
+            curveness: 0.3
           }
         }
       }
