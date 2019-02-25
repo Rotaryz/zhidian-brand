@@ -3,54 +3,56 @@
 // pic-xcx@1x.png
 // pic-default@1x.png
 const hostUrl = `${window.location.protocol}//${window.location.host}/static/chart-icon`
-const number = 20
+// const number = 20
 const wx = {
   customer_id: 0,
   share_person_count: 99
 }
-const jjj = {
-  nodes: new Array(number).fill(1).map((item, index) => {
-    return {
-      name: item.customer_id,
-      symbol: `image://${hostUrl}/${index === 0 ? 'pic-xcx@1x.png' : item.image_url || 'pic-default@1x.png'}`,
-      symbolSize: index === 0 ? 40 : item.share_person_count > 1 ? 25 : 20,
-      symbolKeepAspect: true,
-      itemStyle: {
-        borderColor: '#8867F2',
-        borderWidth: 1,
-        shadowBlur: 1,
-        shadowColor: '#8867F2'
-      },
-      label: {
-        show: false
-      }
-      // category: index
-    }
-  }),
-  // categories: new Array(number).fill(1).map((item, index) => {
-  //   return {
-  //     name: `元素${index + 1}`
-  //   }
-  // }),
-  links: new Array(number * 1).fill(1).map((item, index, arr) => {
-    // new Array(number).fill(1).map((child, idx) => {
-    //
-    // })
-    return {
-      source: item.customer_id,
-      target: item.from_customer_id
-      // lineStyle: {
-      //   normal: {
-      //     color: 'red'
-      //   }
-      // }
-    }
-  })
-}
+
 // console.log(jjj.nodes, 1)
 // console.log(jjj.links, 2)
 // console.log(jjj.categories)
-export function createUserTop6() {
+export function createUserTop6(data) {
+  const jjj = {
+    nodes: data.elements.map((item, index) => {
+      return {
+        name: item.customer_id,
+        symbol: `image://${hostUrl}/${index === 0 ? 'pic-xcx@1x.png' : item.image_url || 'pic-default@1x.png'}`,
+        symbolSize: index === 0 ? 40 : item.share_person_count > 1 ? 25 : 20,
+        symbolKeepAspect: true,
+        itemStyle: {
+          borderColor: '#8867F2',
+          borderWidth: 1,
+          shadowBlur: 1,
+          shadowColor: '#8867F2'
+        },
+        label: {
+          show: false
+        }
+        // category: index
+      }
+    }),
+    // categories: new Array(number).fill(1).map((item, index) => {
+    //   return {
+    //     name: `元素${index + 1}`
+    //   }
+    // }),
+    links: data.relation.map((item, index, arr) => {
+      // new Array(number).fill(1).map((child, idx) => {
+      //
+      // })
+      return {
+        source: item.customer_id,
+        target: item.from_customer_id
+        // lineStyle: {
+        //   normal: {
+        //     color: 'red'
+        //   }
+        // }
+      }
+    })
+  }
+  jjj.nodes.unshift(wx)
   return {
     // animation: false,
     // animationDurationUpdate: 500,

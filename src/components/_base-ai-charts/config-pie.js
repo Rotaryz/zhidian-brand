@@ -7,7 +7,7 @@ DEFAULT_SERIES_DATA_FN = function (number) {
     }
   })
 }
-const hostUrl = `${window.location.protocol}//${window.location.host}/static/chart-icon`
+const hostUrl = `${window.location.protocol}//${window.location.host}/public/chart-icon`
 /**
  * 兴趣的商品占比
  * @param args

@@ -468,7 +468,6 @@
       PENSRetio() {
         let data = {
           store_id: this.storeId,
-          merchant_id: this.id,
           time: 'week'
         }
         API.Echart.PENSRetio(data)
@@ -478,37 +477,32 @@
               return
             }
             let day = res.data.map(item => {
-              return item.day
+              let day = item.day.slice(5).split('-').join('/')
+              return day
             })
             // 新增
             let growth = res.data.map(item => {
-              return item.growth
+              return item.growth_rate
             })
             // 转化
             let conversion = res.data.map(item => {
-              return item.conversion
+              return item.conversion_rate
             })
             // 流失
             let churn = res.data.map(item => {
-              return item.churn
+              return item.churn_rate
             })
             // 唤醒
             let wakeup = res.data.map(item => {
-              return item.wakeup
+              return item.wakeup_rate
             })
-            // let seriesData = [
-            //   {data: [50, 70, 30, 80, 40]},
-            //   {data: [10, 50, 40, 70, 20]},
-            //   {data: [30, 60, 20, 60, 50]},
-            //   {data: [60, 10, 100, 90, 60]}
-            // ]
             let lineData = {
-              xAxisData: day.length > 1 ? day : ['3/10', '3/15', '3/20', '3/25', '3/30'],
+              xAxisData: day.length ? day : ['03/10', '03/15', '03/20', '03/25', '03/30'],
               seriesData: [
-                {data: growth.length > 1 ? growth : [0, 0, 0, 0, 0]},
-                {data: conversion.length > 1 ? conversion : [0, 0, 0, 0, 0]},
-                {data: churn.length > 1 ? churn : [0, 0, 0, 0, 0]},
-                {data: wakeup.length > 1 ? wakeup : [0, 0, 0, 0, 0]}
+                {data: growth.length ? growth : [0, 0, 0, 0, 0]},
+                {data: conversion.length ? conversion : [0, 0, 0, 0, 0]},
+                {data: churn.length ? churn : [0, 0, 0, 0, 0]},
+                {data: wakeup.length ? wakeup : [0, 0, 0, 0, 0]}
               ]
             }
             this.$refs.c2.action(lineData)
@@ -541,12 +535,13 @@
             })
             // 日期
             let day = res.data.map(item => {
-              return item.day
+              let day = item.day.slice(5).split('-').join('/')
+              return day
             })
 
             if (this.charTab === 1) {
               let lineData = {
-                xAxisData: day.length ? day : ['3/10', '3/15', '3/20', '3/25', '3/30'],
+                xAxisData: day.length ? day : ['03/10', '03/15', '03/20', '03/25', '03/30'],
                 seriesData: [ {data: mainOrderCount.length ? mainOrderCount : [0, 0, 0, 0, 0]} ]
               }
               this.$refs.c4.action(lineData)
