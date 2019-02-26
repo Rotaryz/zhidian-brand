@@ -23,7 +23,7 @@
                 <div class="label-right">
                   <div class="label-name">{{clientData.name}}</div>
                   <div class="label-box">
-                    <div class="full-name">{{clientData.position}}</div>
+                    <div class="full-name">{{clientData.user}} {{clientData.mobile}}</div>
                   </div>
                 </div>
               </div>
@@ -316,7 +316,9 @@
       this.clientData = {
         name: this.$storage.get('user').name,
         avatar: this.$storage.get('user').avatar,
-        position: this.$storage.get('user').position
+        position: this.$storage.get('user').position,
+        user: this.$storage.get('info').name,
+        mobile: this.$storage.get('info').mobile,
       }
       this.getAllDataObj('all') // 全部数据展示
       this.getNewActionList(this.id) // 行为事件列表
@@ -737,14 +739,15 @@
                 color: #333
                 font-family: $font-family-medium
                 padding-top: 5px
-                margin-bottom: 20px
+                margin-bottom: 10px
                 no-wrap()
               .label-box
                 layout(row,block,nowrap)
                 .full-name
                   font-size: $font-size-12
-                  color: #888888
-                  font-family: $font-family-medium
+                  color: #8e8f8f
+                  font-family: $font-family-regular
+                  line-height: 1.2
                   no-wrap()
           .detail-jump
             height: 45px
