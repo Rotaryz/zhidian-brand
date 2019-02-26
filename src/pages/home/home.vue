@@ -14,12 +14,13 @@
         <nav class="scroll-wrapper">
           <h-header></h-header>
           <h-tab :tabIndex="tabIndex" @change="changeHandle"></h-tab>
-          <overview v-if="tabIndex === 0"></overview>
+          <overview v-if="tabIndex === 0" @showPop="showPop"></overview>
           <rank-list v-if="tabIndex === 1" ref="ranking" @loadEnd="loadEndHandle"></rank-list>
           <ai-analyse v-if="tabIndex === 2" ref="analyse" @loadEnd="loadEndHandle"></ai-analyse>
         </nav>
       </scroll>
     </article>
+    <pop ref="pop"></pop>
     <footer>
       <base-router-view style="z-index: 20" @refresh="refresh"></base-router-view>
     </footer>
@@ -36,6 +37,7 @@
   // import Ranking from './ranking/ranking'
   import AiAnalyse from './ai-analyse/ai-analyse'
   import RankList from './rank-list/rank-list'
+  import Pop from './pop/pop'
 
   const PAGE_NAME = 'HOME'
 
@@ -52,7 +54,8 @@
       Overview,
       // Ranking,
       AiAnalyse,
-      RankList
+      RankList,
+      Pop
     },
     data() {
       return {
@@ -115,6 +118,9 @@
       ...infoMethods,
       refresh() {
         this.updateMerchant('', false)
+      },
+      showPop() {
+        this.$refs.pop.showPop()
       },
       changeHandle(index) {
         this.tabIndex = index
