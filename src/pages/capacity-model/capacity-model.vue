@@ -317,7 +317,7 @@
         name: this.$storage.get('user').name,
         avatar: this.$storage.get('user').avatar,
         position: this.$storage.get('user').position,
-        user: this.$storage.get('info').name,
+        user: this.$storage.get('info').nickname,
         mobile: this.$storage.get('info').mobile,
       }
       this.getAllDataObj('all') // 全部数据展示
