@@ -317,8 +317,8 @@
         name: this.$storage.get('user').name,
         avatar: this.$storage.get('user').avatar,
         position: this.$storage.get('user').position,
-        user: this.$storage.get('info').nickname,
-        mobile: this.$storage.get('info').mobile,
+        user: this.$storage.get('user').nickname,
+        mobile: this.$storage.get('user').mobile,
       }
       this.getAllDataObj('all') // 全部数据展示
       this.getNewActionList(this.id) // 行为事件列表
