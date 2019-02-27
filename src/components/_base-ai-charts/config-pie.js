@@ -49,7 +49,7 @@ export function createShop(args = {}) {
       bottom: 12,
       padding: [0, 25, 0, 25],
       textStyle: {color: '#858585',
-        fontSize: '12px',
+        fontSize: '12',
         fontFamily: 'PingFangSC-Regular'
       },
       data: legendData
@@ -76,7 +76,7 @@ export function createShop(args = {}) {
             show: true,
             textStyle: {
               fontSize: '12',
-              fontWeight: 'bold'
+              fontWeight: 'normal'
             }
           }
         },
@@ -148,7 +148,7 @@ export function createGender(args = {}) {
       borderRadius: 0,
       orient: 'vertical',
       itemGap: 25,
-      textStyle: {color: '#858585', fontSize: '12px', fontFamily: 'PingFangSC-Regular'},
+      textStyle: {color: '#858585', fontSize: '12', fontFamily: 'PingFangSC-Regular'},
       x: '60%',
       y: '-5%',
       padding: [50, 25, 50, 50],
@@ -176,7 +176,7 @@ export function createGender(args = {}) {
             show: true,
             textStyle: {
               fontSize: '12',
-              fontWeight: 'bold'
+              fontWeight: 'normal'
             }
           }
         },
@@ -246,7 +246,7 @@ export function createUser(args = {}) {
       itemHeight: 14,
       borderRadius: 0,
       itemGap: 20,
-      textStyle: {color: '#858585', fontSize: '12px', fontFamily: 'PingFangSC-Regular'},
+      textStyle: {color: '#858585', fontSize: '12', fontFamily: 'PingFangSC-Regular'},
       orient: 'vertical',
       x: '60%',
       y: '-10%',
@@ -275,7 +275,7 @@ export function createUser(args = {}) {
             show: true,
             textStyle: {
               fontSize: '12',
-              fontWeight: 'bold'
+              fontWeight: 'normal'
             }
           }
         },
