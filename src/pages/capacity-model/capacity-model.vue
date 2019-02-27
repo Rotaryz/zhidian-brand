@@ -43,7 +43,7 @@
 
       <!--能力模型-->
       <div v-if="menuIdx * 1 === 0" class="capacity">
-        <base-ai-charts ref="c7" :CHARTS_TYPE="CHARTS_TYPE.POWER"></base-ai-charts>
+        <base-ai-charts ref="c7" :chartsType="CHARTS_TYPE.POWER"></base-ai-charts>
         <div class="six-title">
           <div class="six-top">
             <div class="left">销售力综合排名</div>
@@ -104,24 +104,24 @@
           <div v-show="charTab === 0">
             <article class="panel">
               <h1 class="title">用户分组</h1>
-              <base-ai-charts ref="c1" :CHARTS_TYPE="CHARTS_TYPE.USER"></base-ai-charts>
+              <base-ai-charts ref="c1" :chartsType="CHARTS_TYPE.USER"></base-ai-charts>
             </article>
             <article class="panel">
               <h1 class="title">PNES动力模型</h1>
-              <base-ai-charts ref="c2" :CHARTS_TYPE="CHARTS_TYPE.PNES"></base-ai-charts>
+              <base-ai-charts ref="c2" :chartsType="CHARTS_TYPE.PNES"></base-ai-charts>
             </article>
             <router-link tag="div" to="" class="panel">
               <router-link tag="div" to="z-test" class="title">用户来源-KOL分享传播</router-link>
-              <base-ai-charts v-if="KOLData" ref="c3" :CHARTS_TYPE="CHARTS_TYPE.USER_TOP6"></base-ai-charts>
+              <base-ai-charts v-if="KOLData" ref="c3" :chartsType="CHARTS_TYPE.USER_TOP6"></base-ai-charts>
               <div v-else class="no-data">暂无数据</div>
-              <div class="list" v-if="personList.length > 0">
+              <div v-if="personList.length > 0" class="list">
                 <h3 class="list-title">
                   <span class="num">排序</span>
                   <span class="name">用户</span>
                   <span class="person">人数</span>
                   <span class="count">次数</span>
                 </h3>
-                <p class="item" v-for="(item, index) in personList" :key="index">
+                <p v-for="(item, index) in personList" :key="index" class="item">
                   <span class="num">{{index}}</span>
                   <span class="name">{{item.name}}</span>
                   <span class="person">{{item.value}}</span>
@@ -133,17 +133,17 @@
           <div v-show="charTab === 1">
             <article class="panel">
               <h1 class="title ">活跃度-主力客户一周期内下单次数</h1>
-              <base-ai-charts ref="c4" :CHARTS_TYPE="CHARTS_TYPE.VITALITY"></base-ai-charts>
+              <base-ai-charts ref="c4" :chartsType="CHARTS_TYPE.VITALITY"></base-ai-charts>
             </article>
           </div>
           <div v-show="charTab === 2">
             <article class="panel">
-              <h1 class="title ">客单价</h1>
-              <base-ai-charts ref="c5" :CHARTS_TYPE="CHARTS_TYPE.VITALITY"></base-ai-charts>
+              <h1 class="title ">笔单价</h1>
+              <base-ai-charts ref="c5" :chartsType="CHARTS_TYPE.VITALITY"></base-ai-charts>
             </article>
             <article class="panel">
               <h1 class="title">订单和金额</h1>
-              <base-ai-charts ref="c6" :CHARTS_TYPE="CHARTS_TYPE.ORDER_AMOUNT"></base-ai-charts>
+              <base-ai-charts ref="c6" :chartsType="CHARTS_TYPE.ORDER_AMOUNT"></base-ai-charts>
             </article>
           </div>
           <div style="height: 5px"></div>
@@ -151,8 +151,8 @@
       </div>
 
       <!--来访记录-->
-      <div class="visitor-box" v-if="menuIdx * 1 === 2">
-        <section class="exception-box" v-if="actionList.length * 1 === 0">
+      <div v-if="menuIdx * 1 === 2" class="visitor-box">
+        <section v-if="actionList.length * 1 === 0" class="exception-box">
           <exception errType="nodata"></exception>
         </section>
         <section v-if="actionList.length * 1 !== 0">
@@ -161,10 +161,10 @@
       </div>
 
       <!--营销记录-->
-      <section class="exception-box" v-if="menuIdx * 1 === 3 && flowList.length === 0">
+      <section v-if="menuIdx * 1 === 3 && flowList.length === 0" class="exception-box">
         <exception errType="nodata"></exception>
       </section>
-      <section v-if="menuIdx * 1 === 2 && flowList.length !== 0">
+      <section v-if="menuIdx * 1 === 3 && flowList.length !== 0">
         <market-record :flowList="flowList"></market-record>
       </section>
     </scroll>
@@ -186,9 +186,9 @@
 
   const DATA_ARR = [
     {name: '交易金额', icon: 'money', type: 'total'},
-    {name: '主力客户', icon: 'business', type: 'order_count'},
-    {name: '活跃度', icon: 'active', type: 'per_money'},
-    {name: '客单价', icon: 'price', type: 'module_e_count'}
+    {name: '主力客户', icon: 'business', type: 'module_e_count'},
+    {name: '活跃度', icon: 'active', type: 'order_count'},
+    {name: '笔单价', icon: 'price', type: 'per_money'}
   ]
   const groupList = [{
     orderBy: 'join',
@@ -200,7 +200,6 @@
     orderBy: '',
     name: '交易数据'
   }]
-  const Echart = API.Echart
   const ClientDetail = API.Echart
   export default {
     name: 'CapacityModel',
@@ -289,7 +288,10 @@
         flowList: [],
         allDatas: {},
         storeId: '',
-        KOLData: false
+        KOLData: false,
+        noMarketing: false,
+        merchantId: '',
+        marketPage: 1
       }
     },
     computed: {
@@ -311,8 +313,8 @@
       }
     },
     created() {
+      this.merchantId = this.$storage.get('info').id
       this.id = this.$route.query.id
-      this.storeId = this.$storage.get('info').store_id
       let userInfo = this.$storage.get('user')
       this.clientData = {
         name: userInfo.name,
@@ -321,9 +323,8 @@
         user: userInfo.nickname,
         mobile: userInfo.mobile,
       }
-      this.getAllDataObj('all') // 全部数据展示
-      this.getNewActionList(this.id) // 行为事件列表
-
+      this.getNewActionList(this.id) // 来访记录
+      this.marketingRecord() // 营销记录
       this.getRadarData() // 能力模型
       this.getEmployeeRank() // 能力排名
     },
@@ -356,7 +357,7 @@
       },
       // 能力排行
       getEmployeeRank() {
-        API.Echart.getEmployeeRank({store_id: this.storeId})
+        API.Echart.getEmployeeRank({store_id: this.id})
           .then(res => {
             this.$loading.hide()
             if (res.error === this.$ERR_OK) {
@@ -369,8 +370,8 @@
       // 商家交易数据
       getMerchantData() {
         let data = {
-          merchant_id: this.id,
-          store_id: this.storeId,
+          merchant_id: this.merchantId,
+          store_id: this.id,
           time: this.tabMoreList[this.tabNumber].value
         }
         API.Capacity.getMerchantData(data)
@@ -404,9 +405,9 @@
           this.$nextTick(() => {
             this.groupRetio()
             this.PENSRetio()
-            this.KOLRetio()
             this.KOLList()
           })
+          this.KOLRetio()
         }
         setTimeout(() => {
           this.$refs.scroll.forceUpdate()
@@ -415,7 +416,8 @@
       // KOL传播
       KOLRetio() {
         let data = {
-          store_id: this.storeId,
+          merchant_id: this.merchantId,
+          store_id: this.id,
           time: 'week'
         }
         API.Echart.KOLRetio(data)
@@ -425,13 +427,16 @@
               return
             }
             this.KOLData = res.data.elements.length
-            this.$refs.c3 && this.$refs.c3.action(res.data)
+            this.$nextTick(() => {
+              this.$refs.c3 && this.$refs.c3.action(res.data)
+            })
           })
       },
       // KOL列表
       KOLList() {
         let data = {
-          store_id: this.storeId,
+          merchant_id: this.merchantId,
+          store_id: this.id,
           time: 'week'
         }
         API.Echart.KOLList(data)
@@ -446,8 +451,8 @@
       // 用户分组占比
       groupRetio() {
         let data = {
-          store_id: this.storeId,
-          merchant_id: this.id,
+          merchant_id: this.merchantId,
+          store_id: this.id,
           time: 'week'
         }
         API.Echart.groupRetio(data)
@@ -470,7 +475,8 @@
       // PNES动力模型
       PENSRetio() {
         let data = {
-          store_id: this.storeId,
+          merchant_id: this.merchantId,
+          store_id: this.id,
           time: 'week'
         }
         API.Echart.PENSRetio(data)
@@ -511,11 +517,11 @@
             this.$refs.c2.action(lineData)
           })
       },
-      // 订单金额、客单价、一周活跃
+      // 订单金额、笔单价、一周活跃
       orderRetio() {
         let data = {
-          store_id: this.storeId,
-          marchant_id: this.id,
+          merchant_id: this.merchantId,
+          store_id: this.id,
           time: 'week'
         }
         API.Echart.orderRetio(data)
@@ -528,11 +534,15 @@
             let mainOrderCount = res.data.map(item => {
               return item.main_order_count
             })
-            // 客单价
+            // 笔单价
             let personMoney = res.data.map(item => {
               return item.per_money
             })
-            // 订单金额
+            // 订单数
+            let count = res.data.map(item => {
+              return item.order_count
+            })
+            // 交易金额
             let total = res.data.map(item => {
               return item.total
             })
@@ -545,17 +555,19 @@
             if (this.charTab === 1) {
               let lineData = {
                 xAxisData: day.length ? day : ['03/10', '03/15', '03/20', '03/25', '03/30'],
-                seriesData: [ {data: mainOrderCount.length ? mainOrderCount : [0, 0, 0, 0, 0]} ]
+                seriesData: [ {data: mainOrderCount.length ? mainOrderCount : [0, 0, 0, 0, 0]} ],
+                name: '活跃度'
               }
               this.$refs.c4.action(lineData)
             } else if (this.charTab === 2) {
               let lineData = {
                 xAxisData: day.length ? day : ['3/10', '3/15', '3/20', '3/25', '3/30'],
-                seriesData: [ {data: personMoney.length ? personMoney : [0, 0, 0, 0, 0]} ]
+                seriesData: [ {data: personMoney.length ? personMoney : [0, 0, 0, 0, 0]} ],
+                name: '笔单价'
               }
               let lineData2 = {
-                xAxisData: day.length ? day : ['3/10', '3/15', '3/20', '3/25', '3/30'],
-                seriesData: [ {data: total.length ? total : [0, 0, 0, 0, 0]}, {data: res.data.y ? res.data.y : [0, 0, 0, 0, 0]} ]
+                xAxisData: day.length ? day : ['03/10', '03/15', '03/20', '03/25', '03/30'],
+                seriesData: [ {data: count.length ? count : [0, 0, 0, 0, 0]}, {data: total.length ? total : [0, 0, 0, 0, 0]} ]
               }
               this.$refs.c5.action(lineData)
               this.$refs.c6.action(lineData2)
@@ -577,16 +589,7 @@
           this.orderRetio()
         }
       },
-      getAllDataObj(time) {
-        Echart.getAllData(time, this.id).then((res) => {
-          this.$loading.hide()
-          if (res.error === this.$ERR_OK) {
-            this.allDatas = res.data
-          } else {
-            this.$toast.show(res.message)
-          }
-        })
-      },
+      // 来访记录
       getNewActionList(id) {
         ClientDetail.getActionList(id).then((res) => {
           this.$loading.hide()
@@ -617,23 +620,76 @@
           }
         })
       },
+      // 营销记录
+      marketingRecord() {
+        this.marketPage = 1
+        let data = {
+          page: this.marketPage,
+          limit: 10,
+          store_id: this.id,
+          merchant_id: this.merchantId
+        }
+        API.Capacity.martketingRecord(data)
+          .then(res => {
+            if (res.error === this.$ERR_OK) {
+              this.flowList =res.data
+              this._isAflowList(res)
+            } else {
+              this.$toast.show(res.message)
+            }
+          })
+      },
+      // 营销记录加载更多
+      moreMarketingRecord() {
+        if (this.noMarketing) {
+          this.$refs.scroll.forceUpdate()
+          return
+        }
+        let data = {
+          page: this.marketPage,
+          limit: 10,
+          store_id: this.id,
+          merchant_id: this.merchantId
+        }
+        API.Capacity.martketingRecord(data)
+          .then((res) => {
+            this.$loading.hide()
+            if (res.error === this.$ERR_OK) {
+              this.flowList.push(...res.data)
+              this._isAflowList(res)
+              setTimeout(() => {
+                this.$refs.scroll.forceUpdate()
+              }, 20)
+            }
+          })
+      },
+      _isAflowList(res) {
+        this.marketPage++
+        if (this.flowList.length >= res.meta.total * 1) {
+          this.noMarketing = true
+        }
+      },
       toBusinessCard() {
         const id = this.id
         const url = `${this.$route.path}/business-card?id=${id}`
         this.$router.push(url)
       },
       onPullingUp() {
-        if (this.menuIdx * 1 === 0) {
+        switch (this.menuIdx * 1) {
+        case 0:
           this.$refs.scroll.forceUpdate()
-        }
-        if (this.menuIdx * 1 === 2) {
+          break
+        case 1:
+          this.$refs.scroll.forceUpdate()
+          break
+        case 2:
           this.getMoreActionList(this.id)
-        }
-        if (this.menuIdx * 1 === 1) {
+          break
+        case 2 && this.noActionMore:
           this.$refs.scroll.forceUpdate()
-        }
-        if (this.menuIdx * 1 === 2 && this.noActionMore) {
-          this.$refs.scroll.forceUpdate()
+          break
+        case 3:
+          this.moreMarketingRecord(this.id)
         }
       },
       rebuildScroll() {

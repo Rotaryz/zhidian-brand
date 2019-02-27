@@ -1,9 +1,9 @@
 <template>
   <transition name="fade">
-    <div class="pop" v-if="pop">
+    <div v-if="pop" class="pop">
       <div class="pop-main">
-        <h3 class="title">营收 =（主力客户&活跃度&客单价）<span class="icon"></span></h3>
-        <p class="text">主力客户、活跃度和客单价的增长转化等于店铺的营收</p>
+        <h3 class="title">营收 =（主力客户&活跃度&笔单价）<span class="icon"></span></h3>
+        <p class="text">主力客户、活跃度和笔单价的增长转化等于店铺的营收</p>
         <div class="btn" @click="closePop">知道了</div>
       </div>
     </div>

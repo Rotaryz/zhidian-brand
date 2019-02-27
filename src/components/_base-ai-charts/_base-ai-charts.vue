@@ -12,7 +12,7 @@
   export default {
     name: COMPONENT_NAME,
     props: {
-      CHARTS_TYPE: {
+      chartsType: {
         type: String,
         default: CHARTS_TYPE.PNES
       }
@@ -24,12 +24,12 @@
     },
     computed: {
       CHARTS_CONFIG() {
-        return CHARTS_CONFIG[this.CHARTS_TYPE]
+        return CHARTS_CONFIG[this.chartsType]
       },
       chartsHeight() {
-        let styles = CHARTS_CONFIG[this.CHARTS_TYPE].styles
+        let styles = CHARTS_CONFIG[this.chartsType].styles
         if (!styles) {
-          styles = `padding-top:${CHARTS_CONFIG[this.CHARTS_TYPE].height || BASE_CHARTS_HEIGHT}%`
+          styles = `padding-top:${CHARTS_CONFIG[this.chartsType].height || BASE_CHARTS_HEIGHT}%`
         }
         return styles
       }
@@ -38,10 +38,10 @@
       this.myChart = null
     },
     methods: {
-      action(data) {
+      async action(data) {
         this.myChart = this.$echarts.init(this.$refs.chartItem)
         if (this.myChart == null) return
-        let config = this.CHARTS_CONFIG.createOption(data)
+        let config = await this.CHARTS_CONFIG.createOption(data)
         this.myChart.setOption(config)
       }
     }

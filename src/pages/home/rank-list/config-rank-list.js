@@ -14,7 +14,7 @@ export default [
     secondKey: 'order_status'
   },
   {
-    title: ['客单价', '交易总金额'],
+    title: ['笔单价', '交易总金额'],
     key: 0,
     one: 3,
     second: [0, 1],

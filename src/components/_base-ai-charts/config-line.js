@@ -34,7 +34,7 @@ if (APP_CONFIG.env === 'production') {
 }
 
 /**
- * 订单和金额
+ * 订单数和交易金额
  * @param args
  * @returns {{yAxis: Array, xAxis: {axisLabel: {color: string, fontSize: number, align: string}, data, offset: number, axisLine: {lineStyle: {color: string, width: number}, show: boolean}, splitLine: {lineStyle: {color: string, width: number}, show: boolean}, axisTick: {lineStyle: {color: string, width: number}, show: boolean}, type: string, boundaryGap: boolean}, legend: {padding: number[], borderRadius: number, data: {name: *, icon: string}[], bottom: number, itemHeight: number, show: boolean, itemWidth: number}, grid: {top: string, left: string, bottom: string, right: string, containLabel: boolean}, series: Array, tooltip: {padding: number[], axisPointer: {lineStyle: {color: string, width: number}}, trigger: string, textStyle: {align: string}}}}
  */
@@ -43,7 +43,7 @@ export function createOrderAmount(args = {}) {
   const smooth = 0.5
   const colorObj = [
     {
-      name: '订单金额',
+      name: '订单数',
       color: '#59DF78',
       colorStops0: 'rgba(89,223,120,0.55)',
       colorStops1: 'rgba(89,223,120,0.05)'
@@ -75,6 +75,9 @@ export function createOrderAmount(args = {}) {
       data: item.data,
       type: 'line',
       smooth,
+      symbol: 'circle',
+      symbolSize: 3,
+      showSymbol: false,
       yAxisIndex: index,
       areaStyle: {
         color: {
@@ -98,13 +101,13 @@ export function createOrderAmount(args = {}) {
       },
       itemStyle: {
         normal: {
-          name: colorObj[index].name,
           color: colorObj[index].color,
           borderWidth: 1,
-          opacity: 0,
+          borderColor: '#fff',
+          opacity: 0.9,
           lineStyle: {
             color: colorObj[index].color,
-            width: 3
+            width: 2
           }
         }
       }
@@ -132,9 +135,6 @@ export function createOrderAmount(args = {}) {
         formatter: '{value}',
         color: '#666',
         show: true
-        // showMinLabel: true,
-        // showMaxLabel: true,
-        // formatter: function (value) { return value }
       },
       axisLine: {
         show: false,
@@ -290,20 +290,13 @@ export function createPNES(args = {}) {
       },
       itemStyle: {
         normal: {
-          // color: colorObj[index].color,
-          // borderWidth: 1,
-          // opacity: 0,
-          // lineStyle: {
-          //   color: colorObj[index].color,
-          //   width: 3
-          // }
-          color: '#fff',
+          color: colorObj[index].color,
           borderWidth: 1,
-          borderColor: colorObj[index].color,
-          opacity: 1,
+          borderColor: '#fff',
+          opacity: 0.9,
           lineStyle: {
             color: colorObj[index].color,
-            width: 3
+            width: 2
           }
         }
       }
@@ -408,17 +401,17 @@ export function createPNES(args = {}) {
 }
 
 /**
- * 创建最近7天活跃值
+ * 创建最近7天活跃值/笔单价
  * @param args
  * @returns {{yAxis: {axisLabel: {formatter: string, color: string}, minInterval: number, axisLine: {lineStyle: {color: string, width: number}, show: boolean}, splitLine: {lineStyle: {color: string, width: number, type: string}, show: boolean}, axisTick: {lineStyle: {color: string, width: number}, show: boolean}, type: string}, xAxis: {axisLabel: {color: string, fontSize: number, align: string}, data, offset: number, axisLine: {lineStyle: {color: string, width: number}, show: boolean}, splitLine: {lineStyle: {color: string, width: number}, show: boolean}, axisTick: {lineStyle: {color: string, width: number}, show: boolean}, type: string, boundaryGap: boolean}, grid: {top: string, left: string, bottom: string, right: string, containLabel: boolean}, series: *, tooltip: {padding: number[], axisPointer: {lineStyle: {color: string, width: number}}, trigger: string, textStyle: {align: string}}}}
  * @private
  */
 export function createVitality(args = {}) {
-  let {xAxisData, seriesData} = args
+  let {xAxisData, seriesData, name} = args
   const smooth = 0.5
   const colorObj = [
     {
-      name: '活跃度',
+      name: name || '活跃度',
       color: '#8867F2',
       colorStops0: 'rgba(136,103,242,0.55)',
       colorStops1: 'rgba(136,103,242,0.05)'
@@ -461,14 +454,13 @@ export function createVitality(args = {}) {
       },
       itemStyle: {
         normal: {
-          // color: colorObj[index].color,
-          color: '#fff',
+          color: colorObj[index].color,
           borderWidth: 1,
-          borderColor: colorObj[index].color,
-          opacity: 1,
+          borderColor: '#fff',
+          opacity: 0.9,
           lineStyle: {
             color: colorObj[index].color,
-            width: 3
+            width: 2
           }
         }
       }

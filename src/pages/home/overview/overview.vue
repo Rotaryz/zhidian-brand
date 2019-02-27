@@ -16,16 +16,16 @@
         <div class="chart-box">
           <router-link tag="div" to="" class="panel">
             <router-link tag="div" to="z-test" class="title">用户来源-KOL分享传播</router-link>
-            <base-ai-charts v-if="KOLData" ref="c1" :CHARTS_TYPE="CHARTS_TYPE.USER_TOP6"></base-ai-charts>
+            <base-ai-charts v-if="KOLData" ref="c1" :chartsType="CHARTS_TYPE.USER_TOP6"></base-ai-charts>
             <div v-else class="no-data">暂无数据</div>
-            <div class="list" v-if="personList.length > 0">
+            <div v-if="personList.length > 0" class="list">
               <h3 class="list-title">
                 <span class="num">排序</span>
                 <span class="name">用户</span>
                 <span class="person">人数</span>
                 <span class="count">次数</span>
               </h3>
-              <p class="item" v-for="(item, index) in personList" :key="index">
+              <p v-for="(item, index) in personList" :key="index" class="item">
                 <span class="num">{{index+1}}</span>
                 <span class="name">{{item.name}}</span>
                 <span class="person">{{item.share_person_count}}</span>
@@ -36,26 +36,26 @@
 
           <article class="panel">
             <h1 class="title">用户分组</h1>
-            <base-ai-charts ref="c2" :CHARTS_TYPE="CHARTS_TYPE.USER"></base-ai-charts>
+            <base-ai-charts ref="c2" :chartsType="CHARTS_TYPE.USER"></base-ai-charts>
           </article>
 
           <article class="panel">
             <h1 class="title">PNES动力模型</h1>
-            <base-ai-charts ref="c3" :CHARTS_TYPE="CHARTS_TYPE.PNES"></base-ai-charts>
+            <base-ai-charts ref="c3" :chartsType="CHARTS_TYPE.PNES"></base-ai-charts>
           </article>
 
           <article class="panel">
             <h1 class="title ">活跃度-主力客户一周期内下单次数</h1>
-            <base-ai-charts ref="c4" :CHARTS_TYPE="CHARTS_TYPE.VITALITY"></base-ai-charts>
+            <base-ai-charts ref="c4" :chartsType="CHARTS_TYPE.VITALITY"></base-ai-charts>
           </article>
 
           <article class="panel">
-            <h1 class="title ">客单价</h1>
-            <base-ai-charts ref="c5" :CHARTS_TYPE="CHARTS_TYPE.VITALITY"></base-ai-charts>
+            <h1 class="title ">笔单价</h1>
+            <base-ai-charts ref="c5" :chartsType="CHARTS_TYPE.VITALITY"></base-ai-charts>
           </article>
           <article class="panel">
             <h1 class="title">订单和金额</h1>
-            <base-ai-charts ref="c6" :CHARTS_TYPE="CHARTS_TYPE.ORDER_AMOUNT"></base-ai-charts>
+            <base-ai-charts ref="c6" :chartsType="CHARTS_TYPE.ORDER_AMOUNT"></base-ai-charts>
           </article>
         </div>
       </div>
@@ -70,9 +70,9 @@
   import API from '@api'
   const DATA_ARR = [
     {name: '交易金额', icon: 'money', type: 'total'},
-    {name: '主力客户', icon: 'business', type: 'order_count'},
-    {name: '活跃度', icon: 'active', type: 'per_money'},
-    {name: '客单价', icon: 'price', type: 'module_e_count'}
+    {name: '主力客户', icon: 'business', type: 'module_e_count'},
+    {name: '活跃度', icon: 'active', type: 'order_count'},
+    {name: '笔单价', icon: 'price', type: 'per_money'}
   ]
   const PAGE_NAME = 'MY_DATA'
   export default {
@@ -122,8 +122,8 @@
         ],
         tabNumber: 0,
         CHARTS_TYPE,
-        storeId: '',
-        KOLData: false
+        KOLData: false,
+        merchantId: ''
       }
     },
     watch: {
@@ -134,7 +134,7 @@
       }
     },
     created() {
-      this.storeId = this.$storage.get('info').store_id
+      this.merchantId = this.$storage.get('info').id
       this.getAllDataObj('all')
       this.groupRetio()
       this.PENSRetio()
@@ -154,7 +154,6 @@
       },
       getAllDataObj(time) {
         let data = {
-          store_id: this.storeId,
           time
         }
         API.Mine.getMineData(data).then(res => {
@@ -168,7 +167,7 @@
       // KOL传播
       KOLRetio() {
         let data = {
-          store_id: this.storeId,
+          merchant_id: this.merchantId,
           time: 'week'
         }
         API.Echart.KOLRetio(data)
@@ -178,13 +177,15 @@
               return
             }
             this.KOLData = res.data.elements.length
-            this.$refs.c1 && this.$refs.c1.action(res.data)
+            this.$nextTick(() => {
+              this.$refs.c1 && this.$refs.c1.action(res.data)
+            })
           })
       },
       // KOL列表
       KOLList() {
         let data = {
-          store_id: this.storeId,
+          merchant_id: this.merchantId,
           time: 'week'
         }
         API.Echart.KOLList(data)
@@ -199,7 +200,7 @@
       // 用户分组占比
       groupRetio() {
         let data = {
-          store_id: this.storeId,
+          merchant_id: this.merchantId,
           time: 'week'
         }
         API.Echart.groupRetio(data)
@@ -222,7 +223,7 @@
       // PNES动力模型
       PENSRetio() {
         let data = {
-          store_id: this.storeId,
+          merchant_id: this.merchantId,
           time: 'week'
         }
         API.Echart.PENSRetio(data)
@@ -263,10 +264,10 @@
             this.$refs.c3.action(lineData)
           })
       },
-      // 订单金额、客单价、一周活跃
+      // 订单金额、笔单价、一周活跃
       orderRetio() {
         let data = {
-          store_id: this.storeId,
+          merchant_id: this.merchantId,
           time: 'week'
         }
         API.Echart.orderRetio(data)
@@ -279,11 +280,15 @@
             let mainOrderCount = res.data.map(item => {
               return item.main_order_count
             })
-            // 客单价
+            // 笔单价
             let personMoney = res.data.map(item => {
               return item.per_money
             })
-            // 订单金额
+            // 订单数
+            let count = res.data.map(item => {
+              return item.order_count
+            })
+            // 交易金额
             let total = res.data.map(item => {
               return item.total
             })
@@ -295,15 +300,17 @@
 
             let lineData = {
               xAxisData: day.length ? day : ['03/10', '03/15', '03/20', '03/25', '03/30'],
-              seriesData: [ {data: mainOrderCount.length ? mainOrderCount : [0, 0, 0, 0, 0]} ]
+              seriesData: [ {data: mainOrderCount.length ? mainOrderCount : [0, 0, 0, 0, 0]} ],
+              name: '活跃度'
             }
             let lineData2 = {
               xAxisData: day.length ? day : ['03/10', '03/15', '03/20', '03/25', '03/30'],
-              seriesData: [ {data: personMoney.length ? personMoney : [0, 0, 0, 0, 0]} ]
+              seriesData: [ {data: personMoney.length ? personMoney : [0, 0, 0, 0, 0]} ],
+              name: '笔单价'
             }
             let lineData3 = {
               xAxisData: day.length ? day : ['03/10', '03/15', '03/20', '03/25', '03/30'],
-              seriesData: [ {data: total.length ? total : [0, 0, 0, 0, 0]}, {data: res.data.y ? res.data.y : [0, 0, 0, 0, 0]} ]
+              seriesData: [ {data: count.length ? count : [0, 0, 0, 0, 0]}, {data: total.length ? total : [0, 0, 0, 0, 0]} ]
             }
             this.$refs.c4.action(lineData)
             this.$refs.c5.action(lineData2)

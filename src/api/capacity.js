@@ -17,5 +17,12 @@ export default {
     let url = 'api/brand/brand-boss/get-trade-description'
     return request.get(url, data, false)
   },
-
+  /**
+   * 营销记录
+   * @returns {*}
+   */
+  martketingRecord(data) {
+    let url = '/api/brand/brand-boss/get-market-logs'
+    return request.get(url, data, false)
+  }
 }

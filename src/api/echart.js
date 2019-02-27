@@ -170,7 +170,7 @@ export default {
     return request.get(url, data, false)
   },
   /**
-   * 客单价、订单与金额、主力客户一周下单次数
+   * 笔单价、订单与金额、主力客户一周下单次数
    * @returns {*}
    */
   orderRetio(data) {

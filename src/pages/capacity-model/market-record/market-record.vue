@@ -1,6 +1,6 @@
 <template>
   <div class="follow-box">
-    <div class="follow-list" v-for="(item, index) in flowList" :key="index">
+    <div v-for="(item, index) in flowList" :key="index" class="follow-list border-left-1px">
       <div class="time">{{item.created_at}}</div>
       <div class="text">{{item.content}}</div>
     </div>
@@ -9,7 +9,7 @@
 
 <script type="text/ecmascript-6">
   export default{
-    name: 'detail-msg',
+    name: 'market-msg',
     props: {
       flowList: {
         type: Array,
