@@ -313,12 +313,13 @@
     created() {
       this.id = this.$route.query.id
       this.storeId = this.$storage.get('info').store_id
+      let userInfo = this.$storage.get('user')
       this.clientData = {
-        name: this.$storage.get('user').name,
-        avatar: this.$storage.get('user').avatar,
-        position: this.$storage.get('user').position,
-        user: this.$storage.get('user').nickname,
-        mobile: this.$storage.get('user').mobile,
+        name: userInfo.name,
+        avatar: userInfo.avatar,
+        position: userInfo.position,
+        user: userInfo.nickname,
+        mobile: userInfo.mobile,
       }
       this.getAllDataObj('all') // 全部数据展示
       this.getNewActionList(this.id) // 行为事件列表

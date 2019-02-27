@@ -2,7 +2,7 @@
 // console.log(json2)
 // pic-xcx@1x.png
 // pic-default@1x.png
-const hostUrl = `${window.location.protocol}//${window.location.host}/static/chart-icon`
+const hostUrl = `${window.location.protocol}//${window.location.host}/chart-icon`
 // const number = 20
 const wx = {
   customer_id: 0,
