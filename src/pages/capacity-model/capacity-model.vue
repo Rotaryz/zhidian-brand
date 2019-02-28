@@ -103,15 +103,15 @@
 
           <div v-show="charTab === 0">
             <article class="panel">
-              <h1 class="title">用户分组</h1>
+              <h1 class="title border-bottom-1px">用户分组</h1>
               <base-ai-charts ref="c1" :chartsType="CHARTS_TYPE.USER"></base-ai-charts>
             </article>
             <article class="panel">
-              <h1 class="title">PNES动力模型</h1>
+              <h1 class="title border-bottom-1px">PNES动力模型</h1>
               <base-ai-charts ref="c2" :chartsType="CHARTS_TYPE.PNES"></base-ai-charts>
             </article>
             <router-link tag="div" to="" class="panel">
-              <router-link tag="div" to="z-test" class="title">用户来源-KOL分享传播</router-link>
+              <router-link tag="div" to="z-test" class="title border-bottom-1px">用户来源-KOL分享传播</router-link>
               <base-ai-charts v-if="KOLData" ref="c3" :chartsType="CHARTS_TYPE.USER_TOP6"></base-ai-charts>
               <div v-else class="no-data">暂无数据</div>
               <div v-if="personList.length > 0" class="list">
@@ -132,17 +132,17 @@
           </div>
           <div v-show="charTab === 1">
             <article class="panel">
-              <h1 class="title ">活跃度-主力客户一周期内下单次数</h1>
+              <h1 class="title border-bottom-1px">活跃度-主力客户一周期内下单次数</h1>
               <base-ai-charts ref="c4" :chartsType="CHARTS_TYPE.VITALITY"></base-ai-charts>
             </article>
           </div>
           <div v-show="charTab === 2">
             <article class="panel">
-              <h1 class="title ">笔单价</h1>
+              <h1 class="title border-bottom-1px">笔单价</h1>
               <base-ai-charts ref="c5" :chartsType="CHARTS_TYPE.VITALITY"></base-ai-charts>
             </article>
             <article class="panel">
-              <h1 class="title">订单和金额</h1>
+              <h1 class="title border-bottom-1px">订单和金额</h1>
               <base-ai-charts ref="c6" :chartsType="CHARTS_TYPE.ORDER_AMOUNT"></base-ai-charts>
             </article>
           </div>
