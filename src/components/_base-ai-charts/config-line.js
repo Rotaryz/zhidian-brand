@@ -3,7 +3,7 @@ import APP_CONFIG from '@utils/_app-config'
  * 默认X轴的值=>xAxisData
  * @type {string[]}
  */
-const DEFAULT_X_DATA = new Array(12).fill(1).map((item, index) => {
+const DEFAULT_X_DATA = new Array(7).fill(1).map((item, index) => {
   return `10/${(index + 1) * 2}`
 })
 /**
@@ -14,13 +14,13 @@ let DEFAULT_SERIES_DATA_FN
 if (APP_CONFIG.env === 'production') {
   DEFAULT_SERIES_DATA_FN = (number) => {
     return new Array(number).fill({
-      data: new Array(12).fill(0)
+      data: new Array(7).fill(0)
     })
   }
 } else {
   // 默认y轴的值=>seriesData.item
   let DEFAULT_SERIES_DATA_ITEM = (itemNumber) => {
-    return new Array(12).fill(1).map((item, index) => {
+    return new Array(7).fill(1).map((item, index) => {
       return ~~(Math.random() * (itemNumber)) // todo
     })
   }
