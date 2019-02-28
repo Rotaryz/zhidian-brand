@@ -259,6 +259,13 @@ export function createPNES(args = {}) {
   if (!seriesData || !seriesData.length) {
     seriesData = DEFAULT_SERIES_DATA_FN(4)
   }
+  // todo
+  seriesData = seriesData.map((item) => {
+    item.data = item.data.map((child) => {
+      return Math.max(child, 0)
+    })
+    return item
+  })
   let series = seriesData.map((item, index) => {
     return {
       name: colorObj[index].name,
@@ -401,7 +408,7 @@ export function createPNES(args = {}) {
 }
 
 /**
- * 创建最近7天活跃值/笔单价
+ * 创建最近7天活跃值
  * @param args
  * @returns {{yAxis: {axisLabel: {formatter: string, color: string}, minInterval: number, axisLine: {lineStyle: {color: string, width: number}, show: boolean}, splitLine: {lineStyle: {color: string, width: number, type: string}, show: boolean}, axisTick: {lineStyle: {color: string, width: number}, show: boolean}, type: string}, xAxis: {axisLabel: {color: string, fontSize: number, align: string}, data, offset: number, axisLine: {lineStyle: {color: string, width: number}, show: boolean}, splitLine: {lineStyle: {color: string, width: number}, show: boolean}, axisTick: {lineStyle: {color: string, width: number}, show: boolean}, type: string, boundaryGap: boolean}, grid: {top: string, left: string, bottom: string, right: string, containLabel: boolean}, series: *, tooltip: {padding: number[], axisPointer: {lineStyle: {color: string, width: number}}, trigger: string, textStyle: {align: string}}}}
  * @private

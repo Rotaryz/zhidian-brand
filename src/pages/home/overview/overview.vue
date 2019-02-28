@@ -361,6 +361,7 @@
             font-size: $font-size-14
             color: #333
             font-family: $font-family-regular
+            background: #FFF
             line-height: 30px
             width: 25%
             text-align: center
@@ -368,7 +369,8 @@
           .tab:last-child
             border-right: 0
           .active
-            color: $color-main
+            background: $color-linear-main
+            color: #FFF
         .data-list
           padding: 30px 20px 25px
           overflow: hidden
@@ -418,6 +420,7 @@
             line-height: 16px
             padding: 13.5px 0
             margin: 0 15px
+            border-bottom-1px(#E1E1E1)
           .no-data
             height: 223px
             line-height: 223px

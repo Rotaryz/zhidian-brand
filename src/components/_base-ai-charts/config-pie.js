@@ -47,6 +47,7 @@ export function createShop(args = {}) {
       itemHeight: 8,
       borderRadius: 0,
       bottom: 12,
+      itemGap: 25,
       padding: [0, 25, 0, 25],
       textStyle: {color: '#858585',
         fontSize: '12',

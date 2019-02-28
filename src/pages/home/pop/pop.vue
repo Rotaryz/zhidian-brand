@@ -75,7 +75,8 @@
         font-size: 14px
         font-family: "PingFangSC-Regular"
         color: $color-main
-        border-1px($color-main, 100px)
+        border-radius: 100px
+        border: 1px solid $color-main
         text-align: center
         margin: 30px auto 20px
 </style>
