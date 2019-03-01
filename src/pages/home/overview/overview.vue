@@ -155,7 +155,7 @@
       getAllDataObj(time) {
         let data = {
           time,
-          merchant_id: this.merchantId
+          merchant_id: this.merchantId || this.$storage.get('info').id
         }
         API.Mine.getMineData(data).then(res => {
           if (res.error === this.$ERR_OK) {
@@ -168,7 +168,7 @@
       // KOL传播
       KOLRetio() {
         let data = {
-          merchant_id: this.merchantId,
+          merchant_id: this.merchantId || this.$storage.get('info').id,
           time: 'week'
         }
         API.Echart.KOLRetio(data)
@@ -186,7 +186,7 @@
       // KOL列表
       KOLList() {
         let data = {
-          merchant_id: this.merchantId,
+          merchant_id: this.merchantId || this.$storage.get('info').id,
           time: 'week'
         }
         API.Echart.KOLList(data)
@@ -201,7 +201,7 @@
       // 用户分组占比
       groupRetio() {
         let data = {
-          merchant_id: this.merchantId,
+          merchant_id: this.merchantId || this.$storage.get('info').id,
           time: 'week'
         }
         API.Echart.groupRetio(data)
@@ -224,7 +224,7 @@
       // PNES动力模型
       PENSRetio() {
         let data = {
-          merchant_id: this.merchantId,
+          merchant_id: this.merchantId || this.$storage.get('info').id,
           time: 'week'
         }
         API.Echart.PENSRetio(data)
@@ -268,7 +268,7 @@
       // 订单金额、笔单价、一周活跃
       orderRetio() {
         let data = {
-          merchant_id: this.merchantId,
+          merchant_id: this.merchantId || this.$storage.get('info').id,
           time: 'week'
         }
         API.Echart.orderRetio(data)
