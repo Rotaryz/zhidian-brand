@@ -9,7 +9,7 @@
 
 <script type="text/ecmascript-6">
   export default{
-    name: 'market-msg',
+    name: 'MarketRecord',
     props: {
       flowList: {
         type: Array,

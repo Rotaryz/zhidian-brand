@@ -112,7 +112,7 @@
             </article>
             <router-link tag="div" to="" class="panel">
               <router-link tag="div" to="z-test" class="title border-bottom-1px">用户来源-KOL分享传播</router-link>
-              <base-ai-charts v-if="KOLData" ref="c3" :chartsType="CHARTS_TYPE.USER_TOP6"></base-ai-charts>
+              <base-ai-charts v-if="KOLData && KOLRefresh" ref="c3" :chartsType="CHARTS_TYPE.USER_TOP6"></base-ai-charts>
               <div v-else class="no-data">暂无数据</div>
               <div v-if="personList.length > 0" class="list">
                 <h3 class="list-title">
@@ -291,7 +291,8 @@
         KOLData: false,
         noMarketing: false,
         merchantId: '',
-        marketPage: 1
+        marketPage: 1,
+        KOLRefresh: true
       }
     },
     computed: {
@@ -395,6 +396,7 @@
       // tab栏切换
       switchTab(index) {
         this.$refs.scroll.scrollTo(0, 0)
+        this.KOLRefresh = false // 修改KOL刷新的问题 todo
         this.scroll(0)
         this.menuIdx = index
         if (index === 0) {
@@ -406,6 +408,7 @@
             this.groupRetio()
             this.PENSRetio()
             this.KOLList()
+            this.KOLRefresh = true
           })
           this.KOLRetio()
         }

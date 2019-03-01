@@ -207,6 +207,7 @@ export function createOrderAmount(args = {}) {
           width: 0.5
         }
       },
+      formatter: '{b}<br />{a0}: {c0}<br />{a1}: {c1}',
       padding: 5
     },
     yAxis,
@@ -316,7 +317,8 @@ export function createPNES(args = {}) {
       itemHeight: 8,
       borderRadius: 0,
       bottom: 12,
-      padding: [0, 25, 0, 25],
+      itemGap: 20,
+      padding: [0, 10, 0, 10],
       data: legendData
     },
     grid: {
@@ -362,7 +364,8 @@ export function createPNES(args = {}) {
     tooltip: {
       trigger: 'axis',
       textStyle: {
-        align: 'left'
+        align: 'left',
+        fontSize: 12
       },
       axisPointer: {
         type: 'none',
@@ -371,6 +374,7 @@ export function createPNES(args = {}) {
           width: 0.5
         }
       },
+      formatter: '{b}<br />{a0}: {c0}%<br />{a1}: {c1}%<br />{a2}: {c2}%<br />{a3}: {c3}%',
       padding: 5
     },
     yAxis: {
@@ -525,6 +529,7 @@ export function createVitality(args = {}) {
           width: 0.5
         }
       },
+      formatter: '{b}<br />{a}: {c}',
       padding: 5
     },
     yAxis: {

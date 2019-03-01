@@ -78,7 +78,7 @@
         this.$router.push(url)
       },
       _rqGetStaffSellList() {
-        const data = {page: 1, limit: LIMIT}
+        const data = {page: 1, limit: LIMIT, merchant_id: this.$storage.get('info').id}
         Analyse.getStaffSellList(data).then((res) => {
           this.$loading.hide()
           if (res.error === this.$ERR_OK) {

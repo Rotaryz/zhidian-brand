@@ -8,7 +8,7 @@ export default {
   },
   // 员工销售力排行榜(7)
   getStaffSellList(data, loading) {
-    const url = `/api/brand/brand-analysis/boss-shop-sell-rank` // todo
+    const url = `/api/brand/brand-boss/boss-shop-sell-rank` // todo
     return request.post(url, data, loading)
   },
   //  销售排行统计

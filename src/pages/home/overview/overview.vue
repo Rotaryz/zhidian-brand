@@ -7,9 +7,9 @@
             <div v-for="(item, index) in tabList" :key="index" class="tab border-right-1px" :class="tabNumber === index ? 'active' : '' " @click="getAllTab(item, index)">{{item.text}}</div>
           </nav>
           <div class="data-list">
-            <div v-for="(item, index) in dataArr" :key="index" @click="showPop(index)" class="list-item border-top-1px border-right-1px">
+            <div v-for="(item, index) in dataArr" :key="index" class="list-item border-top-1px border-right-1px" @click="showPop(index)">
               <div class="num">{{allDatas[item.type] || 0}}</div>
-              <div class="title">{{item.name}}<span class="icon" v-if="index === 0"></span></div>
+              <div class="title">{{item.name}}<span v-if="index === 0" class="icon"></span></div>
             </div>
           </div>
         </div>
@@ -154,7 +154,8 @@
       },
       getAllDataObj(time) {
         let data = {
-          time
+          time,
+          merchant_id: this.merchantId
         }
         API.Mine.getMineData(data).then(res => {
           if (res.error === this.$ERR_OK) {
