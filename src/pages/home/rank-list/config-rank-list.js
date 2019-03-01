@@ -7,7 +7,7 @@ export default [
     secondKey: 'group_rule_name'
   },
   {
-    title: ['成功订单', '退款订单'],
+    title: ['成功订单'],
     key: 0,
     one: 2,
     second: [1, 2],
