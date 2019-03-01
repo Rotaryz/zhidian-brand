@@ -38,6 +38,8 @@
   import AiAnalyse from './ai-analyse/ai-analyse'
   import RankList from './rank-list/rank-list'
   import Pop from './pop/pop'
+  import storage from 'storage-controller'
+  import API from '@api'
 
   const PAGE_NAME = 'HOME'
 
@@ -105,6 +107,13 @@
           this.rebuildScroll()
         },
         deep: true
+      }
+    },
+    beforeCreate() {
+      if (storage.has('token')) {
+        API.Global.getMerchantInfo().then(res => {
+          storage.set('info', res.data)
+        })
       }
     },
     created() {
