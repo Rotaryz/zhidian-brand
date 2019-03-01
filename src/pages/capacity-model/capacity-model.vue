@@ -866,7 +866,7 @@
     position: relative
 
   .visitor-box
-    padding: 0 15px 15px 0
+    padding: 0 0 15px 0
   .ai-box
     padding: 15px 0
   .six-box
