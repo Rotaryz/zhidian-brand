@@ -112,6 +112,7 @@
       // 退出登录
       logoutHandle() {
         this.$storage.remove('token')
+        this.$storage.remove('info')
         this.$router.replace('/login')
       },
       // 弹窗

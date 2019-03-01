@@ -18,6 +18,10 @@ export default {
     let url = '/api/brand/profile'
     data = _formatUpdateUserInfoData(data)
     return defaultProcess('post', url, data, loading, toast)
+  },
+  getMerchantInfo(data, loading = false, toast = false) {
+    let url = '/api/brand/profile'
+    return defaultProcess('get', url, data, loading, toast)
   }
 }
 

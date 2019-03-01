@@ -6,7 +6,6 @@
 
 <script>
   // import appConfig from '@src/app.config'
-
   export default {
     page: {
       title: '品牌管理系统',
