@@ -28,8 +28,8 @@
               <p v-for="(item, index) in personList" :key="index" class="item">
                 <span class="num">{{index+1}}</span>
                 <span class="name">{{item.name}}</span>
-                <span class="person">{{item.share_person_count}}</span>
-                <span class="count">{{item.share_times}}次</span>
+                <span class="person">{{item.share_person_count || 0}}</span>
+                <span class="count">{{item.share_times || 0}}次</span>
               </p>
             </div>
           </router-link>
