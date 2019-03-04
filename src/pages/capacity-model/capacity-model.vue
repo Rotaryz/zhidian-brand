@@ -339,7 +339,10 @@
     methods: {
       // 能力模型图
       getRadarData() {
-        API.Capacity.getRadarData()
+        let data = {
+          store_id: this.id
+        }
+        API.Capacity.getRadarData(data)
           .then(res => {
             this.$loading.hide()
             if (res.error === this.$ERR_OK) {
