@@ -154,8 +154,7 @@ export function createOrderAmount(args = {}) {
       bottom: 12,
       itemGap: 30,
       padding: [0, 25, 0, 25],
-      data: legendData,
-      selectedMode: false
+      data: legendData
     },
     grid: {
       top: '8.149779735682818%',
@@ -208,7 +207,18 @@ export function createOrderAmount(args = {}) {
           width: 0.5
         }
       },
-      formatter: '{b}<br />{a0}: {c0}<br />{a1}: {c1}',
+      formatter: (params, ticket, callback) => {
+        let html
+        if (!params.length) {
+          return ''
+        } else {
+          html = params[0].name + '<br />'
+          params.forEach(item => {
+            html += (item.seriesName + ' ' + item.data + '<br />')
+          })
+        }
+        return html
+      },
       padding: 5
     },
     yAxis,
