@@ -317,13 +317,13 @@
       this.merchantId = this.$storage.get('info').id
       this.id = this.$route.query.id
       let userInfo = this.$storage.get('user')
-      this.clientData = {
+      userInfo && (this.clientData = {
         name: userInfo.name,
         avatar: userInfo.avatar,
         position: userInfo.position,
         user: userInfo.nickname,
         mobile: userInfo.mobile,
-      }
+      })
       this.getNewActionList(this.id) // 来访记录
       this.marketingRecord() // 营销记录
       this.getRadarData() // 能力模型
