@@ -326,11 +326,11 @@
       }
       this.getNewActionList(this.id) // 来访记录
       this.marketingRecord() // 营销记录
-      this.getRadarData() // 能力模型
       this.getEmployeeRank() // 能力排名
     },
     mounted() {
       this.highgt = this.$refs.eleven.offsetHeight + 20
+      this.getRadarData() // 能力模型
     },
     beforeDestroy() {
       // this.$emit('refresh')
@@ -342,18 +342,19 @@
         let data = {
           store_id: this.id
         }
+        alert(JSON.stringify(data))
         API.Capacity.getRadarData(data)
           .then(res => {
             this.$loading.hide()
             if (res.error === this.$ERR_OK) {
-              this.$nextTick(() => {
-                let radarData = {
-                  xAxisData: res.data.value,
-                  seriesData: res.data.data,
-                  total: res.data.total
-                }
-                this.$refs.c7 && this.$refs.c7.action(radarData)
-              })
+              // this.$nextTick(() => {
+              let radarData = {
+                xAxisData: res.data.value,
+                seriesData: res.data.data,
+                total: res.data.total
+              }
+              this.$refs.c7 && this.$refs.c7.action(radarData)
+            // })
             } else {
               this.$toast.show(res.message)
             }
