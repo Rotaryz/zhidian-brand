@@ -119,7 +119,6 @@
     created() {
       this.updateMerchant('')
       this.tabIndex = 0
-      alert('测试12')
     },
     beforeDestroy() {
       this.tabIndex = -1
