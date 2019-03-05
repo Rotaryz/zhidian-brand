@@ -136,7 +136,7 @@
   .red-start
     font-family: PingFangSC-Regular;
     font-size: 14px;
-    color: $color-main
+    color: #d42b2b
     line-height: 2
     margin-right :1px
 
